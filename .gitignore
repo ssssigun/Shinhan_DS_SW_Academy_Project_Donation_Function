@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/delivery_donation_service_frontend/node_modules
+/delivery_donation_service_frontend/.pnp
+/delivery_donation_service_frontend.pnp.js
+
+# testing
+/delivery_donation_service_frontend/coverage
+
+# production
+/delivery_donation_service_frontend/build
+
+# misc
+/delivery_donation_service_frontend.DS_Store
+/delivery_donation_service_frontend.env.local
+/delivery_donation_service_frontend.env.development.local
+/delivery_donation_service_frontend.env.test.local
+/delivery_donation_service_frontend.env.production.local
+
+/delivery_donation_service_frontendnpm-debug.log*
+/delivery_donation_service_frontendyarn-debug.log*
+/delivery_donation_service_frontendyarn-error.log*
