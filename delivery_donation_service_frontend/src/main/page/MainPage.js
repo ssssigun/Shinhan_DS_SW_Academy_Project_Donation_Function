@@ -10,8 +10,8 @@ const MainPage = () => {
   const [menuFlag, setMenuFlag] = useState(0);
 
   return (
-    <div className="wrapper">
-      <div className="mainWrapper">
+    <div className="mainWrapper">
+      <div className="mainContainer">
         <MainHeader menuFlag={menuFlag} setMenuFlag={setMenuFlag} />
         <div className="categoriesWrapper">
           {menuFlag === 0 &&
