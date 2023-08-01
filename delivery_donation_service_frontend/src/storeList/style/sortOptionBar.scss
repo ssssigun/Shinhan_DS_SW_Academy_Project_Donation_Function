@@ -1,0 +1,40 @@
+// 메뉴 정렬 바 scss
+#filter{
+    display: flex;
+    padding-left: 0px;
+    align-items: center;
+    gap: 7px;
+    align-self: stretch;
+    overflow: auto;
+    margin: 0 20px;
+
+    //스크롤바 제거
+    -ms-overflow-style: none; /* 인터넷 익스플로러 */
+    scrollbar-width: none; /* 파이어폭스 */
+    &::-webkit-scrollbar{
+        display: none; /* 크롬, 사파리, 오페라, 엣지 */
+    }
+
+    li{
+        display: flex;
+        padding: 10px;
+        justify-content: center;
+        align-items: center;
+
+        border-radius: 20px;
+        border: 1px solid #EDEDED;
+        background: #FFF;
+        
+        span{
+            white-space : nowrap; //한줄로 표시
+            color: #000;
+            text-align: center;
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+
+}

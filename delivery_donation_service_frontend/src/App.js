@@ -10,30 +10,38 @@ import OrderDonator from './OrderDonator/page/OrderDonator'
 import AlarmPage from './alarm/page/AlarmPage';
 import OrderListPage from './orderList/page/OrderListPage';
 import OrderRadioButtonsTest from './common/page/OrderRadioButtonsTest';
+import StoreList from "./storeList/page/storeList";
+import Store from "./store/page/store";
+import MenuDetail from "./menuDetail/page/menuDetail";
 
 function App() {
   return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/donationCart" element={<DonationCart />}></Route>
-          <Route path="/cart" element={<Cart />}></Route>
-          <Route path="/orderDonator" element={<OrderDonator type="기부" />}></Route>
-          <Route path="/orderFreeDelivery" element={<OrderDonator type="기부" />}></Route>
-        </Routes>
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-        </Routes>
-        <Routes>
-          <Route path="/alarm" element={<AlarmPage />} />
-        </Routes>
-        <Routes>
-          <Route path="/orderList" element={<OrderListPage />} />
-        </Routes>
-        <Routes>
-          <Route path="/testOrderRadioButtons" element={<OrderRadioButtonsTest />} />
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/donationCart" element={<DonationCart />}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/orderDonator" element={<OrderDonator type="기부" />}></Route>
+        <Route path="/orderFreeDelivery" element={<OrderDonator type="기부" />}></Route>
+      </Routes>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+      </Routes>
+      <Routes>
+        <Route path="/alarm" element={<AlarmPage />} />
+      </Routes>
+      <Routes>
+        <Route path="/orderList" element={<OrderListPage />} />
+      </Routes>
+      <Routes>
+        <Route path="/testOrderRadioButtons" element={<OrderRadioButtonsTest />} />
+      </Routes>
+      <Routes>
+        <Route path="/" element={<StoreList />} />
+        <Route path="/store" element={<Store />} />
+        <Route path="/menuDetail" element={<MenuDetail />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
