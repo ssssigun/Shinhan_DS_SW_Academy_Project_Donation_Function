@@ -19,7 +19,7 @@ const OrderListPage = () => {
 
   return (
     <>
-      <div className="wrapper">
+      <div className="orderWraper">
         <OrderRadioButtons flag={flag} buttons={buttons} setFlag={setFlag} />
         <div className="orderListWrapper">
           <Order
