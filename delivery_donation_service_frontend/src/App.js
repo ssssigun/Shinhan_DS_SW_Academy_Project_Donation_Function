@@ -13,6 +13,7 @@ import OrderRadioButtonsTest from './common/page/OrderRadioButtonsTest';
 import StoreList from './storeList/page/storeList';
 import Store from './store/page/store';
 import MenuDetail from './menuDetail/page/menuDetail';
+import OrderFreeDelivery from './OrderFreeDelivery/page/OrderFreeDelivery';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
         <Route path="/donationCart" element={<DonationCart />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/orderDonator" element={<OrderDonator type="기부" />}></Route>
-        <Route path="/orderFreeDelivery" element={<OrderDonator type="기부" />}></Route>
+        <Route path="/orderFreeDelivery" element={<OrderFreeDelivery />}></Route>
       </Routes>
       <Routes>
         <Route path="/" element={<MainPage />} />
