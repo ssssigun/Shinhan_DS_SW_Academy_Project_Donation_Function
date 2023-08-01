@@ -1,0 +1,30 @@
+.radioButtonsWrapper {
+  display: flex;
+  height: 42px;
+  align-items: flex-start;
+  flex-shrink: 0;
+  align-self: stretch;
+
+  border-radius: 10px;
+  border: 1px solid #f3f2f7;
+  background: #f9f9fb;
+
+  .button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 0;
+    align-self: stretch;
+
+    font-size: 16px;
+    color: #7d7d7d;
+  }
+  .selected {
+    color: #ea5828;
+
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.05);
+  }
+}
