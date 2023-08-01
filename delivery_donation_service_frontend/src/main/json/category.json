@@ -1,0 +1,84 @@
+{
+  "category": [
+    {
+      "name": "신규맛집",
+      "canDonate": false,
+      "image": "image/category/new.png"
+    },
+    {
+      "name": "1인분",
+      "canDonate": false,
+      "image": "image/category/1serving.png"
+    },
+    {
+      "name": "한식",
+      "canDonate": true,
+      "image": "image/category/koreanFood.png"
+    },
+    {
+      "name": "치킨",
+      "canDonate": true,
+      "image": "image/category/chicken.png"
+    },
+    {
+      "name": "분식",
+      "canDonate": true,
+      "image": "image/category/snackBar.png"
+    },
+    {
+      "name": "중식",
+      "canDonate": true,
+      "image": "image/category/chineseFood.png"
+    },
+    {
+      "name": "회/일식/돈까스",
+      "canDonate": true,
+      "image": "image/category/japaneseFood.png"
+    },
+    {
+      "name": "찜/탕",
+      "canDonate": true,
+      "image": "image/category/steamed.png"
+    },
+    {
+      "name": "피자",
+      "canDonate": true,
+      "image": "image/category/pizza.png"
+    },
+    {
+      "name": "버거",
+      "canDonate": true,
+      "image": "image/category/burger.png"
+    },
+    {
+      "name": "양식/아시안",
+      "canDonate": true,
+      "image": "image/category/westernFood.png"
+    },
+    {
+      "name": "족발/보쌈",
+      "canDonate": true,
+      "image": "image/category/porkFeet.png"
+    },
+    {
+      "name": "카페/디저트",
+      "canDonate": false,
+      "image": "image/category/cafe.png"
+    },
+    {
+      "name": "샐러드/채식",
+      "canDonate": true,
+      "image": "image/category/salad.png"
+    },
+    {
+      "name": "도시락",
+      "canDonate": true,
+      "image": "image/category/lunchBox.png"
+    },
+    {
+      "name": "프랜차이즈",
+      "canDonate": false,
+      "image": "image/category/brand.png"
+    }
+  ]
+}

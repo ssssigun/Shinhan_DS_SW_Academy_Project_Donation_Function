@@ -1,0 +1,39 @@
+.noneWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+
+  height: 100%;
+}
+
+.noneImageWrapper {
+  display: flex;
+  width: 150px;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 40px;
+  border: 1px solid #eaecfb;
+  background: #f4f7fe;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.noneTitle {
+  color: #000;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.noneContents {
+  color: #808080;
+  font-size: 16px;
+
+  text-align: center;
+}
