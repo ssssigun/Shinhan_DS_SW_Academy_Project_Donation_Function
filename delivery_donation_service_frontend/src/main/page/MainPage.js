@@ -4,6 +4,7 @@ import '../style/MainPage.scss';
 import categories from '../json/category.json';
 import { useState } from 'react';
 import BottomMenuBar from '../component/BottomMenuBar';
+import Ready from '../../common/component/Ready';
 
 const MainPage = () => {
   const [menuFlag, setMenuFlag] = useState(0);
@@ -13,19 +14,19 @@ const MainPage = () => {
       <div className="mainWrapper">
         <MainHeader menuFlag={menuFlag} setMenuFlag={setMenuFlag} />
         <div className="categoriesWrapper">
-          {categories.category.map((category, index) => {
-            if (menuFlag === 0) {
+          {menuFlag === 0 &&
+            categories.category.map((category, index) => {
               return <Category key={index} image={category.image} name={category.name}></Category>;
-            } else if (menuFlag === 2) {
+            })}
+          {menuFlag === 1 && <Ready />}
+          {menuFlag === 2 &&
+            categories.category.map((category, index) => {
               return category.canDonate ? (
                 <Category key={index} image={category.image} name={category.name}></Category>
               ) : (
                 ''
               );
-            } else {
-              return '';
-            }
-          })}
+            })}
         </div>
       </div>
       <BottomMenuBar />
