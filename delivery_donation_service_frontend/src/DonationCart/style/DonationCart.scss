@@ -1,0 +1,123 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  height: 823px;
+  padding: 10px 0px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  .cart {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+
+    border-bottom: 8px solid #f2f3f8;
+    background: #fff;
+    .storeTitle {
+      display: flex;
+      padding: 10px 20px;
+      justify-content: space-between;
+      align-items: center;
+      align-self: stretch;
+      color: #000;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+    .cartDetail {
+      display: flex;
+      padding: 10px 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      align-self: stretch;
+      border-top: 1px solid #f4f5f8;
+      .detailTitle {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        align-self: stretch;
+        .title {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          align-self: stretch;
+          color: #000;
+
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+        .price {
+          display: flex;
+          height: 17px;
+          align-items: flex-start;
+          align-self: stretch;
+          color: #8b8b8b;
+
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+      .count {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-self: stretch;
+        h2 {
+          color: #000;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+    }
+    .expectedPaymentWrapper {
+      display: flex;
+      padding: 0px 20px;
+      align-items: flex-start;
+      align-self: stretch;
+
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      .expectedPayment {
+        display: flex;
+        padding: 15px 0px;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex: 1 0 0;
+        border-top: 1px solid #000;
+        .expectText {
+          color: #8b8b8b;
+        }
+        .expectMoney {
+          color: #fb521b;
+        }
+      }
+    }
+    .addMenu {
+      display: flex;
+      padding: 10px 0px;
+      justify-content: center;
+      align-items: center;
+      gap: 3px;
+      align-self: stretch;
+      border-top: 1px solid #f1f1f1;
+      color: #000;
+
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+}
