@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainPage from './main/page/MainPage';
 import './common/style/common.scss';
 import AlarmPage from './alarm/page/AlarmPage';
+import OrderListPage from './orderList/page/OrderListPage';
+import OrderRadioButtonsTest from './common/page/OrderRadioButtonsTest';
 
 function App() {
   return (
@@ -12,6 +14,12 @@ function App() {
       </Routes>
       <Routes>
         <Route path="/alarm" element={<AlarmPage />} />
+      </Routes>
+      <Routes>
+        <Route path="/orderList" element={<OrderListPage />} />
+      </Routes>
+      <Routes>
+        <Route path="/testOrderRadioButtons" element={<OrderRadioButtonsTest />} />
       </Routes>
     </BrowserRouter>
   );
