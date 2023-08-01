@@ -1,14 +1,14 @@
 import '../style/UpDownButton.scss'
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 
-const UpDownButton = ({}) => {
+const UpDownButton = ({ buttonStyle }) => {
   return (
     <div className="upDownOption">
-      <div className="downButton">
+      <div className="downButton" style={buttonStyle}>
         <AiOutlineMinus />
       </div>
       1
-      <div className="upButton">
+      <div className="upButton" style={buttonStyle}>
         <AiOutlinePlus />
       </div>
     </div>
