@@ -12,7 +12,7 @@ const FreeCart = ({}) => {
     setSelectedOption(event.target.value) // 라디오 버튼 선택 시, 상태 업데이트
   }
   return (
-    <div className="wrapper">
+    <div className="freeCartWrapper">
       <div className="cart">
         <div className="storeTitle">
           <RadioButton

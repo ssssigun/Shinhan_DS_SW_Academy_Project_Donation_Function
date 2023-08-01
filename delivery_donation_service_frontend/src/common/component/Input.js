@@ -1,7 +1,7 @@
 import '../style/Input.scss'
 
-const Input = ({ placeholder }) => {
-  return <input placeholder={placeholder}></input>
+const Input = ({ placeholder, type }) => {
+  return <input placeholder={placeholder} type={type}></input>
 }
 
 export default Input
