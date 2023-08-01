@@ -37,7 +37,7 @@ function App() {
         <Route path="/testOrderRadioButtons" element={<OrderRadioButtonsTest />} />
       </Routes>
       <Routes>
-        <Route path="/" element={<StoreList />} />
+        <Route path="/storeList" element={<StoreList />} />
         <Route path="/store" element={<Store />} />
         <Route path="/menuDetail" element={<MenuDetail />} />
       </Routes>
