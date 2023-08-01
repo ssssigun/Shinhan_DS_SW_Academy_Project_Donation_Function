@@ -1,18 +1,18 @@
-import './App.css'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import './common/style/common.scss'
+import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './common/style/common.scss';
 
-import Login from './Login/page/Login'
-import DonationCart from './DonationCart/page/DonationCart'
-import Cart from './Cart/page/Cart'
+import Login from './Login/page/Login';
+import DonationCart from './DonationCart/page/DonationCart';
+import Cart from './Cart/page/Cart';
 import MainPage from './main/page/MainPage';
-import OrderDonator from './OrderDonator/page/OrderDonator'
+import OrderDonator from './OrderDonator/page/OrderDonator';
 import AlarmPage from './alarm/page/AlarmPage';
 import OrderListPage from './orderList/page/OrderListPage';
 import OrderRadioButtonsTest from './common/page/OrderRadioButtonsTest';
-import StoreList from "./storeList/page/storeList";
-import Store from "./store/page/store";
-import MenuDetail from "./menuDetail/page/menuDetail";
+import StoreList from './storeList/page/storeList';
+import Store from './store/page/store';
+import MenuDetail from './menuDetail/page/menuDetail';
 
 function App() {
   return (
@@ -37,12 +37,12 @@ function App() {
         <Route path="/testOrderRadioButtons" element={<OrderRadioButtonsTest />} />
       </Routes>
       <Routes>
-        <Route path="/" element={<StoreList />} />
+        <Route path="/storeList" element={<StoreList />} />
         <Route path="/store" element={<Store />} />
         <Route path="/menuDetail" element={<MenuDetail />} />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -13,8 +13,8 @@ const AlarmPage = () => {
 
   return (
     <>
-      <div className="wrapper">
-        <div className="alarmWrapper">
+      <div className="alarmWrapper">
+        <div className="alarmsContainer">
           {alarms.length > 0 ? (
             <Alarm date="2023.05.07 일" alarms={alarms} />
           ) : (
