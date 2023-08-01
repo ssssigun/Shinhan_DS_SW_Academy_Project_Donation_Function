@@ -2,13 +2,12 @@
 
 //scss 불러오기
 import "../style/categoryMenuBar.scss"
-import "../../common/style/reset.scss"
-import "../../common/style/common.scss"
 
 
-const categoryMenuBar = () => {
+const categoryMenuBar = ({check,setCheck}) => {
+
     return (
-      <div>
+      <div id="categoryMenuBar">
         <ul id="menu">
             <li><p>신규맛집</p></li>
             <li><p>1인분</p></li>

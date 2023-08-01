@@ -1,8 +1,10 @@
+// 가게 목록 scss
 #storeListWrapper{
     width: 100%;
     flex-direction: column;
     align-items: center;
     gap: 10px;
+
 }
 .storeListWrap{
     display: flex;
@@ -11,6 +13,14 @@
     align-items: center;
     gap: 35px;
     align-self: stretch;
+}
+.topArea{
+    position:sticky;
+    top:0px;
+    background-color: #ffffff;
+}
+.bottomArea{
+    
 }
 .store{
     width: 100%;

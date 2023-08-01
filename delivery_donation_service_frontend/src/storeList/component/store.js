@@ -16,16 +16,16 @@ const style ={
 const store = () => {
     return (
       <div>
-        <div>
+        <div  className="imageArea">
           {/* <img src="" alt=""></img> */}
           <div className="storeImage"></div>{/* 임시 이미지*/}
         </div>
         <ul className="textArea">
           <li className="textBar"> 
-            <span className="title">대한 냉면 마포점</span>
-            <div>
-              <MdOutlineWatchLater style={style}/>
-              <span>37~52분</span>
+          <span className="title">대한냉면 마포점</span>
+              <div className="time">
+                <MdOutlineWatchLater style={style}/>
+                <span>37~52분</span>
             </div>
           </li>
           <li className="textBar"> 
