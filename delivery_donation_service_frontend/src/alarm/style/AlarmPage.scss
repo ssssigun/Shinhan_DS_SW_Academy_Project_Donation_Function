@@ -1,0 +1,19 @@
+.wrapper {
+  background: #f9f9fb;
+
+  width: 100%;
+  height: 100%;
+}
+.alarmWrapper {
+  width: 100%;
+  height: 100%;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+
+  padding: 20px;
+}
