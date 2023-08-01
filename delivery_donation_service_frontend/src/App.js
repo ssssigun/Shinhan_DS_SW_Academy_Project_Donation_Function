@@ -1,13 +1,18 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import './common/style/common.scss'
+
 import Login from './Login/page/Login'
 import DonationCart from './DonationCart/page/DonationCart'
 import Cart from './Cart/page/Cart'
-import '../src/common/style/common.scss'
+import MainPage from './main/page/MainPage';
 import OrderDonator from './OrderDonator/page/OrderDonator'
+import AlarmPage from './alarm/page/AlarmPage';
+import OrderListPage from './orderList/page/OrderListPage';
+import OrderRadioButtonsTest from './common/page/OrderRadioButtonsTest';
+
 function App() {
   return (
-    <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />}></Route>
@@ -16,8 +21,19 @@ function App() {
           <Route path="/orderDonator" element={<OrderDonator type="기부" />}></Route>
           <Route path="/orderFreeDelivery" element={<OrderDonator type="기부" />}></Route>
         </Routes>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+        </Routes>
+        <Routes>
+          <Route path="/alarm" element={<AlarmPage />} />
+        </Routes>
+        <Routes>
+          <Route path="/orderList" element={<OrderListPage />} />
+        </Routes>
+        <Routes>
+          <Route path="/testOrderRadioButtons" element={<OrderRadioButtonsTest />} />
+        </Routes>
       </BrowserRouter>
-    </div>
   )
 }
 
