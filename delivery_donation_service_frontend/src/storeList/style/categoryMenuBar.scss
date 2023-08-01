@@ -1,0 +1,32 @@
+//메뉴 카테고리 scss
+#menu{
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    overflow: auto;
+    //스크롤바 제거
+    -ms-overflow-style: none; /* 인터넷 익스플로러 */
+    scrollbar-width: none; /* 파이어폭스 */
+    &::-webkit-scrollbar{
+        display: none; /* 크롬, 사파리, 오페라, 엣지 */
+    }
+    li{
+        display: flex;
+        width: 99px;
+        padding: 10px 15px;
+        justify-content: center;
+        align-items: flex-start;
+
+        p{
+            white-space : nowrap; 
+            width: 75px;
+            color: #7E7E7E;
+            text-align: center;
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+}
