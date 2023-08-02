@@ -10,27 +10,29 @@ const MainPage = () => {
   const [menuFlag, setMenuFlag] = useState(0);
 
   return (
-    <div className="mainWrapper">
-      <div className="mainContainer">
-        <MainHeader menuFlag={menuFlag} setMenuFlag={setMenuFlag} />
-        <div className="categoriesWrapper">
-          {menuFlag === 0 &&
-            categories.category.map((category, index) => {
-              return <Category key={index} image={category.image} name={category.name}></Category>;
-            })}
-          {menuFlag === 1 && <Ready />}
-          {menuFlag === 2 &&
-            categories.category.map((category, index) => {
-              return category.canDonate ? (
-                <Category key={index} image={category.image} name={category.name}></Category>
-              ) : (
-                ''
-              );
-            })}
+    <>
+      <div className="mainWrapper">
+        <div className="mainContainer">
+          <MainHeader menuFlag={menuFlag} setMenuFlag={setMenuFlag} />
+          <div className="categoriesWrapper">
+            {menuFlag === 0 &&
+              categories.category.map((category, index) => {
+                return <Category key={index} image={category.image} name={category.name}></Category>;
+              })}
+            {menuFlag === 1 && <Ready />}
+            {menuFlag === 2 &&
+              categories.category.map((category, index) => {
+                return category.canDonate ? (
+                  <Category key={index} image={category.image} name={category.name}></Category>
+                ) : (
+                  ''
+                );
+              })}
+          </div>
         </div>
       </div>
       <BottomMenuBar />
-    </div>
+    </>
   );
 };
 
