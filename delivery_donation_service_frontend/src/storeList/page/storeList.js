@@ -10,11 +10,11 @@ import "../style/storeList.scss"
 const StoreList = () => {
     return (
       
-      <div id="wrapper">
+      <div id="storeListWrapper">
         <h1>StoreList Test</h1>  {/* 페이지 식별용 */}
         <CategoryMenuBar/>
         <SortOptionBar/>
-        <ul className="storeListWrapper">
+        <ul className="storeListWrap">
           <li className="store"><Store/></li>
           <li className="store"><Store/></li>
           <li className="store"><Store/></li>
