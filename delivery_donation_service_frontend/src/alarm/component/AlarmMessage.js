@@ -8,7 +8,11 @@ const AlarmMessage = ({ isDonation, title, time, children }) => {
       <div className="messageWrapper">
         <div className="messageIconWrapper">
           <div className="iconWrapper">
-            {isDonation ? <TbMoneybag size="20px" color="#5279FE" /> : <AiFillMessage size="20px" color="#5279FE" />}
+            {isDonation ? (
+              <TbMoneybag size="20px" color="#5279FE" />
+            ) : (
+              <AiFillMessage size="20px" color="#5279FE" style={{ transform: 'scaleX(-1)' }} />
+            )}
           </div>
         </div>
         <div className="messageContainer">

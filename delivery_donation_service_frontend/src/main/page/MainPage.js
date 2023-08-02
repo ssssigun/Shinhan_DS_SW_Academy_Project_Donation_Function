@@ -1,7 +1,7 @@
 import Category from '../component/Category';
 import MainHeader from '../component/MainHeader';
 import '../style/MainPage.scss';
-import categories from '../json/category.json';
+import categories from '../../common/json/category.json';
 import { useState } from 'react';
 import BottomMenuBar from '../component/BottomMenuBar';
 import Ready from '../../common/component/Ready';
