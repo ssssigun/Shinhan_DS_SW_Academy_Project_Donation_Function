@@ -92,7 +92,7 @@ const StoreMain = () => {
             </ul>
           </div>
           {/* 유의사항 */}
-          <div className="StoreMainNotice">
+          <div className="StoreMainNoticeWrapper">
             <p className="StoreMainNoticeTitle">유의 사항</p>
             <ul className="StoreMainNoticeText">
               <li className="StoreMainNotice"><p>메뉴 사진은 연출된 이미지로 실제 조리된 음식과 다를 수 있습니다.</p></li>

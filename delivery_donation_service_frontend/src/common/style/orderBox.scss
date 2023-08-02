@@ -5,9 +5,10 @@
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    position: sticky;
+    position: fixed;
     bottom: 0;
     background: #FB521B;
+    z-index: 99;
     .orderBoxText{
         color: #FFF;
         text-align: center;

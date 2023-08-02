@@ -4,6 +4,8 @@
 import SortOptionBar from "../component/sortOptionBar";
 import Store from "../component/store";
 import categoryData from '../../common/json/category.json'
+import StoreListHeader from"../component/StoreListHeader";
+
 
 // 모듈 불러오기
 import { useNavigate } from "react-router-dom";
@@ -25,8 +27,10 @@ const StoreList = () => {
       
       <div id="storeListWrapper">
         <div className="storeListTopArea">
-          <h1>StoreList Test</h1>  {/* 페이지 식별용 */}
-            {/* 헤더 자리 */}
+            {/* 헤더 */}
+            <StoreListHeader>
+              신규 맛집
+            </StoreListHeader>
           {/* 메뉴 카테고리 */}
           <div id="categoryMenuBar">
             <ul id="menu">

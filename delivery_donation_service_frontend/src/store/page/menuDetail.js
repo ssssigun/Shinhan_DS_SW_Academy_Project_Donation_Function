@@ -3,17 +3,8 @@ import "../style/menuDetail.scss"
 //컴포넌트 불러오기
 import StoreForm from "../component/storeForm";
 import OrderBox from "../../common/component/orderBox";
-
-//children 넣어주기
+import UpDownButton from '../../common/component/UpDownButton'
 //텍스트 라인 (가게 정보 및 메뉴)
-const menuText = () => {
-  return (
-    <h1>
-      메뉴 테스트
-    </h1>
-  );
-};
-
 const menuDetail = () => {
     return (
       <div>
@@ -31,7 +22,7 @@ const menuDetail = () => {
           <hr className="menuDetailLine"/>
           <div className="menuDetailAmount">
             <p>수량</p>
-            <p>대충 버튼</p>
+            <UpDownButton></UpDownButton>
           </div>
         </StoreForm>
         {/* 주문하기 버튼 */}
