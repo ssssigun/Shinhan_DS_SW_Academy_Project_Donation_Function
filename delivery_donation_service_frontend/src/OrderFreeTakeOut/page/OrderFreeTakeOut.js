@@ -1,5 +1,6 @@
 import Input from '../../common/component/Input';
 import SendingWarm from '../../common/component/SendingWarm';
+import Terms from '../../common/component/Terms';
 import '../style/OrderFreeTakeOut.scss';
 const OrderFreeTakeOut = ({}) => {
   return (
@@ -30,6 +31,7 @@ const OrderFreeTakeOut = ({}) => {
         </div>
       </div>
       <SendingWarm></SendingWarm>
+      <Terms></Terms>
     </div>
   );
 };
