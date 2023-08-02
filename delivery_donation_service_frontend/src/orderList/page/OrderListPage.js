@@ -8,6 +8,8 @@ import Donation from '../component/Donation';
 import ModalBottomSheet from '../../common/component/ModalBottomSheet';
 import WideButton from '../../common/component/WideButton';
 import Input from '../../common/component/Input';
+import HeaderWrapper from '../../common/component/HeaderWrapper';
+import OrderListHeader from '../component/OrderListHeader';
 
 const OrderListPage = () => {
   const buttons = [
@@ -42,6 +44,7 @@ const OrderListPage = () => {
 
   return (
     <>
+      <OrderListHeader />
       <div className="orderWrapper">
         <OrderRadioButtons flag={flag} buttons={buttons} setFlag={setFlag} />
         <div className="orderListWrapper">

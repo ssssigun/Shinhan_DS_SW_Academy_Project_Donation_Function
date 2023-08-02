@@ -1,19 +1,21 @@
 import Category from '../component/Category';
-import MainHeader from '../component/MainHeader';
+import MainMenu from '../component/MainMenu';
 import '../style/MainPage.scss';
 import categories from '../../common/json/category.json';
 import { useState } from 'react';
 import BottomMenuBar from '../component/BottomMenuBar';
 import Ready from '../../common/component/Ready';
+import MainHeader from '../component/MainHeader';
 
 const MainPage = () => {
   const [menuFlag, setMenuFlag] = useState(0);
 
   return (
     <>
+      <MainHeader />
       <div className="mainWrapper">
         <div className="mainContainer">
-          <MainHeader menuFlag={menuFlag} setMenuFlag={setMenuFlag} />
+          <MainMenu menuFlag={menuFlag} setMenuFlag={setMenuFlag} />
           <div className="categoriesWrapper">
             {menuFlag === 0 &&
               categories.category.map((category, index) => {

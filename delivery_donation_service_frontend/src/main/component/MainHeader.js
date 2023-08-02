@@ -1,28 +1,21 @@
+import HeaderWrapper from '../../common/component/HeaderWrapper';
 import '../style/MainHeader.scss';
+import { FaMapMarkerAlt, FaRegBell } from 'react-icons/fa';
+import { MdKeyboardArrowDown, MdOutlineShoppingCart } from 'react-icons/md';
 
-const MainHeader = ({ menuFlag, setMenuFlag }) => {
-  const isActive = (menuNum) => {
-    if (menuFlag === menuNum) {
-      return 'activeMenu';
-    } else {
-      return '';
-    }
-  };
-
+const MainHeader = () => {
   return (
-    <>
-      <ul className="mainHeader">
-        <li className={isActive(0)} onClick={() => setMenuFlag(0)}>
-          배달
-        </li>
-        <li className={isActive(1)} onClick={() => setMenuFlag(1)}>
-          포장·매장식사
-        </li>
-        <li className={isActive(2)} onClick={() => setMenuFlag(2)}>
-          기부
-        </li>
-      </ul>
-    </>
+    <HeaderWrapper>
+      <div class="headerLeftSide mainHeaderLeftSide">
+        <FaMapMarkerAlt size="24px" color="#FB521B" />
+        마포구 연남동
+        <MdKeyboardArrowDown size="24px" color="#7D7D7D" />
+      </div>
+      <div class="headerRightSide">
+        <FaRegBell size="24px" />
+        <MdOutlineShoppingCart size="24px" />
+      </div>
+    </HeaderWrapper>
   );
 };
 
