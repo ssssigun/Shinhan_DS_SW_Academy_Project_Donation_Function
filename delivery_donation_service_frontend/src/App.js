@@ -11,8 +11,9 @@ import AlarmPage from './alarm/page/AlarmPage';
 import OrderListPage from './orderList/page/OrderListPage';
 import OrderRadioButtonsTest from './common/page/OrderRadioButtonsTest';
 import StoreList from './storeList/page/storeList';
+import StoreMain from './store/page/storeMain';
+import MenuDetail from './store/page/menuDetail';
 import Store from './store/page/store';
-import MenuDetail from './menuDetail/page/menuDetail';
 import OrderFreeDelivery from './OrderFreeDelivery/page/OrderFreeDelivery';
 import OrderFreeTakeOut from './OrderFreeTakeOut/page/OrderFreeTakeOut';
 
@@ -41,7 +42,7 @@ function App() {
       </Routes>
       <Routes>
         <Route path="/storeList" element={<StoreList />} />
-        <Route path="/store" element={<Store />} />
+        <Route path="/store" element={<StoreMain />} />
         <Route path="/menuDetail" element={<MenuDetail />} />
       </Routes>
     </BrowserRouter>
