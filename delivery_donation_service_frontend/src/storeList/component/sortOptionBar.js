@@ -13,7 +13,7 @@ const style = {
 const sortOptionBar = () => {
     return (
       // 필터는 데이터 고정값
-      <div>
+      <div id="sortOptionBar">
         <ul id="filter">
             <li><span>기본순</span><MdOutlineKeyboardArrowDown style={style}/></li>
             <li><span>배달비</span><MdOutlineKeyboardArrowDown  style={style}/></li>
