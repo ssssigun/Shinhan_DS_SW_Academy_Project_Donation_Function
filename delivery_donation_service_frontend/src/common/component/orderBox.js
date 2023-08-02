@@ -1,8 +1,8 @@
 import "../style/orderBox.scss"
 const orderBox = () => {
     return (
-      <div>
-        <p>orderBox Test</p>
+      <div className="orderBoxArea">
+        <p className="orderBoxText">주문하기</p>
       </div>
     );
   };
