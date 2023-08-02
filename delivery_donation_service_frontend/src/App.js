@@ -14,6 +14,7 @@ import StoreList from './storeList/page/storeList';
 import Store from './store/page/store';
 import MenuDetail from './menuDetail/page/menuDetail';
 import OrderFreeDelivery from './OrderFreeDelivery/page/OrderFreeDelivery';
+import OrderFreeTakeOut from './OrderFreeTakeOut/page/OrderFreeTakeOut';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/orderDonator" element={<OrderDonator type="기부" />}></Route>
         <Route path="/orderFreeDelivery" element={<OrderFreeDelivery />}></Route>
+        <Route path="/orderFreeTakeOut" element={<OrderFreeTakeOut />}></Route>
       </Routes>
       <Routes>
         <Route path="/" element={<MainPage />} />
