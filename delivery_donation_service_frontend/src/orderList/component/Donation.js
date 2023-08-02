@@ -1,7 +1,7 @@
 import '../style/Order.scss';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
-const Order = ({ date, state, image, title, menu, price, menuLength }) => {
+const Donation = ({ date, state, image, title, menu, price, menuLength }) => {
   return (
     <>
       <div className="orderContainer">
@@ -23,12 +23,11 @@ const Order = ({ date, state, image, title, menu, price, menuLength }) => {
         </div>
 
         <div className="orderDetailButtons">
-          <div className="orderDetailButton">주문상세</div>
-          <div className="orderDetailButton">재주문하기</div>
+          <div className="orderDetailButton donationButton">기부상세</div>
         </div>
       </div>
     </>
   );
 };
 
-export default Order;
+export default Donation;
