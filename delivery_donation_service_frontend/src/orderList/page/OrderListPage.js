@@ -10,6 +10,7 @@ import WideButton from '../../common/component/WideButton';
 import Input from '../../common/component/Input';
 import HeaderWrapper from '../../common/component/HeaderWrapper';
 import OrderListHeader from '../component/OrderListHeader';
+import None from '../../common/component/None';
 
 const OrderListPage = () => {
   const buttons = [
@@ -49,6 +50,7 @@ const OrderListPage = () => {
         <OrderRadioButtons flag={flag} buttons={buttons} setFlag={setFlag} />
         <div className="orderListWrapper">
           {flag === 0 &&
+            orderList.orders.length > 0 &&
             orderList.orders.map((order, idx) => {
               return (
                 <Order
@@ -63,7 +65,15 @@ const OrderListPage = () => {
                 />
               );
             })}
+          {flag === 0 && orderList.orders.length === 0 && (
+            <None title="떵그러니..." image="image/PLI.png" height={`${window.innerHeight}`}>
+              주문내역이 없어요.
+              <br />
+              땡겨요로 주문해보세요.
+            </None>
+          )}
           {flag === 1 &&
+            orderList.donations.length > 0 &&
             orderList.donations.map((donation, idx) => {
               return (
                 <Donation
@@ -78,9 +88,16 @@ const OrderListPage = () => {
                 />
               );
             })}
+          {flag === 1 && orderList.donations.length === 0 && (
+            <None title="떵그러니..." image="image/PLI.png" height={`${window.innerHeight}`}>
+              기부내역이 없어요.
+              <br />
+              땡겨요로 기부해보세요.
+            </None>
+          )}
         </div>
       </div>
-      {flag === 1 && (
+      {flag === 1 && orderList.donations.length > 0 && (
         <div className="donationReceiptButton" onClick={(e) => showModal(e)}>
           <MdReceipt size="35px" color="#FFF" />
         </div>
