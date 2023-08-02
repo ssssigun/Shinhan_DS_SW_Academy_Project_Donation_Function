@@ -1,4 +1,4 @@
-input {
+.commonInput {
   display: flex;
   padding: 10px 0px;
   align-items: center;
@@ -6,4 +6,6 @@ input {
   border-radius: 10px;
   border: 1px solid #e1e1e1;
   background: #fff;
+
+  text-indent: 5px;
 }
