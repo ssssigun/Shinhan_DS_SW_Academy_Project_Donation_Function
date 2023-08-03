@@ -41,7 +41,7 @@
     align-items: flex-start;
     gap: 5px;
     align-self: stretch;
-    border-color: #f1b7a7, #bec8f2;
+
     .disposableText {
       display: flex;
       height: 26px;
@@ -63,6 +63,9 @@
       gap: 10px;
       align-self: stretch;
       border-radius: 10px;
+      // background: linear-gradient(#f1b7a7, #bec8f2);
+      // border-color: #000;
+      // border-image: linear-gradient(to top, #f1b7a7, #bec8f2);
       .disposableTextNO {
         color: #000;
 
