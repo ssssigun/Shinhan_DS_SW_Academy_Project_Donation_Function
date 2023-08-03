@@ -13,9 +13,9 @@ import OrderRadioButtonsTest from './common/page/OrderRadioButtonsTest';
 import StoreList from './storeList/page/storeList';
 import StoreMain from './store/page/storeMain';
 import MenuDetail from './store/page/menuDetail';
-import Store from './store/page/store';
 import OrderFreeDelivery from './OrderFreeDelivery/page/OrderFreeDelivery';
 import OrderFreeTakeOut from './OrderFreeTakeOut/page/OrderFreeTakeOut';
+import ReadyPage from './common/page/ReadyPage';
 
 function App() {
   return (
@@ -44,6 +44,9 @@ function App() {
         <Route path="/storeList" element={<StoreList />} />
         <Route path="/store" element={<StoreMain />} />
         <Route path="/menuDetail" element={<MenuDetail />} />
+      </Routes>
+      <Routes>
+        <Route path="/ready" element={<ReadyPage />} />
       </Routes>
     </BrowserRouter>
   );

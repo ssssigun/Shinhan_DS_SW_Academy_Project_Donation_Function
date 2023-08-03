@@ -6,9 +6,12 @@ import { useState } from 'react';
 import BottomMenuBar from '../component/BottomMenuBar';
 import Ready from '../../common/component/Ready';
 import MainHeader from '../component/MainHeader';
+import { useNavigate } from 'react-router-dom';
 
 const MainPage = () => {
   const [menuFlag, setMenuFlag] = useState(0);
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -19,13 +22,25 @@ const MainPage = () => {
           <div className="categoriesWrapper">
             {menuFlag === 0 &&
               categories.category.map((category, index) => {
-                return <Category key={index} image={category.image} name={category.name}></Category>;
+                return (
+                  <Category
+                    key={index}
+                    image={category.image}
+                    name={category.name}
+                    onClick={() => navigate('/storeList', { state: { name: category.name } })}
+                  ></Category>
+                );
               })}
             {menuFlag === 1 && <Ready />}
             {menuFlag === 2 &&
               categories.category.map((category, index) => {
                 return category.canDonate ? (
-                  <Category key={index} image={category.image} name={category.name}></Category>
+                  <Category
+                    key={index}
+                    image={category.image}
+                    name={category.name}
+                    onClick={() => navigate('/storeList', { state: { name: category.name } })}
+                  ></Category>
                 ) : (
                   ''
                 );

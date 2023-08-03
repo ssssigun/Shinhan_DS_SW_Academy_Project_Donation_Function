@@ -11,11 +11,11 @@ const BottomMenuBar = () => {
         <div className="bottomMenu">
           <MdHomeFilled size="24px" />홈
         </div>
-        <div className="bottomMenu">
+        <div className="bottomMenu" onClick={() => navigate('/ready')}>
           <MdOutlineSearch size="24px" />
           검색
         </div>
-        <div className="tasteStar">
+        <div className="tasteStar" onClick={() => navigate('/ready')}>
           <div className="tasteStarIcon">
             <MdStarOutline size="40px" color="#fff" />
           </div>
@@ -25,7 +25,7 @@ const BottomMenuBar = () => {
           <MdOutlineFeed size="24px" />
           주문내역
         </div>
-        <div className="bottomMenu">
+        <div className="bottomMenu" onClick={() => navigate('/ready')}>
           <MdOutlinePersonOutline size="24px" />
           마이
         </div>
