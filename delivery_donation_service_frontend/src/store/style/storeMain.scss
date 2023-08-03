@@ -16,6 +16,9 @@
     font-weight: 400;
     line-height: normal;
 }
+.StoreMainInfoArea{
+    display: flex;
+}
 .StoreMainInfo{
     color: #000;
     text-align: center;
@@ -62,20 +65,18 @@
 .StoreMainArrowStyle{
     color: #A1A1A1;
     font-family: Inter;
-    width: 12px;
-    height: 12px;
+    width: 16px;
     font-style: normal;
     font-weight: 400;
     line-height : normal;
 }
 .StoreMainStarStyle{
-    width: 15px;
-    height: 15px;
+    width: 17px;
     color : #FEF2E9;
+
   }
 .StoreMainHeartStyle{
     width: 15px;
-    height: 15px;
     color : #dddddd;
 }
 .StoreMainShareStyle{
@@ -127,7 +128,6 @@ color : #000000;
         flex-direction: column;
         align-items: flex-start;
         align-self: stretch;
-        min-height: 500px;
         
         .StoreMainMenu{
             display: flex;
@@ -174,18 +174,20 @@ color : #000000;
                 }
             }
             .StoreMainMenuImage{
-                border-radius : 20px
+                border-radius : 20px;
+                width: 75px;
+                height: 75px;
+                
             }
         }
     }
 }
 // 유의사항
-.StoreMainNotice{
+.StoreMainNoticeWrapper{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    align-self: stretch;
-
+    margin :20px 0;
     .StoreMainNoticeTitle{
         font-size: 12px;
     }
@@ -193,8 +195,6 @@ color : #000000;
     .StoreMainNoticeText{
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 5 px;
         align-self: stretch;
         
         .StoreMainNotice{

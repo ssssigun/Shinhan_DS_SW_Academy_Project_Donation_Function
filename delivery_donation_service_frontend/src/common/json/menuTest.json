@@ -1,0 +1,50 @@
+[
+    {
+        "id" : "1",
+        "name":"연어 샐러드",
+        "explain" : "152kcal/채소믹스, 훈제연어, 양파 추천 드레싱: 렌치,크리미 양파",
+        "category":"대표 메뉴",
+        "Price" : "8,800원",
+        "image" :"/image/test3.png"
+    },
+    {
+        "id" : "2",
+        "name":"크리스피콥 샐러드",
+        "explain" : "259kcal/채소믹스, 에그, 베이컨, 스위트콘, 양파플레이크",
+        "category":"대표 메뉴",
+        "Price" : "8,000원",
+        "image" :"/image/test4.png"
+    },
+    {
+        "id" : "3",
+        "name":"밸런스 샐러드",
+        "explain" : "388kcal/채소믹스, 닭가슴살(수비드), 스윗포테이토, 견과류 크린베리",
+        "category":"대표 메뉴",
+        "Price" : "8,600원",
+        "image" :"/image/test5.png"
+    },
+    {
+        "id" : "4",
+        "name":"불고기 샐러드",
+        "explain" : "308kcal/채소믹스, 불고기(양지살), 레지아노치즈, 양파",
+        "category":"대표 메뉴",
+        "Price" : "8,300원",
+        "image" :"/image/test6.png"
+    },
+    {
+        "id" : "5",
+        "name":"미트볼 샐러드",
+        "explain" : "320kcal/채소믹스, 미트볼(토마토 소스), 스위트콘, 양파",
+        "category":"대표 메뉴",
+        "Price" : "8,100원",
+        "image" :"/image/test3.png"
+    },
+    {
+        "id" : "6",
+        "name":"투움바 파스타",
+        "explain" : "3단계 신라면 정도의 매콤 버터와 양파, 양송이를 함께 볶고 수제 크림소스와 파마산이 들어간 깊고 진한 치킨과 파스타",
+        "category":"대표 메뉴",
+        "Price" : "20,100원",
+        "image" :"/image/test2.png"
+    }
+]

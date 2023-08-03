@@ -9,24 +9,38 @@ import {AiFillStar} from "react-icons/ai";
 import {FaHeart} from "react-icons/fa";
 import {TbShare2} from "react-icons/tb";
 
+// json 파일 불러오기
+import MenuData from '../../common/json/menuTest.json'
+
 // 모듈 불러오기
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 
 //children 넣어주기
 //텍스트 라인 (가게 정보 및 메뉴)
 const StoreMain = () => {
   const navigate = useNavigate();
-    function move(){
-      navigate("/menuDetail");
+  // 메뉴 상세 페이지로 이동
+  // 선택한 메뉴 정보 보내기
+    function move(e){
+      const selectMenu = e.currentTarget;
+      navigate("/menuDetail",{
+        state:{
+          title : selectMenu.querySelector('.StoreMainMenuTextTitle').innerText,
+          explain : selectMenu.querySelector('.StoreMainMenuTextDetail').innerText,
+          price : selectMenu.querySelector('.StoreMainMenuTextPrice').innerText,
+          image : selectMenu.querySelector('.StoreMainMenuImage').src
+        }
+      });
     }
+    let location = useLocation();
 
     return (
         <StoreForm image={"/image/test.png"} >
           {/* 제목라인 */}
           <div className="StoreMainTitleArea">
-            <p className="StoreMainTitle">오샐러드 강남점</p>
-            <div>
+            <p className="StoreMainTitle">{location.state.title}</p>
+            <div className="StoreMainInfoArea">
               <span className="StoreMainInfo">가게/원산지 정보</span>
               <MdOutlineKeyboardArrowRight className="StoreMainArrowStyle"/>
             </div>
@@ -36,7 +50,7 @@ const StoreMain = () => {
             <li>
               <div className="StoreMainButton">
                 <AiFillStar className="StoreMainStarStyle"/>
-                <span>25</span>
+                <span>25</span> 
               </div>
               <p>맛있어요</p>
             </li>
@@ -55,7 +69,7 @@ const StoreMain = () => {
             </li>
             <li>
               <div className="StoreMainButton">
-                <span>27</span>
+                <span>{location.state.review}</span>
               </div>
               <p>최근 리뷰</p>
             </li>
@@ -79,20 +93,24 @@ const StoreMain = () => {
           <div className="StoreMainMenuListArea">
             <p className="StoreMainMenuListAreaTitle">대표메뉴</p>
             <ul className="StoreMainMenuList">
-              <li className="StoreMainMenu" onClick={move}>
-                <div className="StoreMainMenuTextArea">
-                  <span className="StoreMainMenuTextTitle"> 투움바 파스타</span>
-                  <p className="StoreMainMenuTextDetail">
-                    3단계 신라면 정도의 매콤 버터와 양파, 양송이를 함께 볶고 수제 크림소스와 파마산이 들어간 깊고 진한 치킨과 파스타
-                  </p>
-                  <p className="StoreMainMenuTextPrice">20,700원</p>
-                </div>
-                <img src="/image/test2.png" alt="" className="StoreMainMenuImage"></img>
-              </li>
+              {
+                MenuData.map(menu=>(
+                  <li className="StoreMainMenu" onClick={move}>
+                      <div className="StoreMainMenuTextArea">
+                        <span className="StoreMainMenuTextTitle">{menu.name}</span>
+                        <p className="StoreMainMenuTextDetail">
+                          {menu.explain}
+                        </p>
+                        <p className="StoreMainMenuTextPrice">{menu.Price}</p>
+                      </div>
+                    <img src={menu.image} alt="" className="StoreMainMenuImage"></img>
+                  </li>
+                ))
+              }
             </ul>
           </div>
           {/* 유의사항 */}
-          <div className="StoreMainNotice">
+          <div className="StoreMainNoticeWrapper">
             <p className="StoreMainNoticeTitle">유의 사항</p>
             <ul className="StoreMainNoticeText">
               <li className="StoreMainNotice"><p>메뉴 사진은 연출된 이미지로 실제 조리된 음식과 다를 수 있습니다.</p></li>

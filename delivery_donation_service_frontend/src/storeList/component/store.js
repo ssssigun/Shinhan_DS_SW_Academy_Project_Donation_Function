@@ -6,43 +6,36 @@ import "../style/store.scss"
 //react-icons 불러오기
 import {MdOutlineWatchLater} from "react-icons/md";
 
-//react-icons 스타일 적용
-const style ={
-  "width": "18px",
-  "height": "18px",
-  "color" : "#DDDDDD"
-}
-
-const store = () => {
+const store = (prop) => {
     return (
-      <div>
+      <>
         <div  className="imageArea">
           {/* <img src="" alt=""></img> */}
           <div className="storeImage"></div>{/* 임시 이미지*/}
         </div>
         <ul className="textArea">
           <li className="textBar"> 
-          <span className="title">대한냉면 마포점</span>
+          <span className="title">{prop.st.name}</span>
               <div className="time">
-                <MdOutlineWatchLater style={style}/>
-                <span>37~52분</span>
+                <MdOutlineWatchLater className="storeWatchLate"/>
+                <span>{prop.st.deliveryTime}</span>
             </div>
           </li>
           <li className="textBar"> 
             <div>
               <span className="smallText">리뷰</span>
-              <span>99</span>
+              <span className="smallTextNumber">{prop.st.review}</span>
             </div>
             <div>
               <span className="smallText">배달비</span>
-              <span>무료 ~ 1,000원</span>
+              <span>{prop.st.deliveryPrice}</span>
             </div>  
           </li>
           <li className="textBar">
             <span className="deliverText">배달/포장</span>
           </li>
         </ul>
-      </div>
+      </>
     );
   };
   export default store;
