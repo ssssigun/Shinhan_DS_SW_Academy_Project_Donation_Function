@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MdReceipt } from 'react-icons/md';
 import OrderRadioButtons from '../../common/component/OrderRadioButtons';
 import Order from '../component/Order';
@@ -8,9 +8,9 @@ import Donation from '../component/Donation';
 import ModalBottomSheet from '../../common/component/ModalBottomSheet';
 import WideButton from '../../common/component/WideButton';
 import Input from '../../common/component/Input';
-import HeaderWrapper from '../../common/component/HeaderWrapper';
 import OrderListHeader from '../component/OrderListHeader';
 import None from '../../common/component/None';
+import { useLocation } from 'react-router-dom';
 
 const OrderListPage = () => {
   const buttons = [
@@ -43,9 +43,17 @@ const OrderListPage = () => {
   const startDateValue = new Date(startDate).toISOString().split('T')[0];
   const endDateValue = new Date().toISOString().split('T')[0];
 
+  const location = useLocation();
+  console.log(location);
+  useEffect(() => {
+    if (location.state !== null) {
+      setFlag(location.state.state.flag);
+    }
+  }, []);
+
   return (
     <>
-      <OrderListHeader />
+      <OrderListHeader backUrl="/">주문내역</OrderListHeader>
       <div className="orderWrapper">
         <OrderRadioButtons flag={flag} buttons={buttons} setFlag={setFlag} />
         <div className="orderListWrapper">

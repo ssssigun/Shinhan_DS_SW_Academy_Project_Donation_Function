@@ -16,6 +16,7 @@ import MenuDetail from './store/page/menuDetail';
 import OrderFreeDelivery from './OrderFreeDelivery/page/OrderFreeDelivery';
 import OrderFreeTakeOut from './OrderFreeTakeOut/page/OrderFreeTakeOut';
 import ReadyPage from './common/page/ReadyPage';
+import DonationDetailPage from './orderList/page/DonationDetailPage';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
       </Routes>
       <Routes>
         <Route path="/orderList" element={<OrderListPage />} />
+        <Route path="/donationDetail" element={<DonationDetailPage />} />
       </Routes>
       <Routes>
         <Route path="/testOrderRadioButtons" element={<OrderRadioButtonsTest />} />

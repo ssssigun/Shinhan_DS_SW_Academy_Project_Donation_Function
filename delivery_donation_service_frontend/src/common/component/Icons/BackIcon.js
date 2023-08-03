@@ -1,15 +1,16 @@
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 
-const BackIcon = ({ size, color }) => {
-  let navigate = useNavigate();
-
+const BackIcon = ({ size, color, url, state }) => {
   return (
-    <Link onClick={() => navigate(-1)}>
+    <Link to={url} state={{ state }}>
       <MdKeyboardArrowLeft size={size} color={color} />
     </Link>
   );
+};
+
+BackIcon.defaultProps = {
+  url: -1,
 };
 
 export default BackIcon;

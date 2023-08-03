@@ -3,13 +3,13 @@ import BackIcon from '../../common/component/Icons/BackIcon';
 import HomeIcon from '../../common/component/Icons/HomeIcon';
 import '../style/OrderListHeader.scss';
 
-const OrderListHeader = () => {
+const OrderListHeader = ({ children, backUrl, state }) => {
   return (
     <HeaderWrapper>
       <div className="headerLeftSide">
-        <BackIcon size="30px" color="#000" />
+        <BackIcon size="30px" color="#000" url={backUrl} state={state} />
       </div>
-      주문내역
+      {children}
       <div className="headerRightSide">
         <HomeIcon size="20px" color="#000" />
       </div>
