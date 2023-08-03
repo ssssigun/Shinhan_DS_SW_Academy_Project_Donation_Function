@@ -1,16 +1,18 @@
-import { MdHomeFilled, MdKeyboardArrowLeft, MdOutlineShoppingCart } from 'react-icons/md';
 import HeaderWrapper from '../../common/component/HeaderWrapper';
+import BackIcon from '../../common/component/Icons/BackIcon';
+import HomeIcon from '../../common/component/Icons/HomeIcon';
+import CartIcon from '../../common/component/Icons/CartIcon';
 
 const StoreListHeader = ({ children }) => {
   return (
     <HeaderWrapper>
       <div class="headerLeftSide">
-        <MdKeyboardArrowLeft size="30px" />
+        <BackIcon size="30px" color="#000" />
       </div>
       {children}
       <div class="headerRightSide">
-        <MdHomeFilled size="20px" />
-        <MdOutlineShoppingCart size="24px" />
+        <HomeIcon size="20px" color="#000" />
+        <CartIcon size="24px" color="#000" />
       </div>
     </HeaderWrapper>
   );

@@ -1,16 +1,17 @@
 import HeaderWrapper from '../../common/component/HeaderWrapper';
+import BackIcon from '../../common/component/Icons/BackIcon';
+import HomeIcon from '../../common/component/Icons/HomeIcon';
 import '../style/OrderListHeader.scss';
-import { MdKeyboardArrowLeft, MdHomeFilled } from 'react-icons/md';
 
 const OrderListHeader = () => {
   return (
     <HeaderWrapper>
       <div className="headerLeftSide">
-        <MdKeyboardArrowLeft size="30px" />
+        <BackIcon size="30px" color="#000" />
       </div>
       주문내역
       <div className="headerRightSide">
-        <MdHomeFilled size="20px" />
+        <HomeIcon size="20px" color="#000" />
       </div>
     </HeaderWrapper>
   );

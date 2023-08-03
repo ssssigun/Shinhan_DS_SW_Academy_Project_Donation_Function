@@ -1,7 +1,10 @@
 import { MdHomeFilled, MdOutlineSearch, MdOutlineFeed, MdOutlinePersonOutline, MdStarOutline } from 'react-icons/md';
 import '../style/BottomMenuBar.scss';
+import { useNavigate } from 'react-router-dom';
 
 const BottomMenuBar = () => {
+  let navigate = useNavigate();
+
   return (
     <>
       <div className="bottomMenuBar">
@@ -12,14 +15,13 @@ const BottomMenuBar = () => {
           <MdOutlineSearch size="24px" />
           검색
         </div>
-        {/* <div className="bottomMenu"></div> */}
         <div className="tasteStar">
           <div className="tasteStarIcon">
             <MdStarOutline size="40px" color="#fff" />
           </div>
           맛스타
         </div>
-        <div className="bottomMenu">
+        <div className="bottomMenu" onClick={() => navigate('/orderList')}>
           <MdOutlineFeed size="24px" />
           주문내역
         </div>
