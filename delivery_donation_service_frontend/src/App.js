@@ -13,9 +13,10 @@ import OrderRadioButtonsTest from './common/page/OrderRadioButtonsTest';
 import StoreList from './storeList/page/storeList';
 import StoreMain from './store/page/storeMain';
 import MenuDetail from './store/page/menuDetail';
-
 import OrderFreeDelivery from './OrderFreeDelivery/page/OrderFreeDelivery';
 import OrderFreeTakeOut from './OrderFreeTakeOut/page/OrderFreeTakeOut';
+import ReadyPage from './common/page/ReadyPage';
+import DonationDetailPage from './orderList/page/DonationDetailPage';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
       </Routes>
       <Routes>
         <Route path="/orderList" element={<OrderListPage />} />
+        <Route path="/donationDetail" element={<DonationDetailPage />} />
       </Routes>
       <Routes>
         <Route path="/testOrderRadioButtons" element={<OrderRadioButtonsTest />} />
@@ -44,6 +46,9 @@ function App() {
         <Route path="/storeList" element={<StoreList />} />
         <Route path="/store" element={<StoreMain />} />
         <Route path="/menuDetail" element={<MenuDetail />} />
+      </Routes>
+      <Routes>
+        <Route path="/ready" element={<ReadyPage />} />
       </Routes>
     </BrowserRouter>
   );
