@@ -24,7 +24,7 @@ const OrderListPage = () => {
   ];
 
   const [flag, setFlag] = new useState(0);
-  const [modalDiabled, setModalDisable] = new useState(true);
+  const [modalDisable, setModalDisable] = new useState(true);
 
   const showModal = (e) => {
     document.body.style.overflow = 'hidden';
@@ -64,7 +64,7 @@ const OrderListPage = () => {
           <MdReceipt size="35px" color="#FFF" />
         </div>
       )}
-      {modalDiabled ? (
+      {modalDisable ? (
         ''
       ) : (
         <ModalBottomSheet hideModal={hideModal}>
