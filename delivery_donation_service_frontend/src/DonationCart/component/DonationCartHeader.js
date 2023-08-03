@@ -1,12 +1,12 @@
+import { MdKeyboardArrowLeft } from 'react-icons/md';
 import HeaderWrapper from '../../common/component/HeaderWrapper';
-import BackIcon from '../../common/component/Icons/BackIcon';
-import '../style/CartHeader.scss';
+import '../style/DonationCartHeader.scss';
 
-const CartHeader = ({ children }) => {
+const DonationCartHeader = ({ children }) => {
   return (
     <HeaderWrapper>
       <div className="headerLeftSide">
-        <BackIcon size="30px" color="#000" />
+        <MdKeyboardArrowLeft size="30px" />
       </div>
       {children}
       <div className="headerRightSide cartHeaderRightSide">전체삭제</div>
@@ -14,4 +14,4 @@ const CartHeader = ({ children }) => {
   );
 };
 
-export default CartHeader;
+export default DonationCartHeader;

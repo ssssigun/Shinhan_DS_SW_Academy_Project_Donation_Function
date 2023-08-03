@@ -1,7 +1,10 @@
 import '../style/Order.scss';
+import { useNavigate } from 'react-router-dom';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
 const Donation = ({ date, state, image, title, menu, price, menuLength }) => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="orderContainer">
@@ -23,7 +26,9 @@ const Donation = ({ date, state, image, title, menu, price, menuLength }) => {
         </div>
 
         <div className="orderDetailButtons">
-          <div className="orderDetailButton donationButton">기부상세</div>
+          <div className="orderDetailButton donationButton" onClick={() => navigate('/donationDetail')}>
+            기부상세
+          </div>
         </div>
       </div>
     </>

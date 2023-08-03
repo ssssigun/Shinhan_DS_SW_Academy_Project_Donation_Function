@@ -16,6 +16,8 @@ import MenuDetail from './store/page/menuDetail';
 import OrderFreeDelivery from './OrderFreeDelivery/page/OrderFreeDelivery';
 import OrderFreeTakeOut from './OrderFreeTakeOut/page/OrderFreeTakeOut';
 import ScrollTop from "./common/component/scrollTop";
+import ReadyPage from './common/page/ReadyPage';
+import DonationDetailPage from './orderList/page/DonationDetailPage';
 
 function App() {
   return (
@@ -31,10 +33,12 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/alarm" element={<AlarmPage />} />
         <Route path="/orderList" element={<OrderListPage />} />
+        <Route path="/donationDetail" element={<DonationDetailPage />} />
         <Route path="/testOrderRadioButtons" element={<OrderRadioButtonsTest />} />
         <Route path="/storeList" element={<StoreList />} />
         <Route path="/store" element={<StoreMain />} />
         <Route path="/menuDetail" element={<MenuDetail />} />
+        <Route path="/ready" element={<ReadyPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -10,8 +10,6 @@ import '../style/OrderRadioButtons.scss';
 */
 
 const OrderRadioButtons = ({ flag, buttons, setFlag }) => {
-  console.log(flag);
-
   return (
     <div className="radioButtonsWrapper">
       {buttons.map((button, idx) => {
