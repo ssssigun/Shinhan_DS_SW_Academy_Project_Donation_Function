@@ -23,7 +23,7 @@
 
         p{
             white-space : nowrap; 
-            width: 75px;
+            min-width: 75px;
             color: #7E7E7E;
             text-align: center;
             font-family: Inter;
@@ -76,4 +76,5 @@
 .store{
     width: 100%;
 }
+
 

@@ -1,0 +1,47 @@
+[
+    {
+        "id" : "1",
+        "name":"대한냉면 마포점",
+        "category":"신규맛집",
+        "review" : 97,
+        "deliveryTime" : "37~52분",
+        "deliveryPrice" : "무료 ~ 1,000원",
+        "image" : ""
+    },
+    {
+        "id" : "2",
+        "name":"벚꽃 스시",
+        "category":"신규맛집",
+        "review" : 123,
+        "deliveryTime" : "36~51분",
+        "deliveryPrice" : "무료 ~ 900원",
+        "image" : "/image/test7.png"
+    },
+    {
+        "id" : "3",
+        "name":"오샐러드 강남점",
+        "category":"신규맛집",
+        "review" : 27,
+        "deliveryTime" : "42~57분",
+        "deliveryPrice" : "2,000 ~ 5,000원",
+        "image" : "/image/test.png"
+    },
+    {
+        "id" : "4",
+        "name":"쿠파스테이크",
+        "category":"신규맛집",
+        "review" : 52,
+        "deliveryTime" : "29~44분",
+        "deliveryPrice" : "무료 ~ 1,000원",
+        "image" : ""
+    },
+    {
+        "id" : "5",
+        "name":"왕만두와 살얼음냉면 본점",
+        "category":"신규맛집",
+        "review" : 19,
+        "deliveryTime" : "15~25분",
+        "deliveryPrice" : "1,500 ~ 2,900원",
+        "image" : ""
+    }
+]

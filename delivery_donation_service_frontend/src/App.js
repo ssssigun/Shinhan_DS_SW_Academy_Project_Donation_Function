@@ -15,10 +15,12 @@ import StoreMain from './store/page/storeMain';
 import MenuDetail from './store/page/menuDetail';
 import OrderFreeDelivery from './OrderFreeDelivery/page/OrderFreeDelivery';
 import OrderFreeTakeOut from './OrderFreeTakeOut/page/OrderFreeTakeOut';
+import ScrollTop from "./common/component/scrollTop";
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollTop/>
       <Routes>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/donationCart" element={<DonationCart />}></Route>
@@ -26,20 +28,10 @@ function App() {
         <Route path="/orderDonator" element={<OrderDonator type="기부" />}></Route>
         <Route path="/orderFreeDelivery" element={<OrderFreeDelivery />}></Route>
         <Route path="/orderFreeTakeOut" element={<OrderFreeTakeOut />}></Route>
-      </Routes>
-      <Routes>
         <Route path="/" element={<MainPage />} />
-      </Routes>
-      <Routes>
         <Route path="/alarm" element={<AlarmPage />} />
-      </Routes>
-      <Routes>
         <Route path="/orderList" element={<OrderListPage />} />
-      </Routes>
-      <Routes>
         <Route path="/testOrderRadioButtons" element={<OrderRadioButtonsTest />} />
-      </Routes>
-      <Routes>
         <Route path="/storeList" element={<StoreList />} />
         <Route path="/store" element={<StoreMain />} />
         <Route path="/menuDetail" element={<MenuDetail />} />
