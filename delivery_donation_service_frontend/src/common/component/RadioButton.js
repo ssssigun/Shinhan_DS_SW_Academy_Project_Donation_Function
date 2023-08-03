@@ -1,21 +1,24 @@
-import { Children } from 'react'
-import React, { useState } from 'react'
-import '../style/RadioButton.scss'
+import React, { useState } from 'react';
+import '../style/RadioButton.scss';
 
-const RadioButton = ({ children, value, name, checked, onChange, labelStyle }) => {
-  console.log(checked)
+const RadioButton = ({ children, value, name, checked, onClick, labelStyle }) => {
+  const [selectedOption, setSelectedOption] = useState(checked); // 초기 선택 옵션 설정
+  const handleOptionChange = (event) => {
+    console.log(111);
+    setSelectedOption(event.target.value); // 라디오 버튼 선택 시, 상태 업데이트
+  };
   return (
-    <label style={labelStyle}>
-      <input type="radio" value={value} name={name} onChange={onChange} checked={checked} />
+    <label className="radioLabel" style={labelStyle}>
+      <input className="radioInput" type="radio" value={value} name={name} onClick={onClick} checked={checked} />
 
-      {checked === true ? (
-        <img src="/image/radiobutton.png" alt="checked" />
+      {checked === true ? ( //선택된 버튼이면
+        <img src="/image/radiobutton.png" alt="checked" onClick={onClick} /> //이미지 주황
       ) : (
-        <img src="/image/radiobuttonunchecked.png" alt="unchecked" />
+        <img src="/image/radiobuttonunchecked.png" alt="unchecked" onClick={onClick} /> //이미지 회색
       )}
       {children}
     </label>
-  )
-}
+  );
+};
 
-export default RadioButton
+export default RadioButton;
