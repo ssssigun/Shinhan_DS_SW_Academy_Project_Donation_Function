@@ -13,7 +13,7 @@ import OrderRadioButtonsTest from './common/page/OrderRadioButtonsTest';
 import StoreList from './storeList/page/storeList';
 import StoreMain from './store/page/storeMain';
 import MenuDetail from './store/page/menuDetail';
-import Store from './store/page/store';
+
 import OrderFreeDelivery from './OrderFreeDelivery/page/OrderFreeDelivery';
 import OrderFreeTakeOut from './OrderFreeTakeOut/page/OrderFreeTakeOut';
 
