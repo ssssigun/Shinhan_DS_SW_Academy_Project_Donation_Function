@@ -21,3 +21,46 @@
 /delivery_donation_service_frontendnpm-debug.log*
 /delivery_donation_service_frontendyarn-debug.log*
 /delivery_donation_service_frontendyarn-error.log*
+
+
+## backend
+
+/delivery_donation_service_backend/HELP.md
+/delivery_donation_service_backend/.gradle
+/delivery_donation_service_backend/build/
+!/delivery_donation_service_backend/gradle/wrapper/gradle-wrapper.jar
+!/delivery_donation_service_backend/**/src/main/**/build/
+!/delivery_donation_service_backend/**/src/test/**/build/
+
+### STS ###
+/delivery_donation_service_backend/.apt_generated
+/delivery_donation_service_backend/.classpath
+/delivery_donation_service_backend/.factorypath
+/delivery_donation_service_backend/.project
+/delivery_donation_service_backend/.settings
+/delivery_donation_service_backend/.springBeans
+/delivery_donation_service_backend/.sts4-cache
+/delivery_donation_service_backend/bin/
+!/delivery_donation_service_backend/**/src/main/**/bin/
+!/delivery_donation_service_backend/**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+/delivery_donation_service_backend/.idea
+/delivery_donation_service_backend/*.iws
+/delivery_donation_service_backend/*.iml
+/delivery_donation_service_backend/*.ipr
+/delivery_donation_service_backend/out/
+!/delivery_donation_service_backend/**/src/main/**/out/
+!/delivery_donation_service_backend/**/src/test/**/out/
+
+### NetBeans ###
+/delivery_donation_service_backend//nbproject/private/
+/delivery_donation_service_backend//nbbuild/
+/delivery_donation_service_backend//dist/
+/delivery_donation_service_backend//nbdist/
+/delivery_donation_service_backend//.nb-gradle/
+
+### VS Code ###
+/delivery_donation_service_backend/.vscode/
+
+/delivery_donation_service_backend/src/main/resources/application-env.properties
