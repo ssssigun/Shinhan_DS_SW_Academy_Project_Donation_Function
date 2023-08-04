@@ -1,11 +1,22 @@
 .checkboxLabel {
   display: flex;
-  height: 30px;
+  justify-content: space-between;
   align-items: center;
+  align-self: stretch;
+  display: flex;
+  height: 30px;
+
   gap: 5px;
+  width: 100%;
   //background-color: #fb511c;
   //accent-color: white;
   .checkboxInput {
+    .checkUsed {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      align-self: stretch;
+    }
     // display: none;
   }
 }

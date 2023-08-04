@@ -11,6 +11,14 @@ const Request = ({ children }) => {
   //   setSelectedOption(event.target.value); // 라디오 버튼 선택 시, 상태 업데이트
   // };
 
+  const [selected, setSelected] = useState([1, 0]);
+
+  const hanldeRadioChange = (index) => {
+    const newSelected = [0, 0];
+    newSelected[index] = 1;
+    setSelected(newSelected);
+  };
+
   return (
     <div className="requestWrapper">
       <div className="requestText">요청사항</div>
@@ -21,27 +29,32 @@ const Request = ({ children }) => {
       <div className="disposable">
         <div className="disposableText">일회용품 선택 *</div>
         <div className="checkDisposable">
-          <RadioGroup>
-            <Radio name="disposableCheck" value="disposableNo" defaultChecked>
+          {/* <Radio name="disposableCheck" value="disposableNo" defaultChecked>
               <div className="disposableTextNO">일회용 수저, 포크 안 주셔도 돼요!</div>
             </Radio>
             <Radio name="disposableCheck" value="disposableYes">
               <div className="disposableTextYes">일회용 수저, 포크 꼭 필요해요!</div>
-            </Radio>
+            </Radio> */}
 
-            <RadioButton
-              // checked={true}
-              // value="option1"
-              name="disposableText"
-              labelStyle={{ fontSize: '16px' }}
-              // defaultChecked
-            >
-              <div className="disposableTextNO">일회용 수저, 포크 안 주셔도 돼요!</div>
-            </RadioButton>
-            <RadioButton name="disposableText" value="disposableTextYes">
-              <div className="disposableTextYes">일회용 수저, 포크 꼭 필요해요!</div>
-            </RadioButton>
-          </RadioGroup>
+          <RadioButton
+            // checked={true}
+            // value="option1"
+            // defaultChecked
+            name="disposableText"
+            labelStyle={{ fontSize: '16px' }}
+            checked={selected[0] === 1}
+            onChange={() => hanldeRadioChange(0)}
+          >
+            <div className="disposableTextNO">일회용 수저, 포크 안 주셔도 돼요!</div>
+          </RadioButton>
+          <RadioButton
+            name="disposableText"
+            value="disposableTextYes"
+            checked={selected[1] === 1}
+            onChange={() => hanldeRadioChange(1)}
+          >
+            <div className="disposableTextYes">일회용 수저, 포크 꼭 필요해요!</div>
+          </RadioButton>
         </div>
       </div>
       {children}

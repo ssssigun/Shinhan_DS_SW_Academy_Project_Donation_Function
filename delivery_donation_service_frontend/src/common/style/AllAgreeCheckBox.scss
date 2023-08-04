@@ -1,0 +1,20 @@
+.checkUsed {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  align-self: stretch;
+  .checkboxInput {
+    display: none;
+  }
+}
+
+.AllAgreeCheckButton {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+  //   background: #ddd;
+}
