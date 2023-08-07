@@ -32,11 +32,19 @@ const OrderFreeTakeOut = ({}) => {
   });
 
   const handleOptionChange = (option) => {
-    setSelectedOptions((prevSelectedOptions) => ({
-      ...prevSelectedOptions,
-      [option]: !prevSelectedOptions[option],
-      // option4: false,
-    }));
+    if (option === 'option5') {
+      SsetSelectedOptions((prevSelectedOptions) => ({
+        ...prevSelectedOptions,
+        [option]: !prevSelectedOptions[option],
+      }));
+    } else {
+      setSelectedOptions((prevSelectedOptions) => ({
+        ...prevSelectedOptions,
+        [option]: !prevSelectedOptions[option],
+        // option4: false,
+      }));
+    }
+
     // updateAllAgreeCheckBox();
   };
 
@@ -51,9 +59,25 @@ const OrderFreeTakeOut = ({}) => {
     }));
   };
 
-  useEffect(() => {
-    const allChecked = Object.values(selectedOptions).every((option) => option === true);
+  const [SselectedOptions, SsetSelectedOptions] = useState({
+    option5: false,
+  });
 
+  useEffect(() => {
+    // const allChecked = Object.values(selectedOptions).every((option, idx) => {
+    //   if (idx != 'option4') return option === true;
+    // });
+    let allChecked = true;
+    Object.keys(selectedOptions).forEach(function (k) {
+      //console.log(selectedOptions[k]);
+      if (k != 'option4') {
+        if (selectedOptions[k] !== true) {
+          allChecked = false;
+        }
+      }
+    });
+
+    console.log(allChecked);
     if (selectedOptions.option4 !== allChecked) {
       setSelectedOptions((prevSelectedOptions) => ({
         ...prevSelectedOptions,
@@ -112,7 +136,13 @@ const OrderFreeTakeOut = ({}) => {
           <hr className="OrderFreeTakeOuthr" />
           <div className="tel">
             <div className="text">010-1234-5678</div>
-            <AllAgreeCheckBox>안심번호</AllAgreeCheckBox>
+            <AllAgreeCheckBox
+              checked={SselectedOptions.option5}
+              onChange={() => handleOptionChange('option5')}
+              labelStyle={{ fontSize: '16px' }}
+            >
+              안심번호
+            </AllAgreeCheckBox>
           </div>
         </div>
 

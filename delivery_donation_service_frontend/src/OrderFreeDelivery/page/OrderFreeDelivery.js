@@ -27,11 +27,19 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
   });
 
   const handleOptionChange = (option) => {
-    setSelectedOptions((prevSelectedOptions) => ({
-      ...prevSelectedOptions,
-      [option]: !prevSelectedOptions[option],
-      // option4: false,
-    }));
+    if (option === 'option5') {
+      SsetSelectedOptions((prevSelectedOptions) => ({
+        ...prevSelectedOptions,
+        [option]: !prevSelectedOptions[option],
+      }));
+    } else {
+      setSelectedOptions((prevSelectedOptions) => ({
+        ...prevSelectedOptions,
+        [option]: !prevSelectedOptions[option],
+        // option4: false,
+      }));
+    }
+
     // updateAllAgreeCheckBox();
   };
 
@@ -46,9 +54,25 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
     }));
   };
 
-  useEffect(() => {
-    const allChecked = Object.values(selectedOptions).every((option) => option === true);
+  const [SselectedOptions, SsetSelectedOptions] = useState({
+    option5: false,
+  });
 
+  useEffect(() => {
+    // const allChecked = Object.values(selectedOptions).every((option, idx) => {
+    //   if (idx != 'option4') return option === true;
+    // });
+    let allChecked = true;
+    Object.keys(selectedOptions).forEach(function (k) {
+      //console.log(selectedOptions[k]);
+      if (k != 'option4') {
+        if (selectedOptions[k] !== true) {
+          allChecked = false;
+        }
+      }
+    });
+
+    console.log(allChecked);
     if (selectedOptions.option4 !== allChecked) {
       setSelectedOptions((prevSelectedOptions) => ({
         ...prevSelectedOptions,
@@ -78,12 +102,13 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
           <div className="tel">
             <div className="text">010-1234-5678</div>
             <div className="checkButtonWithLabel">
-              <label>
-                <input type="checkbox" checked={checked} onChange={handleCheckboxChange} />
-                <span>안심번호</span>
-
-                {children}
-              </label>
+              <AllAgreeCheckBox
+                checked={SselectedOptions.option5}
+                onChange={() => handleOptionChange('option5')}
+                labelStyle={{ fontSize: '16px' }}
+              >
+                안심번호
+              </AllAgreeCheckBox>
             </div>
           </div>
         </div>
@@ -93,6 +118,21 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
             <select className="selectbell">
               <option key="bell" value="bell">
                 문 앞에 두고 벨 눌러주세요
+              </option>
+              <option key="nobell" value="nobell">
+                문 앞에 두고 벨 누르지 말아주세요
+              </option>
+              <option key="safety" value="safety">
+                음식도, 기사님도 안전하게! 조심히 와주세요
+              </option>
+              <option key="call" value="call">
+                도착하시면 전화주세요
+              </option>
+              <option key="meet" value="meet">
+                직접 만나서 받을게요
+              </option>
+              <option key="nothing" value="nothing">
+                요청사항 없음
               </option>
             </select>
           </div>
@@ -132,6 +172,9 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
           >
             개인정보 수집 및 이용 (필수)
           </CheckBox>
+          <div className="agree">
+            <div className="agreeText">위 내용을 확인하였으며 동의합니다.</div>
+          </div>
         </div>
 
         {/* <Terms></Terms> */}
