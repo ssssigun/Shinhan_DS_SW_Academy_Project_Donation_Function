@@ -22,7 +22,7 @@ const StoreList = () => {
   const navigate = useNavigate();
     function move(e){
       const selectStore = e.currentTarget;
-      navigate("/storeMain", {
+      navigate("/storeMainFree", {
         state:{
           title : selectStore.querySelector('.title').innerText,
           review : selectStore.querySelector('.smallTextNumber').innerText
@@ -35,18 +35,18 @@ const StoreList = () => {
     const [checkedMenuBar, setCheckedMenuBar] = useState(location.state.name);
     const [Menu, selectMenu] = useState();
     // GET 요청
-    // function displayList(){
-    //   axios.get(`/selectStore?category=${checkedMenuBar}`)
-    //   .then(response => {
-    //     // 성공 처리
-    //     selectMenu(response.data);
-    //     console.log(Menu);
-    //   })
-    //   .catch(error => {
-    //     // 에러 처리
-    //     console.error(error);
-    //   });
-    // }
+    function displayList(){
+      axios.get(`/selectStore?category=${checkedMenuBar}`)
+      .then(response => {
+        // 성공 처리
+        selectMenu(response.data);
+        console.log(Menu);
+      })
+      .catch(error => {
+        // 에러 처리
+        console.error(error);
+      });
+    }
 
     return (
       

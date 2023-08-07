@@ -11,7 +11,11 @@ import AlarmPage from './alarm/page/AlarmPage';
 import OrderListPage from './orderList/page/OrderListPage';
 import OrderRadioButtonsTest from './common/page/OrderRadioButtonsTest';
 import StoreList from './storeList/page/storeList';
+import StoreListDonater from './storeList/page/storeListDonater';
+import StoreListFree from './storeList/page/storeListFree';
 import StoreMain from './store/page/storeMain';
+import StoreMainDonater from './store/page/storeMainDonater';
+import StoreMainFree from './store/page/storeMainFree'; 
 import MenuDetail from './store/page/menuDetail';
 import OrderFreeDelivery from './OrderFreeDelivery/page/OrderFreeDelivery';
 import OrderFreeTakeOut from './OrderFreeTakeOut/page/OrderFreeTakeOut';
@@ -36,7 +40,11 @@ function App() {
         <Route path="/donationDetail" element={<DonationDetailPage />} />
         <Route path="/testOrderRadioButtons" element={<OrderRadioButtonsTest />} />
         <Route path="/storeList" element={<StoreList />} />
-        <Route path="/store" element={<StoreMain />} />
+        <Route path="/storeListDonater" element={<StoreListDonater />} />
+        <Route path="/storeListFree" element={<StoreListFree />} />
+        <Route path="/storeMain" element={<StoreMain />} />
+        <Route path="/storeMainDonater" element={<StoreMainDonater />} />
+        <Route path="/storeMainFree" element={<StoreMainFree />} />
         <Route path="/menuDetail" element={<MenuDetail />} />
         <Route path="/ready" element={<ReadyPage />} />
       </Routes>
