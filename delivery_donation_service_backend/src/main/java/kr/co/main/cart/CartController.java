@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CartController {
 	
 	//장바구니에 메뉴 넣기
-	@GetMapping("/insertMenu")
+	@GetMapping("/inputC")
 	public void insertMenu() {
 		
 	}

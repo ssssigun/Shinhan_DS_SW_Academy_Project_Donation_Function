@@ -15,6 +15,7 @@ import {MdOutlineWatchLater} from "react-icons/md";
 // 모듈 불러오기
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
+import axios from 'axios'
 
 // scss 불러오기
 import "../../common/style/reset.scss"
