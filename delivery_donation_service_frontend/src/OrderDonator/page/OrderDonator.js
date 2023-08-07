@@ -174,7 +174,7 @@ const OrderDonator = ({ type }) => {
           >
             전체동의
           </AllAgreeCheckBox>
-          <hr></hr>
+          <hr className="AllAgreeCheckBoxHr"></hr>
           <CheckBox
             checked={selectedOptions.option1}
             onChange={() => handleOptionChange('option1')}

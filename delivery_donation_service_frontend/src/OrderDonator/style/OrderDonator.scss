@@ -135,15 +135,14 @@
       .radioButtonWithLable {
         display: flex;
         height: 30px;
-        align-items: center;
+        align-self: self-start;
         gap: 5px;
       }
     }
     .radioButtonWithLable {
       display: flex;
       height: 30px;
-      align-items: flex-start;
-      align-items: center;
+
       gap: 5px;
     }
   }
@@ -293,4 +292,9 @@
       }
     }
   }
+}
+.AllAgreeCheckBoxHr {
+  width: 100%;
+  // height: 1px;
+  // background: #000;
 }

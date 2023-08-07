@@ -13,7 +13,7 @@ const DonationCart = () => {
   };
   return (
     <>
-      <DonationCartHeader>기부보따리</DonationCartHeader>
+      <DonationCartHeader backUrl="/menuDetail">기부보따리</DonationCartHeader>
       <div className="wrapper">
         <div className="cart">
           <div className="storeTitle">
