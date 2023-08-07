@@ -1,12 +1,10 @@
 import RadioButton from '../../common/component/RadioButton';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import '../style/OrderDonator.scss';
 import { MdCheck } from 'react-icons/md';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import OrderHeader from '../component/OrderHeader';
 import OrderBox from '../../common/component/orderBox';
-import AllAgreeCheckBox from '../../common/component/AllAgreeCheckBox';
-import CheckBox from '../../common/component/CheckBox';
 
 const OrderDonator = ({ type }) => {
   // const [selectedOption, setSelectedOption] = useState('option1'); // 초기 선택 옵션 설정
@@ -53,18 +51,10 @@ const OrderDonator = ({ type }) => {
     setAllAgreed(checked);
   };
 
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleCheckboxChange = (checked) => {
-    setIsChecked(checked);
-  };
-
   const [selectedOptions, setSelectedOptions] = useState({
     option1: false,
     option2: false,
     option3: false,
-    option5: false,
-    option6: false,
 
     option4: false,
   });
@@ -86,26 +76,12 @@ const OrderDonator = ({ type }) => {
       option1: allChecked,
       option2: allChecked,
       option3: allChecked,
-      option5: allChecked,
-      option6: allChecked,
     }));
   };
 
   useEffect(() => {
-    // const allChecked = Object.values(selectedOptions).every((option, idx) => {
-    //   if (idx != 'option4') return option === true;
-    // });
-    let allChecked = true;
-    Object.keys(selectedOptions).forEach(function (k) {
-      //console.log(selectedOptions[k]);
-      if (k != 'option4') {
-        if (selectedOptions[k] !== true) {
-          allChecked = false;
-        }
-      }
-    });
+    const allChecked = Object.values(selectedOptions).every((option) => option === true);
 
-    console.log(allChecked);
     if (selectedOptions.option4 !== allChecked) {
       setSelectedOptions((prevSelectedOptions) => ({
         ...prevSelectedOptions,
@@ -167,54 +143,100 @@ const OrderDonator = ({ type }) => {
           </div>
         </div>
         <div className="termsOrder">
-          <AllAgreeCheckBox
-            checked={selectedOptions.option4}
-            onChange={handleAllAgreeChange}
-            labelStyle={{ fontSize: '16px' }}
-          >
-            전체동의
-          </AllAgreeCheckBox>
-          <hr></hr>
-          <CheckBox
-            checked={selectedOptions.option1}
-            onChange={() => handleOptionChange('option1')}
-            labelStyle={{ fontSize: '16px' }}
-          >
-            이용약관 (필수)
-          </CheckBox>
-          <CheckBox
-            checked={selectedOptions.option2}
-            onChange={() => handleOptionChange('option2')}
-            labelStyle={{ fontSize: '16px' }}
-          >
-            개인정보 제3자 제공 (필수)
-          </CheckBox>
-          <CheckBox
-            checked={selectedOptions.option3}
-            onChange={() => handleOptionChange('option3')}
-            labelStyle={{ fontSize: '16px' }}
-          >
-            전자금융거래 이용약관 (필수)
-          </CheckBox>
-          <CheckBox
-            checked={selectedOptions.option5}
-            onChange={() => handleOptionChange('option5')}
-            labelStyle={{ fontSize: '16px' }}
-          >
-            개인정보 수집 및 이용 (필수)
-          </CheckBox>
-          <CheckBox
-            checked={selectedOptions.option6}
-            onChange={() => handleOptionChange('option6')}
-            labelStyle={{ fontSize: '16px' }}
-          >
-            만 14세 이상입니다. (필수)
-          </CheckBox>
-          <div className="agree">
-            <div className="agreeText">위 내용을 확인하였으며 동의합니다.</div>
+          <div className="agreeAll">
+            <div className="checkButton">
+              <input
+                className="allAgreed"
+                type="checkbox"
+                id="agree_check_all"
+                name="agree_check_all"
+                checked={allAgreed}
+                onChange={handleAllAgreementChange}
+              />
+              <MdCheck></MdCheck>
+              <label className="allText" htmlFor="agree_check_all">
+                전체동의
+              </label>
+            </div>
+          </div>
+
+          <hr className="agreeLine"></hr>
+          <div className="agreeUsed">
+            <div className="checkUsed">
+              <input
+                className="termsAgreed"
+                type="checkbox"
+                id="agree_check_used"
+                name="termsAgreed"
+                required
+                checked={agreements.termsAgreed}
+                onChange={handleAgreementChange}
+              />
+              <label htmlFor="agree_check_used">이용약관 (필수)</label>
+            </div>
+            <MdOutlineKeyboardArrowDown></MdOutlineKeyboardArrowDown>
+          </div>
+          <div className="agreeOther">
+            <div className="checkOther">
+              <input
+                className="provisonAgreed"
+                type="checkbox"
+                id="agree_check_info_other"
+                name="provisonAgreed"
+                required
+                checked={agreements.provisonAgreed}
+                onChange={handleAgreementChange}
+              />
+              <label htmlFor="agree_check_info_other">개인정보 제 3자 제공 (필수)</label>
+            </div>
+            <MdOutlineKeyboardArrowDown></MdOutlineKeyboardArrowDown>
+          </div>
+          <div className="financial">
+            <div className="checkFinancial">
+              <input
+                className="financialAgreed"
+                type="checkbox"
+                id="agree_check_financial"
+                name="financialAgreed"
+                required
+                checked={agreements.financialAgreed}
+                onChange={handleAgreementChange}
+              />
+              <label htmlFor="agree_check_financial">전자금융거래 이용약관 (필수)</label>
+            </div>
+            <MdOutlineKeyboardArrowDown></MdOutlineKeyboardArrowDown>
+          </div>
+          <div className="agreeInfo">
+            <div className="checkInfo">
+              <input
+                className="personalInfoAgreed"
+                type="checkbox"
+                id="agree_check_info"
+                name="personalInfoAgreed"
+                required
+                checked={agreements.personalInfoAgreed}
+                onChange={handleAgreementChange}
+              />
+              <label htmlFor="agree_check_info">개인정보 수집 및 이용 (필수)</label>
+            </div>
+            <MdOutlineKeyboardArrowDown></MdOutlineKeyboardArrowDown>
+          </div>
+          <div className="age">
+            <div className="checkAge">
+              <input
+                className="ageAgreed"
+                type="checkbox"
+                id="agree_check_age"
+                name="ageAgreed"
+                required
+                checked={agreements.ageAgreed}
+                onChange={handleAgreementChange}
+              />
+              <label htmlFor="agree_check_age">만 14세 이상입니다. (필수)</label>
+            </div>
+            <MdOutlineKeyboardArrowDown></MdOutlineKeyboardArrowDown>
           </div>
         </div>
-
         <OrderBox text="기부하기" />
       </div>
     </>

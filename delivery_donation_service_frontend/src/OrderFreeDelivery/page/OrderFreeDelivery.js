@@ -2,12 +2,14 @@ import { Children } from 'react';
 import Input from '../../common/component/Input';
 import SendingWarm from '../../common/component/SendingWarm';
 import '../style/OrderFreeDelivery.scss';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Terms from '../../common/component/Terms';
 import Request from '../../common/component/Request';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import OrderHeader from '../component/OrderHeader';
 import OrderBox from '../../common/component/orderBox';
+import CheckBox from '../../common/component/CheckBox';
+import AllAgreeCheckBox from '../../common/component/AllAgreeCheckBox';
 
 const OrderFreeDelivery = ({ children, checked, onChange }) => {
   const [isChecked, setIsChecked] = useState(false);
@@ -15,6 +17,46 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
   const handleCheckboxChange = (checked) => {
     setIsChecked(checked);
   };
+
+  const [selectedOptions, setSelectedOptions] = useState({
+    option1: false,
+    option2: false,
+    option3: false,
+
+    option4: false,
+  });
+
+  const handleOptionChange = (option) => {
+    setSelectedOptions((prevSelectedOptions) => ({
+      ...prevSelectedOptions,
+      [option]: !prevSelectedOptions[option],
+      // option4: false,
+    }));
+    // updateAllAgreeCheckBox();
+  };
+
+  const handleAllAgreeChange = () => {
+    const allChecked = !selectedOptions.option4;
+    setSelectedOptions((prevSelectedOptions) => ({
+      // ...prevSelectedOptions,
+      option4: allChecked,
+      option1: allChecked,
+      option2: allChecked,
+      option3: allChecked,
+    }));
+  };
+
+  useEffect(() => {
+    const allChecked = Object.values(selectedOptions).every((option) => option === true);
+
+    if (selectedOptions.option4 !== allChecked) {
+      setSelectedOptions((prevSelectedOptions) => ({
+        ...prevSelectedOptions,
+        option4: allChecked,
+      }));
+    }
+  }, [selectedOptions]);
+
   return (
     <>
       <OrderHeader>주문하기</OrderHeader>
@@ -57,8 +99,43 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
         </Request>
 
         <SendingWarm></SendingWarm>
-        <Terms></Terms>
-        <OrderBox />
+        <div className="takeoutTermsWrapper">
+          <AllAgreeCheckBox
+            checked={selectedOptions.option4}
+            onChange={handleAllAgreeChange}
+            labelStyle={{ fontSize: '16px' }}
+          >
+            전체동의
+          </AllAgreeCheckBox>
+
+          <hr className="allagreeLine"></hr>
+
+          <CheckBox
+            checked={selectedOptions.option1}
+            onChange={() => handleOptionChange('option1')}
+            labelStyle={{ fontSize: '16px' }}
+          >
+            이용약관 (필수)
+          </CheckBox>
+          <CheckBox
+            checked={selectedOptions.option2}
+            onChange={() => handleOptionChange('option2')}
+            labelStyle={{ fontSize: '16px' }}
+          >
+            개인정보 제 3자 제공 (필수)
+          </CheckBox>
+
+          <CheckBox
+            checked={selectedOptions.option3}
+            onChange={() => handleOptionChange('option3')}
+            labelStyle={{ fontSize: '16px' }}
+          >
+            개인정보 수집 및 이용 (필수)
+          </CheckBox>
+        </div>
+
+        {/* <Terms></Terms> */}
+        <OrderBox text="배달 주문하기" />
       </div>
     </>
   );

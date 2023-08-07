@@ -59,7 +59,7 @@ const DonationCart = () => {
           </div>
         </div>
       </div>
-      <OrderBox />
+      <OrderBox text="기부하기" />
     </>
   );
 };
