@@ -1,0 +1,61 @@
+[
+  {
+    "id": "1",
+    "storename": "대한냉면 마포점",
+    "menuItems": [
+      {
+        "name": "물냉면",
+        "price": "8,500원",
+        "amount": "3"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "storename": "신 안동장",
+    "menuItems": [
+      {
+        "name": "탕짜면",
+        "price": "9,000원",
+        "amount": "1"
+      },
+      {
+        "name": "짜장면",
+        "price": "7,000원",
+        "amount": "1"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "storename": "벚꽃스시",
+    "menuItems": [
+      {
+        "name": "가성비 물회",
+        "price": "10,900원",
+        "amount": "1"
+      },
+      {
+        "name": "뜨끈뜨끈 우동",
+        "price": "6,500원",
+        "amount": "1"
+      },
+      {
+        "name": "캘리포니아롤",
+        "price": "13,900원",
+        "amount": "1"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "storename": "중야 식당",
+    "menuItems": [
+      {
+        "name": "중국식 가지 튀김 볶음",
+        "price": "15,000원",
+        "amount": "1"
+      }
+    ]
+  }
+]

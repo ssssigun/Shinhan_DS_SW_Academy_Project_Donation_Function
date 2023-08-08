@@ -18,7 +18,7 @@ const DonationCart = (prop) => {
     setSelected(index === selected ? -1 : index); // 같은 가게를 다시 선택하면 선택 해제, 아니면 선택
   };
 
-  const handleChangeAmount = (storeIndex, menuItemIndex, newAmount) => {
+  const handleAmountChange = (storeIndex, menuItemIndex, newAmount) => {
     const updatedCartData = [...cartData];
     updatedCartData[storeIndex].menuItems[menuItemIndex].amount = newAmount.toString();
     setCartData(updatedCartData);
@@ -92,10 +92,9 @@ const DonationCart = (prop) => {
                   {/* 컴포넌트로 해야될듯 */}
                   <UpDownButton
                     initialAmount={parseInt(menuItem.amount, 10)}
-                    onChange={(newAmount) => handleChangeAmount(storeIndex, menuItemIndex, newAmount)}
+                    onChange={(newAmount) => handleAmountChange(storeIndex, menuItemIndex, newAmount)}
                   />
-
-                  <h2>{(parsePrice(menuItem.price) * parseInt(menuItem.amount, 10)).toLocaleString()}원</h2>
+                  <h2>{menuItem.price}</h2>
                 </div>
 
                 {/* 17,000원 */}
@@ -106,11 +105,7 @@ const DonationCart = (prop) => {
               <div className="expectedPayment">
                 <h2 className="expectText">결제예정금액</h2>
 
-                <h2 className="expectMoney">
-                  {storeTotalPrices[cartItem.storename] !== undefined
-                    ? storeTotalPrices[cartItem.storename].toLocaleString() + '원'
-                    : '0원'}
-                </h2>
+                <h2 className="expectMoney">{storeTotalPrices[cartItem.storename]}원</h2>
               </div>
             </div>
 

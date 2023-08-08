@@ -12,23 +12,18 @@ import { useNavigate } from 'react-router-dom';
 const DonationCart = (prop) => {
   const [selected, setSelected] = useState(0); // 선택된 가게의 인덱스를 기억, -1은 선택된 가게 없음을 의미
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
-  const [cartData, setCartData] = useState(CartData);
 
   const handleRadioChange = (index) => {
     setSelected(index === selected ? -1 : index); // 같은 가게를 다시 선택하면 선택 해제, 아니면 선택
   };
 
-  const handleChangeAmount = (storeIndex, menuItemIndex, newAmount) => {
-    const updatedCartData = [...cartData];
-    updatedCartData[storeIndex].menuItems[menuItemIndex].amount = newAmount.toString();
-    setCartData(updatedCartData);
-    updateStoreTotalPrices(updatedCartData);
-  };
+  //라디오버튼
+  // const [selectedOption, setSelectedOption] = useState('option1'); // 초기 선택 옵션 설정
 
-  const updateStoreTotalPrices = (updatedCartData) => {
+  useEffect(() => {
     const storePrices = {};
 
-    updatedCartData.forEach((cartItem) => {
+    CartData.forEach((cartItem) => {
       const storename = cartItem.storename;
 
       cartItem.menuItems.forEach((menuItem) => {
@@ -44,11 +39,7 @@ const DonationCart = (prop) => {
     });
 
     setStoreTotalPrices(storePrices);
-  };
-
-  useEffect(() => {
-    updateStoreTotalPrices(cartData);
-  }, [cartData]);
+  }, []);
 
   // 결제예정금액 json 파일에서 price에 쉼표 있어서 제거 문자열에서 숫자로 처리
   const parsePrice = (priceString) => {
@@ -56,6 +47,10 @@ const DonationCart = (prop) => {
     return parseInt(priceWithoutCommas, 10);
   };
 
+  // // 라디오버튼
+  // const handleOptionChange = (event) => {
+  //   setSelectedOption(event.target.value); // 라디오 버튼 선택 시, 상태 업데이트
+  // };
   let navigate = useNavigate();
 
   return (
@@ -92,10 +87,12 @@ const DonationCart = (prop) => {
                   {/* 컴포넌트로 해야될듯 */}
                   <UpDownButton
                     initialAmount={parseInt(menuItem.amount, 10)}
-                    onChange={(newAmount) => handleChangeAmount(storeIndex, menuItemIndex, newAmount)}
+                    onChange={(newAmount) => {
+                      // newAmount 값으로 menuItem.amount 업데이트
+                      cartItem.menuItems[menuItemIndex].amount = newAmount.toString();
+                    }}
                   />
-
-                  <h2>{(parsePrice(menuItem.price) * parseInt(menuItem.amount, 10)).toLocaleString()}원</h2>
+                  <h2>{menuItem.price}</h2>
                 </div>
 
                 {/* 17,000원 */}
@@ -106,11 +103,7 @@ const DonationCart = (prop) => {
               <div className="expectedPayment">
                 <h2 className="expectText">결제예정금액</h2>
 
-                <h2 className="expectMoney">
-                  {storeTotalPrices[cartItem.storename] !== undefined
-                    ? storeTotalPrices[cartItem.storename].toLocaleString() + '원'
-                    : '0원'}
-                </h2>
+                <h2 className="expectMoney">{storeTotalPrices[cartItem.storename]}원</h2>
               </div>
             </div>
 
