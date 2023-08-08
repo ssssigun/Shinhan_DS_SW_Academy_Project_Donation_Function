@@ -1,16 +1,17 @@
-import '../style/FreeCart.scss'
-import { AiOutlinePlus } from 'react-icons/ai'
-import { MdClose } from 'react-icons/md'
+import '../style/FreeCart.scss';
+import { AiOutlinePlus } from 'react-icons/ai';
+import { MdClose } from 'react-icons/md';
 
-import RadioButton from '../../common/component/RadioButton'
-import UpDownButton from '../../common/component/UpDownButton'
-import React, { useState } from 'react'
+import RadioButton from '../../common/component/RadioButton';
+import UpDownButton from '../../common/component/UpDownButton';
+import UpDownButtonFix from '../../common/component/UpDownButtonFix';
+import React, { useState } from 'react';
 
 const FreeCart = ({}) => {
-  const [selectedOption, setSelectedOption] = useState('option1') // 초기 선택 옵션 설정
+  const [selectedOption, setSelectedOption] = useState('option1'); // 초기 선택 옵션 설정
   const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value) // 라디오 버튼 선택 시, 상태 업데이트
-  }
+    setSelectedOption(event.target.value); // 라디오 버튼 선택 시, 상태 업데이트
+  };
   return (
     <div className="freeCartWrapper">
       <div className="cart">
@@ -39,7 +40,8 @@ const FreeCart = ({}) => {
           </div>
           <div className="count">
             {/* 컴포넌트로 해야될듯 */}
-            <UpDownButton buttonStyle={{ background: '#A6A6A6', color: '#F9F9F9' }}></UpDownButton>
+
+            <UpDownButtonFix buttonStyle={{ background: '#A6A6A6', color: '#F9F9F9' }}></UpDownButtonFix>
           </div>
 
           {/* 17,000원 */}
@@ -49,7 +51,7 @@ const FreeCart = ({}) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FreeCart
+export default FreeCart;

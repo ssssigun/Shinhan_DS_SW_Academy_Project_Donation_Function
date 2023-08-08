@@ -12,6 +12,7 @@ const UpDownButton = ({ buttonStyle, initialAmount, onChange }) => {
   }, [count, onChange]);
 
   const handleCountChange = (type) => {
+    let newCount = count; // 새로운 카운트 값 생성
     if (type === 'plus') {
       setCount((prevCount) => prevCount + 1);
     } else if (type === 'minus') {
