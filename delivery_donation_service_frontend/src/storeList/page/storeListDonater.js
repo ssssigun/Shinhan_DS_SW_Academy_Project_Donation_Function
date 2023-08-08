@@ -2,15 +2,15 @@
 
 //컴포넌트 불러오기
 import SortOptionBar from "../component/sortOptionBar";
-import Store from "../component/store";
-import StoreListHeader from"../component/StoreListHeader";
+import StoreDonate from "../component/storeDonate";
+import StoreListHeaderDonate from"../component/StoreListHeaderDonate";
 
 //json 불러오기
 import categoryData from '../../common/json/category.json'
 
 // 모듈 불러오기
 import { useNavigate,useLocation } from "react-router-dom";
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from'axios';
 // scss 불러오기
 import "../../common/style/reset.scss"
@@ -19,13 +19,12 @@ import "../style/storeList.scss"
 
 const StoreList = () => {
   const navigate = useNavigate();
-  
     function move(e){
-      navigate("/storeMain", {
+      const selectStore = e.currentTarget;
+      navigate("/storeMainDonater", {
         state:{
-          title : e.storeName,
-          review : e.review,
-          storePk : e.storePk
+          title : selectStore.querySelector('.title').innerText,
+          review : selectStore.querySelector('.smallTextNumber').innerText
         }
       });
     }
@@ -59,18 +58,24 @@ const StoreList = () => {
       <div id="storeListWrapper">
         <div className="storeListTopArea">
             {/* 헤더 */}
-            <StoreListHeader>
+            <StoreListHeaderDonate>
               {checkedMenuBar}
-            </StoreListHeader>
+            </StoreListHeaderDonate>
           {/* 메뉴 카테고리 */}
           <div id="categoryMenuBar">
             <ul id="menu">
               {
                 categoryData.category.map(category => (
                   checkedMenuBar === category.name ?
-                  <li className="checked"><p>{category.name}</p></li>
-                  :
-                  <li onClick={() =>{ setCheckedMenuBar(category.name); selectList(category.name);}}><p>{category.name}</p></li>
+                    category.canDonate ?
+                      <li className="checked"><p>{category.name}</p></li>
+                      :
+                      ""
+                    :
+                    category.canDonate ?
+                      <li onClick={() => { setCheckedMenuBar(category.name); selectList(category.name)}}><p>{category.name}</p></li>
+                      :
+                      ""
                 ))
               }
             </ul>
@@ -83,8 +88,8 @@ const StoreList = () => {
           <ul className="storeListWrap">
             {
               storeData.map(store => (
-                  <li className="store" key={store.storePk} onClick={()=>move(store)}>
-                    <Store st={store}/>
+                  <li className="store" onClick={move}>
+                    <StoreDonate st={store}/>
                   </li>
                 )
               )

@@ -11,7 +11,9 @@ const store = (prop) => {
       <>
         <div  className="imageArea">
           {/* <img src="" alt=""></img> */}
-          <div className="storeImage"></div>{/* 임시 이미지*/}
+          <div className="storeImage">  {/* 임시 이미지*/}
+            <div className="storeImageNumber"><span>수량</span></div>
+          </div>
         </div>
         <ul className="textArea">
           <li className="textBar"> 
@@ -27,12 +29,8 @@ const store = (prop) => {
               <span className="smallTextNumber">{prop.st.review}</span>
             </div>
             <div>
-              <span className="smallText">배달비</span>
-              <span>{prop.st.deliveryPrice}</span>
-            </div>  
-          </li>
-          <li className="textBar">
             <span className="deliverText">배달/포장</span>
+            </div>  
           </li>
         </ul>
       </>

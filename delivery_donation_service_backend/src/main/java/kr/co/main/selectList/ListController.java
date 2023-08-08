@@ -21,12 +21,7 @@ public class ListController {
 	@GetMapping("/selectStore")
 	@ResponseBody
 	public List<Store> selectStore(@RequestParam String category) {
-		System.out.println(category);
-//		List<Store> st = sRepo.findByCategory(category);
-//		System.out.println(st.size());
-		List<Store> st2 = sRepo.findAll();
-		System.out.println(st2.size());
-		return null;
+		return sRepo.findByCategory(category);
 	}
 	
 	//메뉴 목록 가져오기 (가게 별)

@@ -9,10 +9,12 @@ import {AiFillStar} from "react-icons/ai";
 import {FaHeart} from "react-icons/fa";
 import {TbShare2} from "react-icons/tb";
 
+// json 파일 불러오기
+import MenuData from '../../common/json/menuTest.json'
+
 // 모듈 불러오기
 import { useNavigate,useLocation } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
-import axios from "axios";
 
 //children 넣어주기
 //텍스트 라인 (가게 정보 및 메뉴)
@@ -21,32 +23,18 @@ const StoreMain = () => {
   // 메뉴 상세 페이지로 이동
   // 선택한 메뉴 정보 보내기
     function move(e){
+      const selectMenu = e.currentTarget;
       navigate("/menuDetail",{
         state:{
-          title : e.menuName,
-          explain : e.detail,
-          price : e.menuPrice,
-          image : e.menuPicture
+          title : selectMenu.querySelector('.StoreMainMenuTextTitle').innerText,
+          explain : selectMenu.querySelector('.StoreMainMenuTextDetail').innerText,
+          price : selectMenu.querySelector('.StoreMainMenuTextPrice').innerText,
+          image : selectMenu.querySelector('.StoreMainMenuImage').src
         }
       });
     }
-    // 가게 정보 가져오기 위해서 사용
     let location = useLocation();
-    
-    const [menuData,setMenuData] = useState([]);
 
-    //처음 렌더링할 떄 메뉴 리스트 가져오기
-    useEffect(() => {
-      axios.get(`/selectMenu?stoer_pk=${location.state.storePk}`)
-      .then(response => {
-        // 성공 처리
-        setMenuData(response.data);
-      })
-      .catch(error => {
-        // 에러 처리
-        console.error(error);
-      });
-    }, []);
     return (
         <StoreForm image={"/image/test.png"} >
           {/* 제목라인 */}
@@ -106,16 +94,16 @@ const StoreMain = () => {
             <p className="StoreMainMenuListAreaTitle">대표메뉴</p>
             <ul className="StoreMainMenuList">
               {
-                menuData.map(menu=>(
-                  <li className="StoreMainMenu" onClick={()=>move(menu)}>
+                MenuData.map(menu=>(
+                  <li className="StoreMainMenu" onClick={move}>
                       <div className="StoreMainMenuTextArea">
-                        <span className="StoreMainMenuTextTitle">{menu.menuName}</span>
+                        <span className="StoreMainMenuTextTitle">{menu.name}</span>
                         <p className="StoreMainMenuTextDetail">
-                          {menu.detail}
+                          {menu.explain}
                         </p>
-                        <p className="StoreMainMenuTextPrice">{menu.menuPrice}원</p>
+                        <p className="StoreMainMenuTextPrice">{menu.Price}</p>
                       </div>
-                    <img src={menu.menuPicture} alt="" className="StoreMainMenuImage"></img>
+                    <img src={menu.image} alt="" className="StoreMainMenuImage"></img>
                   </li>
                 ))
               }

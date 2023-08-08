@@ -39,7 +39,7 @@ const MainPage = () => {
                     key={index}
                     image={category.image}
                     name={category.name}
-                    onClick={() => navigate('/storeList', { state: { name: category.name } })}
+                    onClick={() => navigate('/storeListDonater', { state: { name: category.name } })}
                   ></Category>
                 ) : (
                   ''

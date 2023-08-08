@@ -1,5 +1,6 @@
 package kr.co.main.cart;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,9 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/cart")
 public class CartController {
 	
+	@Autowired
+	CartRepository cRepo;
+	
 	//장바구니에 메뉴 넣기
-	@GetMapping("/insertMenu")
-	public void insertMenu() {
-		
+	@GetMapping("/inputC")
+	public void insertMenu(Cart c) {
+		cRepo.save(null);
 	}
 }

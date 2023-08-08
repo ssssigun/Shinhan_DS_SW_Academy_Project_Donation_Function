@@ -7,10 +7,11 @@ import StoreListHeader from"../component/StoreListHeader";
 
 //json 불러오기
 import categoryData from '../../common/json/category.json'
+import StoreData from '../../common/json/storeTest.json'
 
 // 모듈 불러오기
 import { useNavigate,useLocation } from "react-router-dom";
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from'axios';
 // scss 불러오기
 import "../../common/style/reset.scss"
@@ -19,13 +20,12 @@ import "../style/storeList.scss"
 
 const StoreList = () => {
   const navigate = useNavigate();
-  
     function move(e){
-      navigate("/storeMain", {
+      const selectStore = e.currentTarget;
+      navigate("/storeMainFree", {
         state:{
-          title : e.storeName,
-          review : e.review,
-          storePk : e.storePk
+          title : selectStore.querySelector('.title').innerText,
+          review : selectStore.querySelector('.smallTextNumber').innerText
         }
       });
     }
@@ -70,7 +70,7 @@ const StoreList = () => {
                   checkedMenuBar === category.name ?
                   <li className="checked"><p>{category.name}</p></li>
                   :
-                  <li onClick={() =>{ setCheckedMenuBar(category.name); selectList(category.name);}}><p>{category.name}</p></li>
+                  <li onClick={() => { setCheckedMenuBar(category.name); selectList(category.name)}}><p>{category.name}</p></li>
                 ))
               }
             </ul>
@@ -82,8 +82,8 @@ const StoreList = () => {
         <div className="storeListBottomArea">
           <ul className="storeListWrap">
             {
-              storeData.map(store => (
-                  <li className="store" key={store.storePk} onClick={()=>move(store)}>
+              StoreData.map(store => (
+                  <li className="store" onClick={move}>
                     <Store st={store}/>
                   </li>
                 )

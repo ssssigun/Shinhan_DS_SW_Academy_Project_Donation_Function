@@ -9,6 +9,9 @@ import {AiFillStar} from "react-icons/ai";
 import {FaHeart} from "react-icons/fa";
 import {TbShare2} from "react-icons/tb";
 
+// json 파일 불러오기
+import MenuData from '../../common/json/menuTest.json'
+
 // 모듈 불러오기
 import { useNavigate,useLocation } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
@@ -107,13 +110,16 @@ const StoreMain = () => {
             <ul className="StoreMainMenuList">
               {
                 menuData.map(menu=>(
-                  <li className="StoreMainMenu" onClick={()=>move(menu)}>
+                  <li className="StoreMainMenu" onClick={move}>
                       <div className="StoreMainMenuTextArea">
-                        <span className="StoreMainMenuTextTitle">{menu.menuName}</span>
+                        <div className="StoreMainMenuTextTitleArea">
+                          <span className="StoreMainMenuTextTitle">{menu.menuName}</span>
+                          <div className="StoreMainMenuTextTitleNumber"><span>1</span></div>
+                        </div>
                         <p className="StoreMainMenuTextDetail">
                           {menu.detail}
                         </p>
-                        <p className="StoreMainMenuTextPrice">{menu.menuPrice}원</p>
+                        <p className="StoreMainMenuTextPrice">{menu.menuPrice}</p>
                       </div>
                     <img src={menu.menuPicture} alt="" className="StoreMainMenuImage"></img>
                   </li>
