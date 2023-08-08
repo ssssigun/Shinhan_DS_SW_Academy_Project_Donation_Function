@@ -30,10 +30,16 @@ public class Menu {
 	
 	@Column(name="menu_price")
 	private int menuPrice;
+	
+	@Column(name="category")
 	private String category;
+	
 	@Column(name="can_donate")
 	private int canDonate;
+	
 	@Column(name="menu_picture")
 	private String menuPicture;
+	
+	@Column(name="detail")
 	private String detail;
 }

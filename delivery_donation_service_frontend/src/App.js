@@ -11,8 +11,13 @@ import AlarmPage from './alarm/page/AlarmPage';
 import OrderListPage from './orderList/page/OrderListPage';
 import OrderRadioButtonsTest from './common/page/OrderRadioButtonsTest';
 import StoreList from './storeList/page/storeList';
+import StoreListDonater from './storeList/page/storeListDonater';
+import StoreListFree from './storeList/page/storeListFree';
 import StoreMain from './store/page/storeMain';
+import StoreMainDonater from './store/page/storeMainDonater';
+import StoreMainFree from './store/page/storeMainFree'; 
 import MenuDetail from './store/page/menuDetail';
+import MenuDetailDonater from './store/page/menuDetailDonater';
 import OrderFreeDelivery from './OrderFreeDelivery/page/OrderFreeDelivery';
 import OrderFreeTakeOut from './OrderFreeTakeOut/page/OrderFreeTakeOut';
 import ScrollTop from "./common/component/scrollTop";
@@ -22,7 +27,7 @@ import DonationDetailPage from './orderList/page/DonationDetailPage';
 function App() {
   return (
     <BrowserRouter>
-      <ScrollTop/>
+      <ScrollTop/>    {/*페이지 넘어갈 때 맨위로*/}
       <Routes>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/donationCart" element={<DonationCart />}></Route>
@@ -36,8 +41,13 @@ function App() {
         <Route path="/donationDetail" element={<DonationDetailPage />} />
         <Route path="/testOrderRadioButtons" element={<OrderRadioButtonsTest />} />
         <Route path="/storeList" element={<StoreList />} />
-        <Route path="/store" element={<StoreMain />} />
+        <Route path="/storeListDonater" element={<StoreListDonater />} />
+        <Route path="/storeListFree" element={<StoreListFree />} />
+        <Route path="/storeMain" element={<StoreMain />} />
+        <Route path="/storeMainDonater" element={<StoreMainDonater />} />
+        <Route path="/storeMainFree" element={<StoreMainFree />} />
         <Route path="/menuDetail" element={<MenuDetail />} />
+        <Route path="/menuDetailDonater" element={<MenuDetailDonater />} />
         <Route path="/ready" element={<ReadyPage />} />
       </Routes>
     </BrowserRouter>
