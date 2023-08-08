@@ -27,11 +27,11 @@ const MenuDetail = () => {
           <hr className="menuDetailLine"/>
           <div className="menuDetailAmount">
             <p>수량</p>
-            <UpDownButton/>
+            <UpDownButton></UpDownButton>
           </div>
         </StoreForm>
         {/* 주문하기 버튼 */}
-        <OrderBox text={"장바구니에 담기"} nav={"/cart"}/>
+        <OrderBox text={"기부 보따리에 담기"} nav={"/donationCart"}/>
       </div>
     );
   };

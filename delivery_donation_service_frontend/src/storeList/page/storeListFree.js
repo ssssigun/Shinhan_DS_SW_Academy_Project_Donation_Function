@@ -32,22 +32,28 @@ const StoreList = () => {
     // 카테고리 이름 가져오기 위해서 location 사용
     let location = useLocation();
 
+    
     const [checkedMenuBar, setCheckedMenuBar] = useState(location.state.name);
-    const [Menu, selectMenu] = useState();
+    const [storeData, setStoreData] = useState([]);
+
     // GET 요청
-    function displayList(){
-      axios.get(`/selectStore?category=${checkedMenuBar}`)
+    function selectList(cate){
+      axios.get(`/selectStore?category=${cate}`)
       .then(response => {
         // 성공 처리
-        selectMenu(response.data);
-        console.log(Menu);
+        // console.log(response.data);
+        setStoreData(response.data);
       })
       .catch(error => {
         // 에러 처리
         console.error(error);
       });
     }
-
+    
+    //처음 렌더링 시 실행
+    useEffect(() =>{
+      selectList(location.state.name);
+    },[])
     return (
       
       <div id="storeListWrapper">
@@ -64,7 +70,7 @@ const StoreList = () => {
                   checkedMenuBar === category.name ?
                   <li className="checked"><p>{category.name}</p></li>
                   :
-                  <li onClick={() => setCheckedMenuBar(category.name)}><p>{category.name}</p></li>
+                  <li onClick={() => { setCheckedMenuBar(category.name); selectList(category.name)}}><p>{category.name}</p></li>
                 ))
               }
             </ul>

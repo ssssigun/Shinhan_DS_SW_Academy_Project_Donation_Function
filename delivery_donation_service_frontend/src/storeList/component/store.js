@@ -15,7 +15,7 @@ const store = (prop) => {
         </div>
         <ul className="textArea">
           <li className="textBar"> 
-          <span className="title">{prop.st.name}</span>
+          <span className="title">{prop.st.storeName}</span>
               <div className="time">
                 <MdOutlineWatchLater className="storeWatchLate"/>
                 <span>{prop.st.deliveryTime}</span>

@@ -146,7 +146,9 @@ color : #000000;
                 align-items: flex-start;
                 gap: 5px;
                 flex: 1 0 0;
-
+                .StoreMainMenuTextTitleArea{
+                    display: flex;
+                }
                 .StoreMainMenuTextDetail{
                     display: -webkit-box;
                     -webkit-box-orient: vertical;
@@ -172,12 +174,29 @@ color : #000000;
                     line-height: normal;
                     margin-left: 5px;
                 }
+                .StoreMainMenuTextTitleNumber{
+                    display: flex;
+                    padding: 0px 5px;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 7px;
+                    background: #FB521B;
+                    width: 10px;
+                    margin-left: 10px;
+                    span{
+                        color: #FFF;
+                        font-family: Inter;
+                        font-size: 10px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                    }
+                }
             }
             .StoreMainMenuImage{
                 border-radius : 20px;
                 width: 75px;
                 height: 75px;
-                
             }
         }
     }

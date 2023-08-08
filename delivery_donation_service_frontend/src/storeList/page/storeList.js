@@ -7,11 +7,10 @@ import StoreListHeader from"../component/StoreListHeader";
 
 //json 불러오기
 import categoryData from '../../common/json/category.json'
-import StoreData from '../../common/json/storeTest.json'
 
 // 모듈 불러오기
 import { useNavigate,useLocation } from "react-router-dom";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import axios from'axios';
 // scss 불러오기
 import "../../common/style/reset.scss"
@@ -20,34 +19,41 @@ import "../style/storeList.scss"
 
 const StoreList = () => {
   const navigate = useNavigate();
+  
     function move(e){
-      const selectStore = e.currentTarget;
       navigate("/storeMain", {
         state:{
-          title : selectStore.querySelector('.title').innerText,
-          review : selectStore.querySelector('.smallTextNumber').innerText
+          title : e.storeName,
+          review : e.review,
+          storePk : e.storePk
         }
       });
     }
     // 카테고리 이름 가져오기 위해서 location 사용
     let location = useLocation();
 
+    
     const [checkedMenuBar, setCheckedMenuBar] = useState(location.state.name);
-    const [Menu, selectMenu] = useState();
-    // GET 요청
-    // function displayList(){
-    //   axios.get(`/selectStore?category=${checkedMenuBar}`)
-    //   .then(response => {
-    //     // 성공 처리
-    //     selectMenu(response.data);
-    //     console.log(Menu);
-    //   })
-    //   .catch(error => {
-    //     // 에러 처리
-    //     console.error(error);
-    //   });
-    // }
+    const [storeData, setStoreData] = useState([]);
 
+    // GET 요청
+    function selectList(cate){
+      axios.get(`/selectStore?category=${cate}`)
+      .then(response => {
+        // 성공 처리
+        // console.log(response.data);
+        setStoreData(response.data);
+      })
+      .catch(error => {
+        // 에러 처리
+        console.error(error);
+      });
+    }
+    
+    //처음 렌더링 시 실행
+    useEffect(() =>{
+      selectList(location.state.name);
+    },[])
     return (
       
       <div id="storeListWrapper">
@@ -64,7 +70,7 @@ const StoreList = () => {
                   checkedMenuBar === category.name ?
                   <li className="checked"><p>{category.name}</p></li>
                   :
-                  <li onClick={() => setCheckedMenuBar(category.name)}><p>{category.name}</p></li>
+                  <li onClick={() =>{ setCheckedMenuBar(category.name); selectList(category.name);}}><p>{category.name}</p></li>
                 ))
               }
             </ul>
@@ -76,8 +82,8 @@ const StoreList = () => {
         <div className="storeListBottomArea">
           <ul className="storeListWrap">
             {
-              StoreData.map(store => (
-                  <li className="store" onClick={move}>
+              storeData.map(store => (
+                  <li className="store" key={store.storePk} onClick={()=>move(store)}>
                     <Store st={store}/>
                   </li>
                 )
