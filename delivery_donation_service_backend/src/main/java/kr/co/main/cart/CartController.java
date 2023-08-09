@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+
 //장바구니 기능을 수행하는 컨트롤러
 @RestController
 @RequestMapping("/cart")
+@Api(tags = {"장바구니 기능을 수행하는 컨트롤러"})
 public class CartController {
 	
 	@Autowired
