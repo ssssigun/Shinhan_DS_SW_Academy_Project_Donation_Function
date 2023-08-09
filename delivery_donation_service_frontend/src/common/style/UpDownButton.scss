@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  .downButton {
+  .button {
     width: 18px;
     height: 18px;
     padding: 5px;
@@ -14,15 +14,9 @@
     border: 1px solid #f9f9f9;
     background: #fff;
   }
-  .upButton {
-    width: 18px;
-    height: 18px;
-    padding: 5px;
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 5px;
-    border: 1px solid #f9f9f9;
-    background: #fff;
+  .noneButton {
+    svg {
+      color: #ddd;
+    }
   }
 }

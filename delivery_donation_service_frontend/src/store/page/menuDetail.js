@@ -6,9 +6,12 @@ import OrderBox from '../../common/component/orderBox';
 import UpDownButton from '../../common/component/UpDownButton';
 
 import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
 
 //텍스트 라인 (가게 정보 및 메뉴)
 const MenuDetail = () => {
+  const [count, setCount] = useState(1);
+
   let location = useLocation();
   return (
     <div>
@@ -22,7 +25,7 @@ const MenuDetail = () => {
         <hr className="menuDetailLine" />
         <div className="menuDetailAmount">
           <p>수량</p>
-          <UpDownButton />
+          <UpDownButton count={count} setCount={setCount} />
         </div>
       </StoreForm>
       {/* 주문하기 버튼 */}

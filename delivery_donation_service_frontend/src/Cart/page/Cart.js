@@ -5,7 +5,7 @@ import { useState } from 'react';
 import OrderBox from '../../common/component/orderBox';
 import '../style/Cart.scss';
 
-const Cart = ({}) => {
+const Cart = () => {
   const buttons = [
     {
       flag: 0,
@@ -32,6 +32,9 @@ const Cart = ({}) => {
     buttonText = '매장식사 주문하기';
   }
 
+  // 이 부분은 나중에 장바구니 불러올 때 useState를 장바구니에 들어가있는 수만큼 만들어야 함..!
+  const [count, setCount] = useState(1);
+
   return (
     <div>
       <CartHeader>장바구니</CartHeader>
@@ -39,7 +42,7 @@ const Cart = ({}) => {
         <div className="DonationCartButtonsWrapper">
           <OrderRadioButtons flag={flag} buttons={buttons} setFlag={setFlag}></OrderRadioButtons>
         </div>
-        <FreeCart></FreeCart>
+        <FreeCart count={count} setCount={setCount}></FreeCart>
       </div>
       <OrderBox text={buttonText} />
     </div>

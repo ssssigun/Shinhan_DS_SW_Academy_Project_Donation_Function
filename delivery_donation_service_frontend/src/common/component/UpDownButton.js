@@ -1,40 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../style/UpDownButton.scss';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
-const UpDownButton = ({ buttonStyle, initialAmount, onChange }) => {
-  const [count, setCount] = useState(initialAmount); // 초기값으로 initialAmount 사용, 없으면 1로 설정
+const UpDownButton = ({ count, setCount, ceil }) => {
+  const upCount = () => {
+    if (count < ceil) setCount(count + 1);
+  };
 
-  useEffect(() => {
-    if (onChange) {
-      onChange(count); // count 값 변경 시, onChange 콜백 호출
-    }
-  }, [count]);
-
-  const handleCountChange = (type) => {
-    if (type === 'plus') {
-      setCount((prevCount) => prevCount + 1);
-    } else if (type === 'minus') {
-      if (count > 1) {
-        setCount((prevCount) => prevCount - 1);
-      }
-    }
-    onChange(count); // 업데이트된 카운트 값을 부모 컴포넌트로 전달
+  const downCount = () => {
+    if (count > 1) setCount(count - 1);
   };
 
   return (
     <div className="upDownOption">
-      <div className="downButton" style={buttonStyle} onClick={() => handleCountChange('minus')}>
+      <div className={'button ' + (count === 1 ? 'noneButton' : '')} onClick={() => downCount()}>
         <AiOutlineMinus />
       </div>
       <div className="result" id="result">
         {count}
       </div>
-      <div className="upButton" style={buttonStyle} onClick={() => handleCountChange('plus')}>
+      <div className={'button ' + (count === ceil ? 'noneButton' : '')} onClick={() => upCount()}>
         <AiOutlinePlus />
       </div>
     </div>
   );
+};
+
+UpDownButton.defaultProps = {
+  ceil: 10,
 };
 
 export default UpDownButton;
