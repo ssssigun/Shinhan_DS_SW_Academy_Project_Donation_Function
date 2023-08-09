@@ -215,7 +215,7 @@ const OrderDonator = ({ type }) => {
           </div>
         </div>
 
-        <OrderBox text="기부하기" />
+        <OrderBox text="기부하기" nav={'/'} />
       </div>
     </>
   );

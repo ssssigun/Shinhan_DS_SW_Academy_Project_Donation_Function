@@ -45,8 +45,8 @@
     .disposableText {
       display: flex;
       height: 26px;
-      flex-direction: column;
-      justify-content: center;
+      flex-direction: row;
+      justify-content: flex-start;
       align-self: stretch;
       color: #000;
 
@@ -61,11 +61,22 @@
       flex-direction: column;
       align-items: flex-start;
       gap: 10px;
+      border-style: solid;
       align-self: stretch;
       border-radius: 10px;
-      // background: linear-gradient(#f1b7a7, #bec8f2);
-      // border-color: #000;
-      // border-image: linear-gradient(to top, #f1b7a7, #bec8f2);
+      border-width: 1px;
+
+      // , #BEC8F2
+
+      // border-color: #f1b7a7;
+
+      /* border-image를 사용하여 그라데이션 테두리 생성 */
+      border-image: linear-gradient(to bottom, #f1b7a7, #bec8f2);
+      background-image: linear-gradient(#fff, #fff), linear-gradient(to bottom, #f1b7a7, #bec8f2);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      border-image-slice: 1; /* 테두리 이미지 슬라이스 설정 */
+
       .disposableTextNO {
         color: #000;
 

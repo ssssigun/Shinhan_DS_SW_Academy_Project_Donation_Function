@@ -178,7 +178,7 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
         </div>
 
         {/* <Terms></Terms> */}
-        <OrderBox text="배달 주문하기" />
+        <OrderBox text="배달 주문하기" nav={'/'} />
       </div>
     </>
   );
