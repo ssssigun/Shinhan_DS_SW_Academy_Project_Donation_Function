@@ -27,7 +27,9 @@ const Request = ({ children }) => {
         <Input placeholder="예) 견과류는 빼주세요"></Input>
       </div>
       <div className="disposable">
-        <div className="disposableText">일회용품 선택 *</div>
+        <div className="disposableText">
+          일회용품 선택 <span style={{ color: '#FB521B' }}>&nbsp;*</span>
+        </div>
         <div className="checkDisposable">
           {/* <Radio name="disposableCheck" value="disposableNo" defaultChecked>
               <div className="disposableTextNO">일회용 수저, 포크 안 주셔도 돼요!</div>
