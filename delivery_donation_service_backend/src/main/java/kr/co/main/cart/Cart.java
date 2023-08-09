@@ -31,4 +31,7 @@ public class Cart {
 	
 	@Column(name = "menu_pk")
 	public int menuPk;
+	
+	@Column(name="amount")
+	public int amount;
 }
