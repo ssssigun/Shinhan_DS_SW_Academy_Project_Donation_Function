@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 //장바구니 기능을 수행하는 컨트롤러
 //장바구니와 기부 보따리 둘 다 사용
@@ -22,41 +23,49 @@ public class CartController {
 	CartRepository cRepo;
 	
 	//장바구니에 메뉴 넣기
+    @ApiOperation(value = "장바구니에 메뉴 넣기")
 	@GetMapping("/inputC")
 	public void insertMenu(Cart c) {
 		cRepo.save(c);
 	}
 	
-	//메뉴 갯수 업데이트
+	//메뉴 개수 업데이트
 	@GetMapping("/updateAmount")
-	public void updateAmount(@RequestParam int user_pk, @RequestParam int menu_pk, @RequestParam int flag) {
-		cRepo.save(null);
+    @ApiOperation(value = "메뉴 개수 업데이트")
+	public void updateAmount(Cart c) {
+		cRepo.updateMenuAmount(c.userPk, c.menuPk, c.amount, c.flag);
 	}
 	
 	//장바구니 조회
 	@GetMapping("/selectCart")
+    @ApiOperation(value = "장바구니 조회")
 	@ResponseBody
-	public List<Cart> selectCart(@RequestParam int user_pk, @RequestParam int flag){
-		return cRepo.findByUserPkAndFlag(user_pk, flag);
+	public List<Cart> selectCart(@RequestParam int userPk, @RequestParam int flag){
+		return cRepo.findByUserPkAndFlag(userPk, flag);
 	}
 		
-	//장바구니 전체 삭제
+	//장바구니 전체 삭제 (전체)
 	@GetMapping("/deleteMenuAll")
-	public void deleteMenuAll(@RequestParam int user_pk, @RequestParam int flag) {
-		cRepo.delete(null);
+    @ApiOperation(value = "장바구니 전체 삭제 (전체)")
+	public void deleteMenuAll(@RequestParam int userPk, @RequestParam int flag) {
+		cRepo.deleteMenuAll(userPk, flag);
 	}
 	
-	//장바구니 메뉴 삭제
+	//장바구니 메뉴 삭제 (단품)
 	@GetMapping("/deleteMenu")
-	public void deleteMenu(@RequestParam int user_pk, @RequestParam int menu_pk, @RequestParam int flag) {
+    @ApiOperation(value = "장바구니 메뉴 삭제 (단품)")
+	public void deleteMenu(Cart c) {
+		cRepo.deleteMenu(c.userPk, c.menuPk, c.flag);
+
+	}
+	
+	//장바구니 가게 메뉴 삭제 (가게)
+	@GetMapping("/deleteStoreMenu")
+    @ApiOperation(value = "장바구니 가게 메뉴 삭제 (가게)")
+	public void deleteStoreMenu(Cart c) {
 		cRepo.delete(null);
 	}
 	
-	//장바구니 가게 메뉴 삭제
-	@GetMapping("/deleteStoreMenu")
-	public void deleteStoreMenu(@RequestParam int user_pk, @RequestParam int store_pk, @RequestParam int flag) {
-		cRepo.delete(null);
-	}
 	
 
 }
