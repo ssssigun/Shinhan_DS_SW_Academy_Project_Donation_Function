@@ -16,12 +16,12 @@ public class OrderController {
 	@GetMapping("/selectOrders")
 	@ResponseBody
 	public List<Order> selectOrders(@RequestParam int userPk) {
-		return oRepo.findAllByUserPkOrderByOrderDateDesc(userPk);
+		return oRepo.findAllByUserPkAndOrderFlagOrderByOrderDateDesc(userPk, 0);
 	}
 
 	@GetMapping("/selectDonations")
 	@ResponseBody
 	public List<Order> selectDonations(@RequestParam int userPk) {
-		return oRepo.findAllByUserPkOrderByOrderDateDesc(userPk);
+		return oRepo.findAllByUserPkAndOrderFlagNotOrderByOrderDateDesc(userPk, 0);
 	}
 }

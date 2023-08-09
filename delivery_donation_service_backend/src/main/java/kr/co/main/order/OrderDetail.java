@@ -3,8 +3,12 @@ package kr.co.main.order;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import kr.co.main.selectList.Menu;
+import kr.co.main.selectList.Store;
 import lombok.Data;
 import lombok.ToString;
 
@@ -23,6 +27,8 @@ public class OrderDetail {
 	
 	@Column(name="order_pk")
 	int orderPk;
-	@Column(name="menu_pk")
-	int menuPk;
+	
+	@OneToOne
+	@JoinColumn(name="menu_pk")
+	Menu menu;
 }

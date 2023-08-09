@@ -15,7 +15,7 @@ const Order = ({ date, state, image, title, menu, price, menuLength }) => {
               <MdKeyboardArrowRight size="24px" />
             </div>
             <div className="detailMenuContainer">
-              <div className="detailMenu">{menu[0]}</div>
+              <div className="detailMenu">{menu}</div>
               <div className="detailMenuLength">&nbsp;&nbsp;&nbsp;외 {menuLength - 1}</div>
             </div>
             <div className="detailPrice">{price}</div>
