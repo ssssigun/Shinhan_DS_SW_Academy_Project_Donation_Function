@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 
 //장바구니 기능을 수행하는 컨트롤러
+//장바구니와 기부 보따리 둘 다 사용
 @RestController
 @RequestMapping("/cart")
 @Api(tags = {"장바구니 기능을 수행하는 컨트롤러"})
@@ -28,32 +29,34 @@ public class CartController {
 	
 	//메뉴 갯수 업데이트
 	@GetMapping("/updateAmount")
-	public void updateAmount(@RequestParam int user_pk, @RequestParam int menu_pk) {
+	public void updateAmount(@RequestParam int user_pk, @RequestParam int menu_pk, @RequestParam int flag) {
 		cRepo.save(null);
 	}
 	
 	//장바구니 조회
 	@GetMapping("/selectCart")
 	@ResponseBody
-	public List<Cart> selectCart(@RequestParam int user_pk){
-		return null;
+	public List<Cart> selectCart(@RequestParam int user_pk, @RequestParam int flag){
+		return cRepo.findByUserPkAndFlag(user_pk, flag);
 	}
 		
+	//장바구니 전체 삭제
+	@GetMapping("/deleteMenuAll")
+	public void deleteMenuAll(@RequestParam int user_pk, @RequestParam int flag) {
+		cRepo.delete(null);
+	}
+	
 	//장바구니 메뉴 삭제
 	@GetMapping("/deleteMenu")
-	public void deleteMenu(@RequestParam int user_pk, @RequestParam int menu_pk) {
+	public void deleteMenu(@RequestParam int user_pk, @RequestParam int menu_pk, @RequestParam int flag) {
 		cRepo.delete(null);
 	}
 	
 	//장바구니 가게 메뉴 삭제
 	@GetMapping("/deleteStoreMenu")
-	public void deleteStoreMenu(@RequestParam int user_pk, @RequestParam int store_pk) {
+	public void deleteStoreMenu(@RequestParam int user_pk, @RequestParam int store_pk, @RequestParam int flag) {
 		cRepo.delete(null);
 	}
 	
-	//장바구니 전체 삭제
-	@GetMapping("/deleteMenuAll")
-	public void deleteMenuAll(@RequestParam int user_pk) {
-		cRepo.delete(null);
-	}
+
 }

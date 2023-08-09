@@ -9,7 +9,7 @@ const UpDownButton = ({ buttonStyle, initialAmount, onChange }) => {
     if (onChange) {
       onChange(count); // count 값 변경 시, onChange 콜백 호출
     }
-  }, [count, onChange]);
+  }, [count]);
 
   const handleCountChange = (type) => {
     if (type === 'plus') {
