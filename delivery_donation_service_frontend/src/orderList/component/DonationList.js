@@ -1,8 +1,9 @@
+import dayjs from 'dayjs';
 import None from '../../common/component/None';
-import Order from './Order';
+import Donation from './Donation';
 
 const DonationList = ({ donations }) => {
-  if (donations.length === 0) {
+  if (Object.keys(donations).length === 0) {
     return (
       <None title="떵그러니..." image="image/PLI.png" height={`${window.innerHeight}`}>
         기부내역이 없어요.
@@ -12,18 +13,7 @@ const DonationList = ({ donations }) => {
     );
   } else {
     return donations.map((donation, idx) => {
-      return (
-        <Order
-          date={donation.date}
-          state={donation.state}
-          title={donation.title}
-          image={donation.image}
-          menu={donation.menu}
-          price={donation.price}
-          menuLength={donation.menu.length}
-          key={idx}
-        />
-      );
+      return <Donation donation={donation} key={idx} />;
     });
   }
 };

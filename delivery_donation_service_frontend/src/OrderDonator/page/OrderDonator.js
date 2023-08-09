@@ -22,7 +22,7 @@ const OrderDonator = ({ type }) => {
       .then((response) => {
         // 성공 처리
         // console.log(response.data);
-        setStoreData(response.data);
+        // setStoreData(response.data);
       })
       .catch((error) => {
         // 에러 처리

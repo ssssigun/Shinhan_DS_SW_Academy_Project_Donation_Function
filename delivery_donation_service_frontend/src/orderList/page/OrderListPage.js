@@ -10,8 +10,11 @@ import OrderListHeader from '../component/OrderListHeader';
 import { useLocation } from 'react-router-dom';
 import OrderList from '../component/OrderList';
 import DonationList from '../component/DonationList';
+import axios from 'axios';
 
 const OrderListPage = () => {
+  const userPk = 1;
+
   const buttons = [
     {
       flag: 0,
@@ -25,6 +28,7 @@ const OrderListPage = () => {
 
   const [flag, setFlag] = new useState(0);
   const [modalDisable, setModalDisable] = new useState(true);
+  const [orders, setOrders] = new useState({});
 
   const showModal = (e) => {
     document.body.style.overflow = 'hidden';
@@ -49,14 +53,42 @@ const OrderListPage = () => {
     }
   }, []);
 
+  useEffect(() => {
+    selectOrders();
+    console.log(orders);
+  }, [flag]);
+
+  // 주문 또는 기부 불러오기
+  const selectOrders = () => {
+    if (flag === 1) {
+      axios
+        .get(`/selectOrders?userPk=${userPk}`)
+        .then((response) => {
+          setOrders(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      axios
+        .get(`/selectDonations?userPk=${userPk}`)
+        .then((response) => {
+          setOrders(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+
   return (
     <>
       <OrderListHeader backUrl="/">주문내역</OrderListHeader>
       <div className="orderWrapper">
         <OrderRadioButtons flag={flag} buttons={buttons} setFlag={setFlag} />
         <div className="orderListWrapper">
-          {flag === 0 && <OrderList orders={orderList.orders} />}
-          {flag === 1 && <DonationList donations={orderList.donations} />}
+          {flag === 0 && <OrderList orders={orders} />}
+          {flag === 1 && <DonationList donations={orders} />}
         </div>
       </div>
       {flag === 1 && orderList.donations.length > 0 && (
