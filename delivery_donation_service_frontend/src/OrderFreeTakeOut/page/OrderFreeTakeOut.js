@@ -204,7 +204,7 @@ const OrderFreeTakeOut = ({}) => {
         </div>
         {/* <Terms></Terms> */}
 
-        <OrderBox text="포장 주문하기" />
+        <OrderBox text="포장 주문하기" nav={'/'} />
       </div>
     </>
   );

@@ -1,11 +1,11 @@
-import { MdKeyboardArrowLeft } from 'react-icons/md';
+import BackIcon from '../../common/component/Icons/BackIcon';
 import HeaderWrapper from '../../common/component/HeaderWrapper';
 
 const OrderHeader = ({ children }) => {
   return (
     <HeaderWrapper>
       <div className="headerLeftSide">
-        <MdKeyboardArrowLeft size="30px" />
+        <BackIcon size="30px" color="#000" />
       </div>
       {children}
     </HeaderWrapper>
