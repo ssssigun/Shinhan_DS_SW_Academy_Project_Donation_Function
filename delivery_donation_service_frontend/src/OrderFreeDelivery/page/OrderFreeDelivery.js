@@ -10,13 +10,29 @@ import OrderHeader from '../component/OrderHeader';
 import OrderBox from '../../common/component/orderBox';
 import CheckBox from '../../common/component/CheckBox';
 import AllAgreeCheckBox from '../../common/component/AllAgreeCheckBox';
+import axios from 'axios';
 
 const OrderFreeDelivery = ({ children, checked, onChange }) => {
   const [isChecked, setIsChecked] = useState(false);
+  const [user, setUser] = new useState({});
 
   const handleCheckboxChange = (checked) => {
     setIsChecked(checked);
   };
+
+  const userPk = 1;
+  useEffect(() => {
+    axios
+      .get(`/selectOrderFreeDelivery?userPk=${userPk}`)
+      .then((response) => {
+        console.log(response);
+        setUser(response.data);
+        console.log(response.data.detailAddress);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const [selectedOptions, setSelectedOptions] = useState({
     option1: false,
@@ -36,11 +52,8 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
       setSelectedOptions((prevSelectedOptions) => ({
         ...prevSelectedOptions,
         [option]: !prevSelectedOptions[option],
-        // option4: false,
       }));
     }
-
-    // updateAllAgreeCheckBox();
   };
 
   const handleAllAgreeChange = () => {
@@ -54,14 +67,13 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
     }));
   };
 
+  //체크박스
   const [SselectedOptions, SsetSelectedOptions] = useState({
     option5: false,
   });
 
   useEffect(() => {
-    // const allChecked = Object.values(selectedOptions).every((option, idx) => {
-    //   if (idx != 'option4') return option === true;
-    // });
+    //체크박스
     let allChecked = true;
     Object.keys(selectedOptions).forEach(function (k) {
       //console.log(selectedOptions[k]);
@@ -72,7 +84,6 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
       }
     });
 
-    console.log(allChecked);
     if (selectedOptions.option4 !== allChecked) {
       setSelectedOptions((prevSelectedOptions) => ({
         ...prevSelectedOptions,
@@ -80,6 +91,61 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
       }));
     }
   }, [selectedOptions]);
+
+  //알림메세지 넣기
+  const [warmMessage, setWarmMessage] = useState('');
+  const handleWarmMessageChange = (e) => {
+    setWarmMessage(e.target.value);
+  };
+
+  //따듯한 메세지
+  const handleSendWarmMessage = () => {
+    const userPk = 1; // 유저의 실제 userPk로 변경해야 합니다.
+
+    axios
+      .get(`/inputAlarmMessage?userPk=${userPk}&content=${warmMessage}`)
+      .then((response) => {
+        console.log('Warm message sent:', response);
+        // 알림 메시지 전송 후에 원하는 동작을 수행할 수 있습니다.
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const [donationPk, setDonationPk] = useState('');
+  const [orderDetailPk, setOrderDetailPk] = useState('');
+  const [storePk, setStorePk] = useState('');
+
+  const [state, setState] = useState('');
+  const [donaFlag, setDonaFlag] = useState('');
+  const [message, setMessage] = useState('');
+  const [disposable, setDisposable] = useState('');
+  const [toDeliveryman, setToDeliveryman] = useState('');
+
+  const handleDonationHistoryMessage = () => {
+    const userPk = 1; // 유저의 실제 userPk로 변경해야 합니다.
+
+    axios
+      .get(
+        `/inputOrderToOwnerMessage?userPk=${userPk}&orderDetailPk=${orderDetailPk}&storePk=${storePk}&state=${state}&donaFlag=${donaFlag}&message=${message}&disposable=${disposable}&toDeliveryman=${toDeliveryman}`,
+      )
+      .then((response) => {
+        setOrderDetailPk(response.data);
+        setStorePk(response.data);
+        setState(response.data);
+        setDonaFlag(response.data);
+        setMessage(response.data);
+        setDisposable(response.data);
+        setToDeliveryman(response.data);
+
+        console.log('Warm message sent:', response);
+        // 알림 메시지 전송 후에 원하는 동작을 수행할 수 있습니다.
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -94,10 +160,20 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
           <div className="addressWrapper">
             <div className="text">배달주소</div>
             <div className="addrWrap">
-              <div className="addr">서울특별시 마포구 동교로 225 (연남동)</div>
+              <div className="addr">{user.address}</div>
             </div>
           </div>
-          <Input placeholder="상세주소를 입력하세요"></Input>
+          <Input
+            placeholder="상세주소를 입력하세요"
+            value={user.detailAddress} // user.detailAddress 값으로 설정
+            onChange={(e) => {
+              // 입력 필드 값이 변경될 때 상태 업데이트
+              setUser((prevUser) => ({
+                ...prevUser,
+                detailAddress: e.target.value,
+              }));
+            }}
+          ></Input>
           <hr className="OrderFreeDeliveryHr" />
           <div className="tel">
             <div className="text">010-1234-5678</div>
@@ -138,7 +214,11 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
           </div>
         </Request>
 
-        <SendingWarm></SendingWarm>
+        <SendingWarm
+          warmMessage={warmMessage}
+          onWarmMessageChange={handleWarmMessageChange}
+          onSendWarmMessage={handleSendWarmMessage}
+        ></SendingWarm>
         <div className="takeoutTermsWrapper">
           <AllAgreeCheckBox
             checked={selectedOptions.option4}
