@@ -113,12 +113,32 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
       });
   };
 
+  const [donationPk, setDonationPk] = useState('');
+  const [orderDetailPk, setOrderDetailPk] = useState('');
+  const [storePk, setStorePk] = useState('');
+
+  const [state, setState] = useState('');
+  const [donaFlag, setDonaFlag] = useState('');
+  const [message, setMessage] = useState('');
+  const [disposable, setDisposable] = useState('');
+  const [toDeliveryman, setToDeliveryman] = useState('');
+
   const handleDonationHistoryMessage = () => {
     const userPk = 1; // 유저의 실제 userPk로 변경해야 합니다.
 
     axios
-      .get(`/inputAlarmMessage?userPk=${userPk}&content=${warmMessage}`)
+      .get(
+        `/inputOrderToOwnerMessage?userPk=${userPk}&orderDetailPk=${orderDetailPk}&storePk=${storePk}&state=${state}&donaFlag=${donaFlag}&message=${message}&disposable=${disposable}&toDeliveryman=${toDeliveryman}`,
+      )
       .then((response) => {
+        setOrderDetailPk(response.data);
+        setStorePk(response.data);
+        setState(response.data);
+        setDonaFlag(response.data);
+        setMessage(response.data);
+        setDisposable(response.data);
+        setToDeliveryman(response.data);
+
         console.log('Warm message sent:', response);
         // 알림 메시지 전송 후에 원하는 동작을 수행할 수 있습니다.
       })
