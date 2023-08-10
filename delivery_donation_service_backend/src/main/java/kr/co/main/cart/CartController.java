@@ -33,7 +33,7 @@ public class CartController {
 	@GetMapping("/updateAmount")
     @ApiOperation(value = "메뉴 개수 업데이트")
 	public void updateAmount(Cart c) {
-		cRepo.updateMenuAmount(c.userPk, c.menuPk, c.amount, c.flag);
+		cRepo.updateMenuAmount(c.getUserPk(), c.getMenuPk(), c.getAmount(), c.getFlag());
 	}
 	
 	//장바구니 조회
@@ -55,9 +55,9 @@ public class CartController {
 	@GetMapping("/deleteMenu")
     @ApiOperation(value = "장바구니 메뉴 삭제 (단품)")
 	public void deleteMenu(Cart c) {
-		cRepo.deleteMenu(c.userPk, c.menuPk, c.flag);
+		cRepo.deleteMenu(c.getUserPk(), c.getMenuPk(), c.getFlag());
 
-	}
+	} 
 	
 	//장바구니 가게 메뉴 삭제 (가게)
 	@GetMapping("/deleteStoreMenu")

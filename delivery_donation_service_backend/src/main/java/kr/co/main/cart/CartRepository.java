@@ -31,8 +31,8 @@ public interface CartRepository extends JpaRepository<Cart,Integer>{
 	int deleteMenu(@Param("userPk") int userPk, @Param("menuPk") int menuPk, @Param("flag") int flag);
 	
 	//장바구니 가게 메뉴 삭제 (가게)
-	@Query(value="DELETE FROM Cart WHERE ", nativeQuery=true)
-	@Modifying
-	int deleteStoreMenu();
+//	@Query(value="DELETE FROM Cart WHERE ", nativeQuery=true)
+//	@Modifying
+//	int deleteStoreMenu();
 	
 }
