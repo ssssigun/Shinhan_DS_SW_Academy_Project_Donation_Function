@@ -34,6 +34,12 @@ public class Order {
 	int payState;
 	@Column(name="order_state")
 	int orderState;
+	
+	String message;
+	String disposable;
+	
+	@Column(name="to_deliveryman")
+	String toDeliveryman;
 
 	@Column(name="user_pk")
 	int userPk;

@@ -15,20 +15,6 @@ const OrderDonator = ({ type }) => {
   //   setSelectedOption(event.target.value); // 라디오 버튼 선택 시, 상태 업데이트
   // };
 
-  // GET 요청
-  function selectList(cate) {
-    axios
-      .get(`/selectStore?category=${cate}`)
-      .then((response) => {
-        // 성공 처리
-        // console.log(response.data);
-        // setStoreData(response.data);
-      })
-      .catch((error) => {
-        // 에러 처리
-        console.error(error);
-      });
-  }
   const [selected, setSelected] = useState([1, 0]);
 
   const hanldeRadioChange = (index) => {
