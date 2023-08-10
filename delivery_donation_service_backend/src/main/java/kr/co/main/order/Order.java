@@ -36,8 +36,7 @@ public class Order {
 	int orderState;
 	
 	String message;
-	String disposable;
-	
+	String disposable;	
 	@Column(name="to_deliveryman")
 	String toDeliveryman;
 
