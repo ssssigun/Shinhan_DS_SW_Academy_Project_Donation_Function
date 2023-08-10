@@ -20,24 +20,23 @@ import "../style/storeList.scss"
 const StoreList = () => {
   const navigate = useNavigate();
     function move(e){
-      const selectStore = e.currentTarget;
       navigate("/storeMainDonater", {
         state:{
-          title : selectStore.querySelector('.title').innerText,
-          review : selectStore.querySelector('.smallTextNumber').innerText
+          title : e.storeName,
+          review : e.review,
+          storePk : e.storePk
         }
       });
     }
     // 카테고리 이름 가져오기 위해서 location 사용
     let location = useLocation();
 
-    
     const [checkedMenuBar, setCheckedMenuBar] = useState(location.state.name);
     const [storeData, setStoreData] = useState([]);
 
     // GET 요청
     function selectList(cate){
-      axios.get(`/selectStore?category=${cate}`)
+      axios.get(`/db/selectStore?category=${cate}`)
       .then(response => {
         // 성공 처리
         // console.log(response.data);
@@ -88,7 +87,7 @@ const StoreList = () => {
           <ul className="storeListWrap">
             {
               storeData.map(store => (
-                  <li className="store" onClick={move}>
+                  <li className="store" key={store.storePk} onClick={()=>move(store)}>
                     <StoreDonate st={store}/>
                   </li>
                 )

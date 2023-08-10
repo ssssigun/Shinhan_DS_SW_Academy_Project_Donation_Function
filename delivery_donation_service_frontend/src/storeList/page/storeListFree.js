@@ -21,11 +21,11 @@ import "../style/storeList.scss"
 const StoreList = () => {
   const navigate = useNavigate();
     function move(e){
-      const selectStore = e.currentTarget;
       navigate("/storeMainFree", {
         state:{
-          title : selectStore.querySelector('.title').innerText,
-          review : selectStore.querySelector('.smallTextNumber').innerText
+          title : e.storeName,
+          review : e.review,
+          storePk : e.storePk
         }
       });
     }
@@ -38,10 +38,9 @@ const StoreList = () => {
 
     // GET 요청
     function selectList(cate){
-      axios.get(`/selectStore?category=${cate}`)
+      axios.get(`/db/selectStore?category=${cate}`)
       .then(response => {
         // 성공 처리
-        // console.log(response.data);
         setStoreData(response.data);
       })
       .catch(error => {
@@ -83,7 +82,7 @@ const StoreList = () => {
           <ul className="storeListWrap">
             {
               StoreData.map(store => (
-                  <li className="store" onClick={move}>
+                  <li className="store" key={store.storePk} onClick={()=>move(store)}>
                     <Store st={store}/>
                   </li>
                 )

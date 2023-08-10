@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import io.swagger.annotations.ApiOperation;
 //데이터의 목록들을 불러오는 기능을 수행하는 컨트롤러
 @Api(tags = {"데이터의 목록들을 불러오는 기능을 수행하는 컨트롤러"})
 @RestController
+@RequestMapping("/db")
 public class ListController {
 	@Autowired
 	StoreRepository sRepo;
