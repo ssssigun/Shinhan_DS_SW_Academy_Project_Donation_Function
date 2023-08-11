@@ -16,6 +16,6 @@ public class DonationHistoryController {
     @ApiOperation(value = "주문내역에 가게사장님에게 요청사항 메세지 저장")
 	@GetMapping("/inputOrderToOwnerMessage")
 	public void inputOrderToOwnerMessage(DonationHistory d) {
-    	dRepo.save(d);
+//    	dRepo.save(d);
 	}
 }

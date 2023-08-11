@@ -55,10 +55,10 @@ const Login = () => {
     })
     .then(function a(response) { 
       console.log(response);
-      navigate("/");
       //발급된 토큰을 localStage 저장
       localStorage.setItem("accessToken", response.data.accessToken);
       localStorage.setItem("refreshToken", response.data.arefreshToken);
+      navigate("/");
     })
     .catch(function (error) {
       setMessage("아이디 혹은 비밀번호가 올바르지 않습니다!");
