@@ -37,8 +37,8 @@ public class ListController {
     @ApiImplicitParam(name = "stoer_pk", value = "가게 PK", dataType = "Integer", example = "1")
 	@GetMapping("/selectMenu")
 	@ResponseBody
-	public List<Menu> selectMenu(@RequestParam int stoer_pk) {
-		return mRepo.findByStorePk(stoer_pk);
+	public List<Menu> selectMenu(@RequestParam int store_pk) {
+		return mRepo.findByStorePk(store_pk);
 	}
 	
 }

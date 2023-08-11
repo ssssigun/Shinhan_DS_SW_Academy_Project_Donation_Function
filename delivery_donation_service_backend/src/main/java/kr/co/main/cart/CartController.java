@@ -32,8 +32,8 @@ public class CartController {
 	//메뉴 개수 업데이트
 	@GetMapping("/updateAmount")
     @ApiOperation(value = "메뉴 개수 업데이트")
-	public void updateAmount(Cart c) {
-		cRepo.updateMenuAmount(c.getUserPk(), c.getMenuPk(), c.getAmount(), c.getFlag());
+	public void updateAmount(@RequestParam int amount, @RequestParam int cartPk) {
+		cRepo.updateMenuAmount(amount, cartPk);
 	}
 	
 	//장바구니 조회
@@ -41,7 +41,7 @@ public class CartController {
     @ApiOperation(value = "장바구니 조회")
 	@ResponseBody
 	public List<Cart> selectCart(@RequestParam int userPk, @RequestParam int flag){
-		return cRepo.findByUserPkAndFlag(userPk, flag);
+		return cRepo.findAllByUserPkAndFlag(userPk, flag);
 	}
 		
 	//장바구니 전체 삭제 (전체)
@@ -55,7 +55,7 @@ public class CartController {
 	@GetMapping("/deleteMenu")
     @ApiOperation(value = "장바구니 메뉴 삭제 (단품)")
 	public void deleteMenu(Cart c) {
-		cRepo.deleteMenu(c.getUserPk(), c.getMenuPk(), c.getFlag());
+		cRepo.deleteMenu(c.getUserPk(), c.getMenu().getMenuPk(), c.getFlag());
 
 	} 
 	

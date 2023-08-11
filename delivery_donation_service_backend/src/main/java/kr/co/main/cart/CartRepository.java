@@ -13,12 +13,12 @@ import org.springframework.data.repository.query.Param;
 public interface CartRepository extends JpaRepository<Cart,Integer>{
 	
 	//메뉴 갯수 업데이트
-	@Query(value ="UPDATE Cart SET amount= :amount WHERE user_pk = :userPk AND menu_pk = :menuPk AND flag = :flag", nativeQuery = true)
+	@Query(value ="UPDATE Cart SET amount= :amount WHERE cart_pk = :cartPk", nativeQuery = true)
 	@Modifying
-	int updateMenuAmount(@Param("userPk") int userPk, @Param("menuPk") int menuPk, @Param("amount") int amount, @Param("flag") int flag);
+	int updateMenuAmount(@Param("amount") int amount, @Param("cartPk") int cartPk);
 	
 	//장바구니 조회
-	List<Cart> findByUserPkAndFlag(int user_pk, int flag);
+	List<Cart> findAllByUserPkAndFlag(int user_pk, int flag);
 	
 	//장바구니 전체 삭제 (전체)
 	@Query(value="DELETE FROM Cart WHERE user_pk= :userPk AND flag = :flag", nativeQuery=true)

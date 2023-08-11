@@ -7,9 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import kr.co.main.selectList.Menu;
+import kr.co.main.selectList.Store;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -32,13 +34,14 @@ public class Cart {
 	@Column(name = "user_pk")
 	private int userPk;
 	
-	@Column(name = "menu_pk")
-	private int menuPk;
-	
 	@Column(name="amount")
 	private int amount;
 	
 	@ManyToOne
 	@JoinColumn(name="menu_pk")
 	private Menu menu;
+	
+	@OneToOne
+	@JoinColumn(name="store_pk")
+	private Store store;
 }
