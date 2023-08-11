@@ -176,7 +176,7 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
           ></Input>
           <hr className="OrderFreeDeliveryHr" />
           <div className="tel">
-            <div className="text">010-1234-5678</div>
+            <div className="text">{user.tel}</div>
             <div className="checkButtonWithLabel">
               <AllAgreeCheckBox
                 checked={SselectedOptions.option5}
