@@ -11,14 +11,14 @@ import AllAgreeCheckBox from '../../common/component/AllAgreeCheckBox';
 import axios from 'axios';
 
 const OrderFreeTakeOut = ({ onChange }) => {
-  const [store, setStore] = new useState({});
+  const [user, setUser] = new useState({});
   const userPk = 1;
   useEffect(() => {
     axios
       .get(`/selectOrderFreeDelivery?userPk=${userPk}`)
       .then((response) => {
         console.log(response);
-        setStore(response.data);
+        setUser(response.data);
         console.log(response.data.detailAddress);
       })
       .catch((error) => {
@@ -133,12 +133,12 @@ const OrderFreeTakeOut = ({ onChange }) => {
           <div className="addressWrapper">
             <div className="text">가게주소</div>
             <div className="addrWrap">
-              <div className="addr">{store.address}</div>
+              <div className="addr">~가게주소~</div>
             </div>
           </div>
           <hr className="OrderFreeTakeOuthr" />
           <div className="tel">
-            <div className="text">010-1234-5678</div>
+            <div className="text">{user.tel}</div>
             <AllAgreeCheckBox
               checked={SselectedOptions.option5}
               onChange={() => handleOptionChange('option5')}
