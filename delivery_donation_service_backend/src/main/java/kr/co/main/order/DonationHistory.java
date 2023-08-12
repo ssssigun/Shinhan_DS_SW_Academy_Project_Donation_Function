@@ -34,4 +34,7 @@ public class DonationHistory {
 	int disposable;
 	@Column(name="to_deliveryman")
 	String toDeliveryman;
+	@Column(name="detail_address")
+	String detailAddress;
+	
 }
