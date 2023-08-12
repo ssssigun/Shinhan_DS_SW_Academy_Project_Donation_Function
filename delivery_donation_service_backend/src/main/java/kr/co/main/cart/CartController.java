@@ -59,12 +59,12 @@ public class CartController {
 
 	} 
 	
-	//장바구니 가게 메뉴 삭제 (가게)
-	@GetMapping("/deleteStoreMenu")
-    @ApiOperation(value = "장바구니 가게 메뉴 삭제 (가게)")
-	public void deleteStoreMenu(Cart c) {
-		cRepo.delete(null);
-	}
+//	//장바구니 가게 메뉴 삭제 (가게)
+//	@GetMapping("/deleteStoreMenu")
+//    @ApiOperation(value = "장바구니 가게 메뉴 삭제 (가게)")
+//	public void deleteStoreMenu(Cart c) {
+//		cRepo.delete(null);
+//	}
 	
 	
 

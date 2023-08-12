@@ -8,20 +8,23 @@ import OrderBox from '../../common/component/orderBox';
 import CheckBox from '../../common/component/CheckBox';
 import React, { useEffect, useState } from 'react';
 import AllAgreeCheckBox from '../../common/component/AllAgreeCheckBox';
+import axios from 'axios';
 
-const OrderFreeTakeOut = ({}) => {
-  // const [selectedOption, setSelectedOption] = useState('option1'); // 초기 선택 옵션 설정
-  // const handleOptionChange = (event) => {
-  //   setSelectedOption(event.target.value); // 라디오 버튼 선택 시, 상태 업데이트
-  // };
-
-  // const updateAllAgreeCheckBox = () => {
-  //   const allChecked = Object.values(selectedOptions).every((option) => option === true);
-  //   setSelectedOptions((prevSelectedOptions) => ({
-  //     ...prevSelectedOptions,
-  //     option4: allChecked,
-  //   }));
-  // };
+const OrderFreeTakeOut = ({ onChange }) => {
+  const [user, setUser] = new useState({});
+  const userPk = 1;
+  useEffect(() => {
+    axios
+      .get(`/selectOrderFreeDelivery?userPk=${userPk}`)
+      .then((response) => {
+        console.log(response);
+        setUser(response.data);
+        console.log(response.data.detailAddress);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const [selectedOptions, setSelectedOptions] = useState({
     option1: false,
@@ -130,12 +133,12 @@ const OrderFreeTakeOut = ({}) => {
           <div className="addressWrapper">
             <div className="text">가게주소</div>
             <div className="addrWrap">
-              <div className="addr">서울특별시 마포구 동교로 225 (연남동)</div>
+              <div className="addr">~가게주소~</div>
             </div>
           </div>
           <hr className="OrderFreeTakeOuthr" />
           <div className="tel">
-            <div className="text">010-1234-5678</div>
+            <div className="text">{user.tel}</div>
             <AllAgreeCheckBox
               checked={SselectedOptions.option5}
               onChange={() => handleOptionChange('option5')}

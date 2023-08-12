@@ -1,8 +1,9 @@
 import '../style/WideButton.scss'
 
-const WideButton = ({ text, style }) => {
+
+const WideButton = ({ text, style, propFunction}) => {
   return (
-    <button style={style} className="wideButton" type="">
+    <button style={style} className="wideButton" type="" onClick={propFunction}>
       {text}
     </button>
   )

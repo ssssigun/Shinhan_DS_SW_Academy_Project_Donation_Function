@@ -1,4 +1,4 @@
-package kr.co.main.order;
+package kr.co.main.user;
 
 import java.util.List;
 
@@ -9,28 +9,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import kr.co.main.selectList.Store;
+import kr.co.main.user.User;
 
 @Api(tags = {"주문내역 관련 컨트롤러"})
 @RestController
-public class OrderController {
+public class UserController {
 	@Autowired
-	OrderRepository oRepo;
+	UserRepository uRepo;
 	
-	@GetMapping("/selectOrders")
-	@ResponseBody
-	public List<Order> selectOrders(@RequestParam int userPk) {
-		return oRepo.findAllByUserPkAndOrderFlagOrderByOrderDateDesc(userPk, 0);
-	}
 
-	@GetMapping("/selectDonations")
+	@GetMapping("/selectOrderFreeDelivery")
 	@ResponseBody
-	public List<Order> selectDonations(@RequestParam int userPk) {
-		return oRepo.findAllByUserPkAndOrderFlagNotOrderByOrderDateDesc(userPk, 0);
+	public User selectOrderFreeDelivery(@RequestParam int userPk) {
+		return uRepo.findByUserPk(userPk);
 	}
-	
-	
-	
 
 	
 	
