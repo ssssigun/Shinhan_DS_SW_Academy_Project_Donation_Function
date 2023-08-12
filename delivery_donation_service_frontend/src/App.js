@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './common/style/common.scss';
 
 import Login from './Login/page/Login';
-import DonationCart from './DonationCart/page/DonationCart';
-import Cart from './Cart/page/Cart';
+import DonationCartPage from './DonationCart/page/DonationCartPage';
+import MainCartPage from './Cart/page/MainCartPage';
 import MainPage from './main/page/MainPage';
 import OrderDonator from './OrderDonator/page/OrderDonator';
 import AlarmPage from './alarm/page/AlarmPage';
@@ -15,23 +15,23 @@ import StoreListDonater from './storeList/page/storeListDonater';
 import StoreListFree from './storeList/page/storeListFree';
 import StoreMain from './store/page/storeMain';
 import StoreMainDonater from './store/page/storeMainDonater';
-import StoreMainFree from './store/page/storeMainFree'; 
+import StoreMainFree from './store/page/storeMainFree';
 import MenuDetail from './store/page/menuDetail';
 import MenuDetailDonater from './store/page/menuDetailDonater';
 import OrderFreeDelivery from './OrderFreeDelivery/page/OrderFreeDelivery';
 import OrderFreeTakeOut from './OrderFreeTakeOut/page/OrderFreeTakeOut';
-import ScrollTop from "./common/component/scrollTop";
+import ScrollTop from './common/component/scrollTop';
 import ReadyPage from './common/page/ReadyPage';
 import DonationDetailPage from './orderList/page/DonationDetailPage';
 
 function App() {
   return (
     <BrowserRouter>
-      <ScrollTop/>    {/*페이지 넘어갈 때 맨위로*/}
+      <ScrollTop /> {/*페이지 넘어갈 때 맨위로*/}
       <Routes>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/donationCart" element={<DonationCart />}></Route>
-        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/donationCart" element={<DonationCartPage />}></Route>
+        <Route path="/cart" element={<MainCartPage />}></Route>
         <Route path="/orderDonator" element={<OrderDonator type="기부" />}></Route>
         <Route path="/orderFreeDelivery" element={<OrderFreeDelivery />}></Route>
         <Route path="/orderFreeTakeOut" element={<OrderFreeTakeOut />}></Route>

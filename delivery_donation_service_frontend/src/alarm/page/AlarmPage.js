@@ -31,7 +31,7 @@ const AlarmPage = () => {
 
   useEffect(() => {
     axios
-      .get(`/selectAlarms?userPk=${userPk}`)
+      .get(`/db/selectAlarms?userPk=${userPk}`)
       .then((response) => {
         setAlarms(makeSection(response.data));
       })
