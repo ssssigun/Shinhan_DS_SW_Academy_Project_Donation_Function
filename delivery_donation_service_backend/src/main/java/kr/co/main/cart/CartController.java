@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiOperation;
 //장바구니 기능을 수행하는 컨트롤러
 //장바구니와 기부 보따리 둘 다 사용
 @RestController
-@RequestMapping("/cart")
+@RequestMapping("/db/cart")
 @Api(tags = {"장바구니 기능을 수행하는 컨트롤러"})
 public class CartController {
 	
@@ -32,8 +32,8 @@ public class CartController {
 	//메뉴 개수 업데이트
 	@GetMapping("/updateAmount")
     @ApiOperation(value = "메뉴 개수 업데이트")
-	public void updateAmount(Cart c) {
-		cRepo.updateMenuAmount(c.getUserPk(), c.getMenuPk(), c.getAmount(), c.getFlag());
+	public void updateAmount(@RequestParam int amount, @RequestParam int cartPk) {
+		cRepo.updateMenuAmount(amount, cartPk);
 	}
 	
 	//장바구니 조회
@@ -41,7 +41,7 @@ public class CartController {
     @ApiOperation(value = "장바구니 조회")
 	@ResponseBody
 	public List<Cart> selectCart(@RequestParam int userPk, @RequestParam int flag){
-		return cRepo.findByUserPkAndFlag(userPk, flag);
+		return cRepo.findAllByUserPkAndFlag(userPk, flag);
 	}
 		
 	//장바구니 전체 삭제 (전체)
@@ -54,17 +54,15 @@ public class CartController {
 	//장바구니 메뉴 삭제 (단품)
 	@GetMapping("/deleteMenu")
     @ApiOperation(value = "장바구니 메뉴 삭제 (단품)")
-	public void deleteMenu(Cart c) {
-		cRepo.deleteMenu(c.getUserPk(), c.getMenuPk(), c.getFlag());
-
-	} 
-	
-//	//장바구니 가게 메뉴 삭제 (가게)
-//	@GetMapping("/deleteStoreMenu")
-//    @ApiOperation(value = "장바구니 가게 메뉴 삭제 (가게)")
-//	public void deleteStoreMenu(Cart c) {
-//		cRepo.delete(null);
-//	}
+	public void deleteMenu(@RequestParam int cartPk) {
+		cRepo.deleteMenu(cartPk);
+	}
+	//장바구니 가게 메뉴 삭제 (가게)
+	@GetMapping("/deleteStoreMenu")
+    @ApiOperation(value = "장바구니 가게 메뉴 삭제 (가게)")
+	public void deleteStoreMenu(@RequestParam int storePk, @RequestParam int userPk) {
+		cRepo.deleteStoreMenu(storePk, userPk);
+	}
 	
 	
 

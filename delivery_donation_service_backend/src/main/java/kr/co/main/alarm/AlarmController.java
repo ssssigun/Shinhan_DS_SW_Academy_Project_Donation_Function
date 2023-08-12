@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import kr.co.main.order.DonationHistoryRepository;
 
 @Api(tags = {"알림함 관련 컨트롤러"})
 @RestController
+@RequestMapping("/db")
 public class AlarmController {
 	@Autowired
 	AlarmRepository aRepo;
