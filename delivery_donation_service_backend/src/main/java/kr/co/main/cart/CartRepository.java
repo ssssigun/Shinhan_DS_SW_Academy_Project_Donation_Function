@@ -12,13 +12,13 @@ import org.springframework.data.repository.query.Param;
 @Transactional
 public interface CartRepository extends JpaRepository<Cart,Integer>{
 	
+	//장바구니 조회
+	List<Cart> findAllByUserPkAndFlag(int user_pk, int flag);
+	
 	//메뉴 갯수 업데이트
 	@Query(value ="UPDATE Cart SET amount= :amount WHERE cart_pk = :cartPk", nativeQuery = true)
 	@Modifying
 	int updateMenuAmount(@Param("amount") int amount, @Param("cartPk") int cartPk);
-	
-	//장바구니 조회
-	List<Cart> findAllByUserPkAndFlag(int user_pk, int flag);
 	
 	//장바구니 전체 삭제 (전체)
 	@Query(value="DELETE FROM Cart WHERE user_pk= :userPk AND flag = :flag", nativeQuery=true)
@@ -26,13 +26,13 @@ public interface CartRepository extends JpaRepository<Cart,Integer>{
 	int deleteMenuAll(@Param("userPk") int userPk, @Param("flag") int flag);
 	
 	//장바구니 메뉴 삭제 (단품)
-	@Query(value="DELETE FROM Cart WHERE user_pk = :userPk AND menu_pk = :menuPk AND flag = :flag", nativeQuery=true)
+	@Query(value="DELETE FROM Cart WHERE cart_pk = :cartPk", nativeQuery=true)
 	@Modifying
-	int deleteMenu(@Param("userPk") int userPk, @Param("menuPk") int menuPk, @Param("flag") int flag);
+	int deleteMenu(@Param("cartPk") int cartPk);
 	
 	//장바구니 가게 메뉴 삭제 (가게)
-//	@Query(value="DELETE FROM Cart WHERE ", nativeQuery=true)
-//	@Modifying
-//	int deleteStoreMenu();
+	@Query(value="DELETE FROM Cart WHERE store_pk = :storePk AND user_pk = :userPk", nativeQuery=true)
+	@Modifying
+	int deleteStoreMenu(@Param("storePk") int storePk, @Param("userPk") int userPk);
 	
 }
