@@ -25,7 +25,8 @@ const StoreList = () => {
         state:{
           title : e.storeName,
           review : e.review,
-          storePk : e.storePk
+          storePk : e.storePk,
+          storeImage : e.storeImage
         }
       });
     }
@@ -83,7 +84,7 @@ const StoreList = () => {
             {
               storeData.map(store => (
                   <li className="store" key={store.storePk} onClick={()=>move(store)}>
-                    <Store st={store}/>
+                    <Store st={store} style={store.storeImage}/>
                   </li>
                 )
               )

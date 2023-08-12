@@ -40,7 +40,7 @@ const StoreMain = () => {
 
     //처음 렌더링할 떄 메뉴 리스트 가져오기
     useEffect(() => {
-      axios.get(`/selectMenu?stoer_pk=${location.state.storePk}`)
+      axios.get(`/db/selectMenu?stoer_pk=${location.state.storePk}`)
       .then(response => {
         // 성공 처리
         setMenuData(response.data);
@@ -51,7 +51,7 @@ const StoreMain = () => {
       });
     }, []);
     return (
-        <StoreForm image={"/image/test.png"} >
+        <StoreForm image={location.state.storeImage} >
           {/* 제목라인 */}
           <div className="StoreMainTitleArea">
             <p className="StoreMainTitle">{location.state.title}</p>

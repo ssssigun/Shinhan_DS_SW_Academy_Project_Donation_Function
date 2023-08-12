@@ -24,8 +24,10 @@ const StoreList = () => {
     const selectStore = e.currentTarget;
     navigate('/storeMainDonater', {
       state: {
-        title: selectStore.querySelector('.title').innerText,
-        review: selectStore.querySelector('.smallTextNumber').innerText,
+        title : e.storeName,
+        review : e.review,
+        storePk : e.storePk,
+        storeImage : e.storeImage
       },
     });
   }
@@ -38,7 +40,7 @@ const StoreList = () => {
   // GET 요청
   function selectList(cate) {
     axios
-      .get(`/selectStore?category=${cate}`)
+      .get(`/db/selectStore?category=${cate}`)
       .then((response) => {
         // 성공 처리
         // console.log(response.data);
@@ -90,7 +92,7 @@ const StoreList = () => {
             {
               storeData.map(store => (
                 <li className="store" key={store.storePk} onClick={()=>move(store)}>
-                  <StoreDonate st={store}/>
+                  <StoreDonate st={store} style={store.storeImage}/>
                 </li>
           ))}
         </ul>
