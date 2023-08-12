@@ -62,7 +62,7 @@ const OrderListPage = () => {
   const selectOrders = () => {
     if (flag === 1) {
       axios
-        .get(`/selectOrders?userPk=${userPk}`)
+        .get(`/db/selectOrders?userPk=${userPk}`)
         .then((response) => {
           setOrders(response.data);
         })
@@ -71,7 +71,7 @@ const OrderListPage = () => {
         });
     } else {
       axios
-        .get(`/selectDonations?userPk=${userPk}`)
+        .get(`/db/selectDonations?userPk=${userPk}`)
         .then((response) => {
           setOrders(response.data);
         })
