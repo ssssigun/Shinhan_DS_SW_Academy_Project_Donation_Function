@@ -38,7 +38,7 @@ public class Cart {
 	@Column(name="amount")
 	private int amount;
 	
-	@ManyToOne
-	@JoinColumn(name="menu_pk")
-	private Menu menu;
+//	@ManyToOne
+//	@JoinColumn(name="menu_pk")
+//	private Menu menu;
 }

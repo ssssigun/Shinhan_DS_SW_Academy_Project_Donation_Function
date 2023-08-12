@@ -34,12 +34,7 @@ public class OrderController {
 		return oRepo.findAllByUserPkAndOrderFlagNotOrderByOrderDateDesc(userPk, 0);
 	}
 	
-	//주문내역에 가게사장님에게 요청사항 메세지 저장
-    @ApiOperation(value = "주문내역에 가게사장님에게 요청사항 메세지 저장")
-	@GetMapping("/inputOrderToOwnerMessage")
-	public void inputOrderToOwnerMessage(Order o) {
-    	oRepo.save(o);
-	}
+	
 	
 
 	
