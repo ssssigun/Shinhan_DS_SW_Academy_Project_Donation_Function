@@ -128,7 +128,7 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
 
     axios
       .get(
-        `/inputOrderToOwnerMessage?userPk=${userPk}&orderDetailPk=${orderDetailPk}&storePk=${storePk}&state=${state}&donaFlag=${donaFlag}&message=${message}&disposable=${disposable}&toDeliveryman=${toDeliveryman}`,
+        `/inputOrderToOwnerMessage?userPk=${userPk}&content=${warmMessage}&orderDetailPk=${orderDetailPk}&storePk=${storePk}&state=${state}&donaFlag=${donaFlag}&message=${message}&disposable=${disposable}&toDeliveryman=${toDeliveryman}`,
       )
       .then((response) => {
         setOrderDetailPk(response.data);
@@ -176,7 +176,7 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
           ></Input>
           <hr className="OrderFreeDeliveryHr" />
           <div className="tel">
-            <div className="text">010-1234-5678</div>
+            <div className="text">{user.tel}</div>
             <div className="checkButtonWithLabel">
               <AllAgreeCheckBox
                 checked={SselectedOptions.option5}
