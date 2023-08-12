@@ -19,6 +19,7 @@ import '../style/storeList.scss';
 
 const StoreList = () => {
   const navigate = useNavigate();
+
   function move(e) {
     const selectStore = e.currentTarget;
     navigate('/storeMainDonater', {
@@ -47,54 +48,50 @@ const StoreList = () => {
         // 에러 처리
         console.error(error);
       });
-  }
-
-  //처음 렌더링 시 실행
-  useEffect(() => {
-    selectList(location.state.name);
-  }, []);
-  return (
-    <div id="storeListWrapper">
-      <div className="storeListTopArea">
-        {/* 헤더 */}
-        <StoreListHeaderDonate>{checkedMenuBar}</StoreListHeaderDonate>
-        {/* 메뉴 카테고리 */}
-        <div id="categoryMenuBar">
-          <ul id="menu">
-            {categoryData.category.map((category) =>
-              checkedMenuBar === category.name ? (
-                category.canDonate ? (
-                  <li className="checked">
-                    <p>{category.name}</p>
-                  </li>
-                ) : (
-                  ''
-                )
-              ) : category.canDonate ? (
-                <li
-                  onClick={() => {
-                    setCheckedMenuBar(category.name);
-                    selectList(category.name);
-                  }}
-                >
-                  <p>{category.name}</p>
-                </li>
-              ) : (
-                ''
-              ),
-            )}
-          </ul>
+    }
+    
+    //처음 렌더링 시 실행
+    useEffect(() =>{
+      selectList(location.state.name);
+    },[])
+    return (
+      
+      <div id="storeListWrapper">
+        <div className="storeListTopArea">
+            {/* 헤더 */}
+            <StoreListHeaderDonate>
+              {checkedMenuBar}
+            </StoreListHeaderDonate>
+          {/* 메뉴 카테고리 */}
+          <div id="categoryMenuBar">
+            <ul id="menu">
+              {
+                categoryData.category.map(category => (
+                  checkedMenuBar === category.name ?
+                    category.canDonate ?
+                      <li className="checked"><p>{category.name}</p></li>
+                      :
+                      ""
+                    :
+                    category.canDonate ?
+                      <li onClick={() => { setCheckedMenuBar(category.name); selectList(category.name)}}><p>{category.name}</p></li>
+                      :
+                      ""
+                ))
+              }
+            </ul>
+          </div>
+          {/* 가게 정렬 옵션*/}
+          <SortOptionBar/>
         </div>
-        {/* 가게 정렬 옵션*/}
-        <SortOptionBar />
-      </div>
-      {/* 가게 목록들 */}
-      <div className="storeListBottomArea">
-        <ul className="storeListWrap">
-          {storeData.map((store) => (
-            <li className="store" onClick={move}>
-              <StoreDonate st={store} />
-            </li>
+        {/* 가게 목록들 */}
+        <div className="storeListBottomArea">
+          <ul className="storeListWrap">
+            {
+              storeData.map(store => (
+                <li className="store" key={store.storePk} onClick={()=>move(store)}>
+                  <StoreDonate st={store}/>
+                </li>
           ))}
         </ul>
       </div>
