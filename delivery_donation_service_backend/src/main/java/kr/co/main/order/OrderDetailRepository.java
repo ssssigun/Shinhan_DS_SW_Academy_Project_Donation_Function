@@ -6,5 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import kr.co.main.user.User;
 
-public interface OrderDetailRepository extends JpaRepository<Order,Integer> {
+public interface OrderDetailRepository extends JpaRepository<OrderDetail,Integer> {
+	
+
 }
