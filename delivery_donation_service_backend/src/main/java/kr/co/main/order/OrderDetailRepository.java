@@ -8,4 +8,5 @@ import kr.co.main.user.User;
 
 public interface OrderDetailRepository extends JpaRepository<OrderDetail,Integer> {
 	
+
 }

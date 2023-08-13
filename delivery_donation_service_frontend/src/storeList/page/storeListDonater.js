@@ -24,8 +24,7 @@ const StoreList = () => {
     const selectStore = e.currentTarget;
     navigate('/storeMainDonater', {
       state: {
-        title: selectStore.querySelector('.title').innerText,
-        review: selectStore.querySelector('.smallTextNumber').innerText,
+        storePk : e.storePk
       },
     });
   }
@@ -38,7 +37,7 @@ const StoreList = () => {
   // GET 요청
   function selectList(cate) {
     axios
-      .get(`/selectStore?category=${cate}`)
+      .get(`/db/selectStoreAndCount?category=${cate}`)
       .then((response) => {
         // 성공 처리
         // console.log(response.data);

@@ -10,10 +10,13 @@ import javax.persistence.Table;
 import kr.co.main.selectList.Menu;
 import kr.co.main.selectList.Store;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
-@Data
-@ToString
+@Getter
+@Setter
+@ToString(exclude="menu")
 @Entity
 @Table(name="Order_detail")
 public class OrderDetail {
