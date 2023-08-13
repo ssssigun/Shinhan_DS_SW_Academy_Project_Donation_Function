@@ -54,10 +54,10 @@ const Login = () => {
       }
     })
     .then(function a(response) { 
-      console.log(response);
       //발급된 토큰을 localStage 저장
-      localStorage.setItem("accessToken", response.data.accessToken);
-      localStorage.setItem("refreshToken", response.data.arefreshToken);
+      sessionStorage.setItem('accessToken', response.data.accessToken);
+      sessionStorage.setItem('refreshToken', response.data.arefreshToken);
+      // sessionStorage.setItem('userPk', response.data.userPk);
       navigate("/");
     })
     .catch(function (error) {
