@@ -37,10 +37,25 @@ const StoreMain = () => {
     let location = useLocation();
     
     const [menuData,setMenuData] = useState([]);
+    const [storeData, setStoreData] =useState({});
 
-    //처음 렌더링할 떄 메뉴 리스트 가져오기
+    //처음 렌더링할 때
     useEffect(() => {
-      axios.get(`/selectMenu?stoer_pk=${location.state.storePk}`)
+
+    //가게 정보 가져오기
+    axios
+      .get(`/db/storeInfo?store_pk=${location.state.storePk}`)
+      .then((response) => {
+        // 성공 처리
+        setStoreData(response.data);
+      })
+      .catch((error) => {
+        // 에러 처리
+        console.error(error);
+      }); 
+
+      //메뉴 리스트 가져오기
+      axios.get(`/db/selectMenuAndCount?store_pk=${location.state.storePk}`)
       .then(response => {
         // 성공 처리
         setMenuData(response.data);
@@ -51,10 +66,10 @@ const StoreMain = () => {
       });
     }, []);
     return (
-        <StoreForm image={"/image/test.png"} >
+        <StoreForm image={storeData.storeImage} >
           {/* 제목라인 */}
           <div className="StoreMainTitleArea">
-            <p className="StoreMainTitle">{location.state.title}</p>
+            <p className="StoreMainTitle">{storeData.storeName}</p>
             <div className="StoreMainInfoArea">
               <span className="StoreMainInfo">가게/원산지 정보</span>
               <MdOutlineKeyboardArrowRight className="StoreMainArrowStyle"/>
@@ -84,7 +99,7 @@ const StoreMain = () => {
             </li>
             <li>
               <div className="StoreMainButton">
-                <span>{location.state.review}</span>
+                <span>{storeData.review}</span>
               </div>
               <p>최근 리뷰</p>
             </li>
@@ -110,11 +125,11 @@ const StoreMain = () => {
             <ul className="StoreMainMenuList">
               {
                 menuData.map(menu=>(
-                  <li className="StoreMainMenu" onClick={move}>
+                  <li className="StoreMainMenu"onClick={() => move(menu)}>
                       <div className="StoreMainMenuTextArea">
                         <div className="StoreMainMenuTextTitleArea">
                           <span className="StoreMainMenuTextTitle">{menu.menuName}</span>
-                          <div className="StoreMainMenuTextTitleNumber"><span>1</span></div>
+                          <div className="StoreMainMenuTextTitleNumber"><span>{menu.donationAmount}</span></div>
                         </div>
                         <p className="StoreMainMenuTextDetail">
                           {menu.detail}

@@ -23,8 +23,6 @@ const StoreList = () => {
     function move(e){
       navigate("/storeMain", {
         state:{
-          title : e.storeName,
-          review : e.review,
           storePk : e.storePk
         }
       });

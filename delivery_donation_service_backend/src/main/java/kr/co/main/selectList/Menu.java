@@ -2,13 +2,11 @@ package kr.co.main.selectList;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -45,4 +43,8 @@ public class Menu {
 	
 	@Column(name="detail")
 	private String detail;
+	
+	//메뉴 잔여 수량
+	@Transient
+	private int donationAmount;
 }
