@@ -10,8 +10,8 @@ const store = (prop) => {
     return (
       <>
         <div  className="imageArea">
-          <div className="storeImage"  style={{ "background-image":`url(${prop.style})`}}>  {/*가게 이미지*/}
-            <div className="storeImageNumber"><span>수량</span></div>
+          <div className="storeImage"  style={{ "background-image":`url(${prop.st.storeImage})`}}>  {/*가게 이미지*/}
+            <div className="storeImageNumber"><span>{prop.st.donationMenuTotal}</span></div>
           </div>
         </div>
         <ul className="textArea">

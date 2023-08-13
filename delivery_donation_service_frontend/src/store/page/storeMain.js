@@ -26,7 +26,7 @@ const StoreMain = () => {
         title: e.menuName,
         explain: e.detail,
         price: e.menuPrice,
-        image: e.menuPicture,
+        image: e.menuPicture
       },
     });
   }
@@ -34,11 +34,25 @@ const StoreMain = () => {
   let location = useLocation();
 
   const [menuData, setMenuData] = useState([]);
+  const [storeData, setStoreData] =useState({});
 
-  //처음 렌더링할 떄 메뉴 리스트 가져오기
+  //처음 렌더링할 떄 
   useEffect(() => {
+    //가게 정보 가져오기
     axios
-      .get(`/selectMenu?store_pk=${location.state.storePk}`)
+      .get(`/db/storeInfo?store_pk=${location.state.storePk}`)
+      .then((response) => {
+        // 성공 처리
+        setStoreData(response.data);
+      })
+      .catch((error) => {
+        // 에러 처리
+        console.error(error);
+      }); 
+
+    //메뉴 리스트 가져오기
+    axios
+      .get(`/db/selectMenu?store_pk=${location.state.storePk}`)
       .then((response) => {
         // 성공 처리
         setMenuData(response.data);
@@ -46,13 +60,15 @@ const StoreMain = () => {
       .catch((error) => {
         // 에러 처리
         console.error(error);
-      });
+      }); 
+
     }, []);
     return (
-        <StoreForm image={location.state.storeImage} >
+      
+        <StoreForm image={storeData.storeImage} >
           {/* 제목라인 */}
           <div className="StoreMainTitleArea">
-            <p className="StoreMainTitle">{location.state.title}</p>
+            <p className="StoreMainTitle">{storeData.storeName}</p>
             <div className="StoreMainInfoArea">
               <span className="StoreMainInfo">가게/원산지 정보</span>
               <MdOutlineKeyboardArrowRight className="StoreMainArrowStyle"/>
@@ -82,7 +98,7 @@ const StoreMain = () => {
         </li>
         <li>
           <div className="StoreMainButton">
-            <span>{location.state.review}</span>
+            <span>{storeData.review}</span>
           </div>
           <p>최근 리뷰</p>
         </li>

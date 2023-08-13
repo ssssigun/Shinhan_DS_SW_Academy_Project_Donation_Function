@@ -23,10 +23,7 @@ const StoreList = () => {
     function move(e){
       navigate("/storeMain", {
         state:{
-          title : e.storeName,
-          review : e.review,
-          storePk : e.storePk,
-          storeImage : e.storeImage
+          storePk : e.storePk
         }
       });
     }
@@ -84,7 +81,7 @@ const StoreList = () => {
             {
               storeData.map(store => (
                   <li className="store" key={store.storePk} onClick={()=>move(store)}>
-                    <Store st={store} style={store.storeImage}/>
+                    <Store st={store}/>
                   </li>
                 )
               )

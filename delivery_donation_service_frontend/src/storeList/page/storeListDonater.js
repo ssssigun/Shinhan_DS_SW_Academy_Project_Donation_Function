@@ -24,10 +24,7 @@ const StoreList = () => {
     const selectStore = e.currentTarget;
     navigate('/storeMainDonater', {
       state: {
-        title : e.storeName,
-        review : e.review,
-        storePk : e.storePk,
-        storeImage : e.storeImage
+        storePk : e.storePk
       },
     });
   }
@@ -40,7 +37,7 @@ const StoreList = () => {
   // GET 요청
   function selectList(cate) {
     axios
-      .get(`/db/selectStore?category=${cate}`)
+      .get(`/db/selectStoreAndCount?category=${cate}`)
       .then((response) => {
         // 성공 처리
         // console.log(response.data);
@@ -92,7 +89,7 @@ const StoreList = () => {
             {
               storeData.map(store => (
                 <li className="store" key={store.storePk} onClick={()=>move(store)}>
-                  <StoreDonate st={store} style={store.storeImage}/>
+                  <StoreDonate st={store}/>
                 </li>
           ))}
         </ul>
