@@ -10,7 +10,11 @@ const OrderBox = (props) => {
   const navigate = useNavigate();
   // 장바구니로 메뉴 보내기
   function move(e) {
-    navigate(props.nav, { state: props.state() });
+    if (props.onClick) {
+      navigate(props.nav, { state: props.onClick() });
+    } else {
+      navigate(props.nav, { state: props.state });
+    }
   }
   return (
     <div className="orderBoxArea" onClick={move}>
