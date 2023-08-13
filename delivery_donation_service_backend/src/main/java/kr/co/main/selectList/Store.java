@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -56,5 +57,9 @@ public class Store {
 	
 	@Column(name="review")
 	private int review;
+	
+	//기부 받은 메뉴 총 수량
+	@Transient
+	private int donationMenuTotal;
 	
 }

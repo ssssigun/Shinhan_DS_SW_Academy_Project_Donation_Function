@@ -15,6 +15,7 @@ import MenuData from '../../common/json/menuTest.json'
 // 모듈 불러오기
 import { useNavigate,useLocation } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
+import axios from "axios";
 
 //children 넣어주기
 //텍스트 라인 (가게 정보 및 메뉴)
@@ -22,24 +23,52 @@ const StoreMain = () => {
   const navigate = useNavigate();
   // 메뉴 상세 페이지로 이동
   // 선택한 메뉴 정보 보내기
-    function move(e){
-      const selectMenu = e.currentTarget;
-      navigate("/menuDetail",{
-        state:{
-          title : selectMenu.querySelector('.StoreMainMenuTextTitle').innerText,
-          explain : selectMenu.querySelector('.StoreMainMenuTextDetail').innerText,
-          price : selectMenu.querySelector('.StoreMainMenuTextPrice').innerText,
-          image : selectMenu.querySelector('.StoreMainMenuImage').src
-        }
-      });
-    }
+  function move(e){
+    navigate("/menuDetail",{
+      state:{
+        title : e.menuName,
+        explain : e.detail,
+        price : e.menuPrice,
+        image : e.menuPicture
+      }
+    });
+  }
     let location = useLocation();
 
+    const [menuData,setMenuData] = useState([]);
+    const [storeData, setStoreData] =useState({});
+
+    //처음 렌더링할 때
+    useEffect(() => {
+
+    //가게 정보 가져오기
+    axios
+      .get(`/db/storeInfo?store_pk=${location.state.storePk}`)
+      .then((response) => {
+        // 성공 처리
+        setStoreData(response.data);
+      })
+      .catch((error) => {
+        // 에러 처리
+        console.error(error);
+      }); 
+
+      //메뉴 리스트 가져오기
+      axios.get(`/db/selectMenuAndCount?store_pk=${location.state.storePk}`)
+      .then(response => {
+        // 성공 처리
+        setMenuData(response.data);
+      })
+      .catch(error => {
+        // 에러 처리
+        console.error(error);
+      });
+    }, []);
     return (
-        <StoreForm image={"/image/test.png"} >
+        <StoreForm image={storeData.storeImage} >
           {/* 제목라인 */}
           <div className="StoreMainTitleArea">
-            <p className="StoreMainTitle">{location.state.title}</p>
+            <p className="StoreMainTitle">{storeData.storeName}</p>
             <div className="StoreMainInfoArea">
               <span className="StoreMainInfo">가게/원산지 정보</span>
               <MdOutlineKeyboardArrowRight className="StoreMainArrowStyle"/>
@@ -69,7 +98,7 @@ const StoreMain = () => {
             </li>
             <li>
               <div className="StoreMainButton">
-                <span>{location.state.review}</span>
+                <span>{storeData.review}</span>
               </div>
               <p>최근 리뷰</p>
             </li>
@@ -95,15 +124,18 @@ const StoreMain = () => {
             <ul className="StoreMainMenuList">
               {
                 MenuData.map(menu=>(
-                  <li className="StoreMainMenu" onClick={move}>
+                  <li className="StoreMainMenu"onClick={() => move(menu)}>
                       <div className="StoreMainMenuTextArea">
-                        <span className="StoreMainMenuTextTitle">{menu.name}</span>
+                        <div className="StoreMainMenuTextTitleArea">
+                          <span className="StoreMainMenuTextTitle">{menu.menuName}</span>
+                          <div className="StoreMainMenuTextTitleNumber"><span>{menu.donationAmount}</span></div>
+                        </div>
                         <p className="StoreMainMenuTextDetail">
-                          {menu.explain}
+                          {menu.detail}
                         </p>
-                        <p className="StoreMainMenuTextPrice">{menu.Price}</p>
+                        <p className="StoreMainMenuTextPrice">{menu.menuPrice}</p>
                       </div>
-                    <img src={menu.image} alt="" className="StoreMainMenuImage"></img>
+                    <img src={menu.menuPicture} alt="" className="StoreMainMenuImage"></img>
                   </li>
                 ))
               }

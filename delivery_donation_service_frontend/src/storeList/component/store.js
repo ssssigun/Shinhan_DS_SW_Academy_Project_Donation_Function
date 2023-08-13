@@ -10,8 +10,7 @@ const store = (prop) => {
     return (
       <>
         <div  className="imageArea">
-          {/* <img src="" alt=""></img> */}
-          <div className="storeImage"></div>{/* 임시 이미지*/}
+          <div className="storeImage" style={{ "background-image":`url(${prop.st.storeImage})`}}></div>{/*가게 이미지*/}
         </div>
         <ul className="textArea">
           <li className="textBar"> 
