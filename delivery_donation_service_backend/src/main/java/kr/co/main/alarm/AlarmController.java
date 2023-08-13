@@ -22,6 +22,7 @@ public class AlarmController {
 	@Autowired
 	AlarmRepository aRepo;
 	
+	@Autowired
 	DonationHistoryRepository dRepo;
 	
 	@GetMapping("/selectAlarms")
@@ -30,13 +31,21 @@ public class AlarmController {
 		return aRepo.findAllByUserPkOrderByDateDesc(userPk);
 	}
 	
-	//알림에 따듯해진 마음 전하기 메세지 넣기
+	
+	
+	
+	
+	
+	//orderFreeDelivery, orderFreeTakeOut (기부받는사람)
+	//알림에 따듯해진 마음 전하기 메세지 넣기, 기부히스토리
     @ApiOperation(value = "알림에 따듯해진 마음 전하기 메세지 넣기")
 	@GetMapping("/inputAlarmMessage")
 	public void insertAlarmMessage(Alarm a, DonationHistory d) {
     	Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-    	a.setTitle("기부받은분이 감사인사를 남겼습니다.");
+    	a.setTitle("따뜻해진 마음");
     	a.setDate(timestamp);
+    	d.setDate(timestamp);
+    	a.setContent("따뜻해진 마음이 도착했어요: " + a.content);
         aRepo.save(a);
         dRepo.save(d);
         

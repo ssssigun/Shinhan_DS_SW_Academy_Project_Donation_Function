@@ -195,6 +195,7 @@ const DonationCartPage = () => {
     Object.entries(cartData[selected].cart).map((cart) => {
       returnObject['cart'].push(cart[1]);
     });
+    returnObject['totalPrice'] = priceForStore[selected];
 
     return returnObject;
   };
