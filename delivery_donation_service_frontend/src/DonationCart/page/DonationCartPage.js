@@ -288,7 +288,7 @@ const DonationCartPage = () => {
           }
         })}
       </div>
-      <OrderBox text="기부하기" nav="/orderDonator" state={makeState} />
+      <OrderBox text="기부하기" nav="/orderDonator" onClick={makeState} />
     </>
   );
 };
