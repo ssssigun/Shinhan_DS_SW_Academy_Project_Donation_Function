@@ -8,6 +8,7 @@ import OrderBox from '../../common/component/orderBox';
 import AllAgreeCheckBox from '../../common/component/AllAgreeCheckBox';
 import CheckBox from '../../common/component/CheckBox';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 const OrderDonator = ({ type }) => {
   // const [selectedOption, setSelectedOption] = useState('option1'); // 초기 선택 옵션 설정
@@ -92,6 +93,8 @@ const OrderDonator = ({ type }) => {
     }));
   };
 
+  useEffect(() => console.log(location.state));
+
   useEffect(() => {
     // const allChecked = Object.values(selectedOptions).every((option, idx) => {
     //   if (idx != 'option4') return option === true;
@@ -106,7 +109,7 @@ const OrderDonator = ({ type }) => {
       }
     });
 
-    console.log(allChecked);
+    // console.log(allChecked);
     if (selectedOptions.option4 !== allChecked) {
       setSelectedOptions((prevSelectedOptions) => ({
         ...prevSelectedOptions,
@@ -115,23 +118,40 @@ const OrderDonator = ({ type }) => {
     }
   }, [selectedOptions]);
 
+  //가격
+  // const [totalPrice, setTotalPrice] = useState(0);
+
+  //
+  const location = useLocation();
+  const stateData = location.state;
+
   return (
     <>
       <OrderHeader>기부하기</OrderHeader>
       <div className="OrderDonatorWrapper">
         <div className="orderStore">
           <div className="Type">기부예요</div>
+          
           <div className="title">
-            <div className="StoreName">대한냉면 마포점</div>
-            <div className="MenuName">물냉면 외 1개</div>
+          
+          
+            <div className="StoreName">{stateData.store.storeName}</div>
+           
+              <div className="MenuName" >
+                {stateData.cart[0].menu.menuName} 외 {stateData.cart.reduce((total, item) => total + item.amount, 0) - 1}개
+              </div>
+             
+            
           </div>
+          
         </div>
+        
         <div className="orderPrice">
           <div className="title">
             <div className="moneyTitle">결제금액</div>
             <div className="price">
               <div className="totalText">결제금액</div>
-              <div className="totalMoney">17,000원</div>
+              <div className="totalMoney">{stateData.totalPrice.toLocaleString()}원</div>
             </div>
           </div>
         </div>

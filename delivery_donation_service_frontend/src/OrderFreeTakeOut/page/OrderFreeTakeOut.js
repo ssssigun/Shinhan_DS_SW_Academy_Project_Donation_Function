@@ -1,6 +1,6 @@
 import Input from '../../common/component/Input';
 import SendingWarm from '../../common/component/SendingWarm';
-import Terms from '../../common/component/Terms';
+// import Terms from '../../common/component/Terms';
 import Request from '../../common/component/Request';
 import '../style/OrderFreeTakeOut.scss';
 import OrderHeader from '../component/OrderHeader';
