@@ -2,12 +2,11 @@
 
 //컴포넌트 불러오기
 import SortOptionBar from '../component/sortOptionBar';
-import Store from '../component/store';
-import StoreListHeader from '../component/StoreListHeader';
+import StoreFree from '../component/storeFree';
+import StoreListHeaderDonate from '../component/StoreListHeaderDonate';
 
 //json 불러오기
 import categoryData from '../../common/json/category.json';
-import StoreData from '../../common/json/storeTest.json';
 
 // 모듈 불러오기
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -38,7 +37,7 @@ const StoreList = () => {
   // GET 요청
   function selectList(cate) {
     axios
-      .get(`/db/selectStore?category=${cate}`)
+      .get(`/db/selectStoreAndCount?category=${cate}`)
       .then((response) => {
         // 성공 처리
         setStoreData(response.data);
@@ -64,7 +63,7 @@ const StoreList = () => {
     <div id="storeListWrapper">
       <div className="storeListTopArea">
         {/* 헤더 */}
-        <StoreListHeader backUrl="/">{checkedMenuBar}</StoreListHeader>
+        <StoreListHeaderDonate backUrl="/">{checkedMenuBar}</StoreListHeaderDonate>
         {/* 메뉴 카테고리 */}
         <div id="categoryMenuBar">
           <ul id="menu">
@@ -93,9 +92,9 @@ const StoreList = () => {
       {/* 가게 목록들 */}
       <div className="storeListBottomArea">
         <ul className="storeListWrap">
-          {StoreData.map((store) => (
+          {storeData.map((store) => (
             <li className="store" key={store.storePk} onClick={() => move(store)}>
-              <Store st={store} />
+              <StoreFree st={store} />
             </li>
           ))}
         </ul>

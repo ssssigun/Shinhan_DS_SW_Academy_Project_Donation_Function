@@ -39,7 +39,13 @@ const MainPage = () => {
                     key={index}
                     image={category.image}
                     name={category.name}
-                    onClick={() => navigate('/storeListDonater', { state: { name: category.name } })}
+                    onClick={() => {
+                      if(sessionStorage.getItem('certi') == 0){
+                        navigate('/storeListDonater', { state: { name: category.name } })
+                      } else{
+                        navigate('/storeListFree', { state: { name: category.name } })
+                      }
+                    }}
                   ></Category>
                 ) : (
                   ''

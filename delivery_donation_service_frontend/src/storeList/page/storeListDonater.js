@@ -2,7 +2,7 @@
 
 //컴포넌트 불러오기
 import SortOptionBar from '../component/sortOptionBar';
-import StoreDonate from '../component/storeDonate';
+import StoreDonater from '../component/storeDonater';
 import StoreListHeaderDonate from '../component/StoreListHeaderDonate';
 
 //json 불러오기
@@ -21,7 +21,6 @@ const StoreList = () => {
   const navigate = useNavigate();
 
   function move(e) {
-    const selectStore = e.currentTarget;
     navigate('/storeMainDonater', {
       state: {
         storePk: e.storePk,
@@ -42,13 +41,13 @@ const StoreList = () => {
       .get(`/db/selectStoreAndCount?category=${cate}`)
       .then((response) => {
         // 성공 처리
-        // console.log(response.data);
         setStoreData(response.data);
       })
       .catch((error) => {
         // 에러 처리
         console.error(error);
       });
+
   }
 
   //처음 렌더링 시 실행
@@ -104,7 +103,7 @@ const StoreList = () => {
         <ul className="storeListWrap">
           {storeData.map((store) => (
             <li className="store" key={store.storePk} onClick={() => move(store)}>
-              <StoreDonate st={store} />
+              <StoreDonater st={store} />
             </li>
           ))}
         </ul>

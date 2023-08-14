@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiOperation;
 import kr.co.main.selectList.Store;
 import kr.co.main.user.User;
 
-@Api(tags = {"주문내역 관련 컨트롤러"})
+@Api(tags = {"유저정보 관련 컨트롤러"})
 @RestController
 @RequestMapping("/db")
 public class UserController {
@@ -29,6 +29,11 @@ public class UserController {
 		return uRepo.findByUserPk(userPk);
 	}
 
-	
+	//회원 권한 조회
+	@GetMapping("confirmRole")
+	@ResponseBody
+	public User confirmRole(@RequestParam int secretkey) {
+		return uRepo.findBySecretkey(secretkey);
+	}
 	
 }

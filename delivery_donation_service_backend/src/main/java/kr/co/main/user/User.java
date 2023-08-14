@@ -24,15 +24,25 @@ public class User {
 	@Column(name="user_name")
 	String userName;
 	
+	@Column(name="nickname")
 	String nickname;
+	
+	@Column(name="regdate")
 	Date regdate;
+	
+	@Column(name="certi")
 	int certi;
-	String secretkey;
+	
+	@Column(name="secretkey")
+	int secretkey;
+	
+	@Column(name="address")
 	String address;
 	
 	@Column(name="detail_address")
 	String detailAddress;
 	
+	@Column(name="tel")
 	String tel;
 	
 	

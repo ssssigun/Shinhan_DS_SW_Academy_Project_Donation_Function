@@ -11,7 +11,6 @@ const store = (prop) => {
     <>
       <div className="imageArea">
         <div className="storeImage" style={{ backgroundImage: `url(${prop.st.storeImage})` }}>
-          {' '}
           {/*가게 이미지*/}
           <div className="storeImageNumber">
             <span>{prop.st.donationMenuTotal}</span>

@@ -39,7 +39,7 @@ const Login = () => {
       inputId.current.focus();
       return;
 
-    } else if(pwd ==="") {
+    }else if(pwd ==="") {
       setMessage("비밀번호를 입력해주세요");
       inputPwd.current.focus();
       return;
@@ -53,11 +53,27 @@ const Login = () => {
         pwd : pwd
       }
     })
-    .then(function a(response) { 
-      console.log(response);
-      //발급된 토큰을 localStage 저장
-      localStorage.setItem("accessToken", response.data.accessToken);
-      localStorage.setItem("refreshToken", response.data.arefreshToken);
+    .then(function (response) { 
+      //발급된 토큰을 sessionStage 저장
+      sessionStorage.setItem('accessToken', response.data.accessToken);
+      sessionStorage.setItem('refreshToken', response.data.freshToken);
+
+      //SSo 회원 pk 임시 저장
+      // sessionStorage.setItem('userPk', response.data.userPk);
+      sessionStorage.setItem('userPk', 0);
+
+      axios.get(`/db/confirmRole?secretkey=${sessionStorage.getItem('userPk')}`)
+      .then(response => {
+        // 성공 처리
+        sessionStorage.setItem('userPk', response.data.userPk);
+        sessionStorage.setItem('certi', response.data.certi);
+      })
+      .catch(error => {
+        // 에러 처리
+        console.error(error);
+      });
+
+      //메인으로 이동
       navigate("/");
     })
     .catch(function (error) {
@@ -68,8 +84,8 @@ const Login = () => {
     <div className="login">
       <img class="logo" src="/image/Logo.png" alt=''/>
       <div className="loginWrapper">
-        <Input placeholder=" 아이디" propFunction={infoId} myInputRef={inputId}></Input>
-        <Input placeholder=" 비밀번호" type="password" propFunction={infoPwd} myInputRef={inputPwd}></Input>
+        <Input placeholder=" 아이디" onChange={infoId} myInputRef={inputId}></Input>
+        <Input placeholder=" 비밀번호" type="password" onChange={infoPwd} myInputRef={inputPwd}></Input>
         {/* 패스워드타입 */}
         <p className='loginMessage'> {message}</p>
         <WideButton style={{ background: '#FB521B' }} text="로그인" propFunction={submitInfo}></WideButton>

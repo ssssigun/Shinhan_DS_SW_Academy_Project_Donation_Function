@@ -26,7 +26,7 @@ public class CartController {
     @ApiOperation(value = "장바구니에 메뉴 넣기")
 	@GetMapping("/inputC")
 	public void insertMenu(Cart c) {
-		cRepo.save(c);
+		cRepo.insertMenu(c.getFlag(), c.getUserPk(), c.getMenuPk(), c.getAmount(), c.getStorePk());
 	}
 	
 	//메뉴 개수 업데이트
@@ -57,13 +57,12 @@ public class CartController {
 	public void deleteMenu(@RequestParam int cartPk) {
 		cRepo.deleteMenu(cartPk);
 	}
+	
 	//장바구니 가게 메뉴 삭제 (가게)
 	@GetMapping("/deleteStoreMenu")
     @ApiOperation(value = "장바구니 가게 메뉴 삭제 (가게)")
 	public void deleteStoreMenu(@RequestParam int storePk, @RequestParam int userPk) {
 		cRepo.deleteStoreMenu(storePk, userPk);
 	}
-	
-	
 
 }
