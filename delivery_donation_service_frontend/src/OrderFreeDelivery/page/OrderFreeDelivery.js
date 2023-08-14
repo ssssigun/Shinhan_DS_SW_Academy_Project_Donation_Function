@@ -3,7 +3,7 @@ import Input from '../../common/component/Input';
 import SendingWarm from '../../common/component/SendingWarm';
 import '../style/OrderFreeDelivery.scss';
 import React, { useEffect, useState } from 'react';
-import Terms from '../../common/component/Terms';
+// import Terms from '../../common/component/Terms';
 import Request from '../../common/component/Request';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import OrderHeader from '../component/OrderHeader';
