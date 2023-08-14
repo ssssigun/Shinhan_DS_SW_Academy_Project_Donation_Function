@@ -211,9 +211,7 @@ const DonationCartPage = () => {
 
   return (
     <>
-      <DonationCartHeader backUrl="/menuDetail" onClick={deleteCartAll}>
-        기부보따리
-      </DonationCartHeader>
+      <DonationCartHeader onClick={deleteCartAll}>기부보따리</DonationCartHeader>
       <div className="wrapper">
         {storeCount === 0 ? (
           <None title="띠로리!" image="image/PLI.png" height="800">
@@ -289,7 +287,7 @@ const DonationCartPage = () => {
                 <div
                   className="addMenu"
                   onClick={() => {
-                    navigate('/storeMain', {
+                    navigate('/storeMainDonater', {
                       state: {
                         storePk: cartStore[1].store.storePk,
                       },

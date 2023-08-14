@@ -1,12 +1,12 @@
-import { MdKeyboardArrowLeft } from 'react-icons/md';
 import HeaderWrapper from '../../common/component/HeaderWrapper';
 import '../style/DonationCartHeader.scss';
+import BackIcon from '../../common/component/Icons/BackIcon';
 
 const DonationCartHeader = ({ children, backUrl, state, onClick }) => {
   return (
     <HeaderWrapper>
       <div className="headerLeftSide">
-        <MdKeyboardArrowLeft size="30px" url={backUrl} state={state} />
+        <BackIcon size="30px" url={backUrl} state={state} />
       </div>
       {children}
       <div className="headerRightSide cartHeaderRightSide" onClick={() => onClick()}>
