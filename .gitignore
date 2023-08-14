@@ -9,7 +9,7 @@
 /delivery_donation_service_frontend/coverage
 
 # production
-/delivery_donation_service_frontend/build
+# /delivery_donation_service_frontend/build
 
 # misc
 /delivery_donation_service_frontend.DS_Store

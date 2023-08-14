@@ -10,7 +10,7 @@ import categoryData from '../../common/json/category.json';
 
 // 모듈 불러오기
 import { useNavigate, useLocation } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 // scss 불러오기
 import '../../common/style/reset.scss';
@@ -23,14 +23,16 @@ const StoreList = () => {
   function move(e) {
     navigate('/storeMainDonater', {
       state: {
-        storePk : e.storePk
+        storePk: e.storePk,
+        category: checkedMenuBar,
       },
     });
   }
   // 카테고리 이름 가져오기 위해서 location 사용
   let location = useLocation();
+  const cate = location.state.state ? location.state.state.name : location.state.name;
 
-  const [checkedMenuBar, setCheckedMenuBar] = useState(location.state.name);
+  const [checkedMenuBar, setCheckedMenuBar] = useState(cate);
   const [storeData, setStoreData] = useState([]);
 
   // GET 요청
@@ -45,50 +47,64 @@ const StoreList = () => {
         // 에러 처리
         console.error(error);
       });
-    }
-    
-    //처음 렌더링 시 실행
-    useEffect(() =>{
-      selectList(location.state.name);
-    },[])
-    return (
-      
-      <div id="storeListWrapper">
-        <div className="storeListTopArea">
-            {/* 헤더 */}
-            <StoreListHeaderDonate>
-              {checkedMenuBar}
-            </StoreListHeaderDonate>
-          {/* 메뉴 카테고리 */}
-          <div id="categoryMenuBar">
-            <ul id="menu">
-              {
-                categoryData.category.map(category => (
-                  checkedMenuBar === category.name ?
-                    category.canDonate ?
-                      <li className="checked"><p>{category.name}</p></li>
-                      :
-                      ""
-                    :
-                    category.canDonate ?
-                      <li onClick={() => { setCheckedMenuBar(category.name); selectList(category.name)}}><p>{category.name}</p></li>
-                      :
-                      ""
-                ))
-              }
-            </ul>
-          </div>
-          {/* 가게 정렬 옵션*/}
-          <SortOptionBar/>
-        </div>
-        {/* 가게 목록들 */}
-        <div className="storeListBottomArea">
-          <ul className="storeListWrap">
-            {
-              storeData.map(store => (
-                <li className="store" key={store.storePk} onClick={()=>move(store)}>
-                  <StoreDonater st={store}/>
+
+  }
+
+  //처음 렌더링 시 실행
+  useEffect(() => {
+    selectList(cate);
+  }, []);
+
+  // 카테고리 포커스
+  const ref = useRef({});
+  useEffect(() => {
+    ref.current[checkedMenuBar].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'end' });
+  }, [checkedMenuBar]);
+
+  return (
+    <div id="storeListWrapper">
+      <div className="storeListTopArea">
+        {/* 헤더 */}
+        <StoreListHeaderDonate backUrl="/">{checkedMenuBar}</StoreListHeaderDonate>
+        {/* 메뉴 카테고리 */}
+        <div id="categoryMenuBar">
+          <ul id="menu">
+            {categoryData.category.map((category, idx) =>
+              checkedMenuBar === category.name ? (
+                category.canDonate ? (
+                  <li className="checked" ref={(el) => (ref.current[category.name] = el)} key={idx}>
+                    <p>{category.name}</p>
+                  </li>
+                ) : (
+                  ''
+                )
+              ) : category.canDonate ? (
+                <li
+                  onClick={() => {
+                    setCheckedMenuBar(category.name);
+                    selectList(category.name);
+                  }}
+                  ref={(el) => (ref.current[category.name] = el)}
+                  key={idx}
+                >
+                  <p>{category.name}</p>
                 </li>
+              ) : (
+                ''
+              ),
+            )}
+          </ul>
+        </div>
+        {/* 가게 정렬 옵션*/}
+        <SortOptionBar />
+      </div>
+      {/* 가게 목록들 */}
+      <div className="storeListBottomArea">
+        <ul className="storeListWrap">
+          {storeData.map((store) => (
+            <li className="store" key={store.storePk} onClick={() => move(store)}>
+              <StoreDonater st={store} />
+            </li>
           ))}
         </ul>
       </div>

@@ -17,6 +17,9 @@ import axios from 'axios';
 //children 넣어주기
 //텍스트 라인 (가게 정보 및 메뉴)
 const StoreMain = () => {
+  // 가게 정보 가져오기 위해서 사용
+  let location = useLocation();
+
   const navigate = useNavigate();
   // 메뉴 상세 페이지로 이동
   // 선택한 메뉴 정보 보내기
@@ -26,18 +29,15 @@ const StoreMain = () => {
         title: e.menuName,
         explain: e.detail,
         price: e.menuPrice,
-        image: e.menuPicture,
-        
+        image: e.menuPicture
       },
     });
   }
-  // 가게 정보 가져오기 위해서 사용
-  let location = useLocation();
 
   const [menuData, setMenuData] = useState([]);
-  const [storeData, setStoreData] =useState({});
+  const [storeData, setStoreData] = useState({});
 
-  //처음 렌더링할 떄 
+  //처음 렌더링할 떄
   useEffect(() => {
     //가게 정보 가져오기
     axios
@@ -49,7 +49,7 @@ const StoreMain = () => {
       .catch((error) => {
         // 에러 처리
         console.error(error);
-      }); 
+      });
 
     //메뉴 리스트 가져오기
     axios
@@ -61,19 +61,17 @@ const StoreMain = () => {
       .catch((error) => {
         // 에러 처리
         console.error(error);
-      }); 
-
-    }, []);
-    return (
-      
-        <StoreForm image={storeData.storeImage} >
-          {/* 제목라인 */}
-          <div className="StoreMainTitleArea">
-            <p className="StoreMainTitle">{storeData.storeName}</p>
-            <div className="StoreMainInfoArea">
-              <span className="StoreMainInfo">가게/원산지 정보</span>
-              <MdOutlineKeyboardArrowRight className="StoreMainArrowStyle"/>
-            </div>
+      });
+  }, []);
+  return (
+    <StoreForm image={storeData.storeImage} backurl="/storeList" backState={{ name: location.state.category }}>
+      {/* 제목라인 */}
+      <div className="StoreMainTitleArea">
+        <p className="StoreMainTitle">{storeData.storeName}</p>
+        <div className="StoreMainInfoArea">
+          <span className="StoreMainInfo">가게/원산지 정보</span>
+          <MdOutlineKeyboardArrowRight className="StoreMainArrowStyle" />
+        </div>
       </div>
       {/* 버튼 라인 */}
       <ul className="StoreMainButtonArea">
