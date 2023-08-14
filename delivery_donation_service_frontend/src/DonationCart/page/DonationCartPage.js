@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import None from '../../common/component/None';
 
 const DonationCartPage = () => {
-  const userPk = 1;
+  const userPk = sessionStorage.getItem('userPk');
 
   const navigate = useNavigate();
 
@@ -53,8 +53,6 @@ const DonationCartPage = () => {
       object[cart[0]]['cart'] = cart[1];
     });
 
-    console.log('cartData', object);
-
     return object;
   };
   useEffect(() => {
@@ -72,7 +70,6 @@ const DonationCartPage = () => {
     axios
       .get(`/db/cart/selectCart?userPk=${userPk}&flag=0`)
       .then((response) => {
-        console.log('response 결과', response.data);
         setCartData(makeCartSection(response.data));
       })
       .catch((error) => {
