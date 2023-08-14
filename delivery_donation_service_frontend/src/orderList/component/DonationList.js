@@ -13,6 +13,7 @@ const DonationList = ({ donations }) => {
     );
   } else {
     return donations.map((donation, idx) => {
+      console.log('donationList', donation);
       return <Donation donation={donation} key={idx} />;
     });
   }
