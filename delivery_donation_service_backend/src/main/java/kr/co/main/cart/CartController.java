@@ -43,7 +43,15 @@ public class CartController {
 	public List<Cart> selectCart(@RequestParam int userPk, @RequestParam int flag){
 		return cRepo.findAllByUserPkAndFlag(userPk, flag);
 	}
-		
+	
+	//장바구니 조회 (같은 메뉴가 담겨있는지 확인)
+	@GetMapping("menuInCart")
+	@ApiOperation(value = "장바구니 조회 (같은 메뉴가 담겨있는지 확인)")
+	@ResponseBody
+	public Cart menuInCart(@RequestParam int userPk, @RequestParam int menuPk, @RequestParam int flag){
+		 return cRepo.menuInCart(menuPk, userPk, flag);
+	}
+	
 	//장바구니 전체 삭제 (전체)
 	@GetMapping("/deleteMenuAll")
     @ApiOperation(value = "장바구니 전체 삭제 (전체)")

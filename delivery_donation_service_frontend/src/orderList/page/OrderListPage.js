@@ -57,7 +57,6 @@ const OrderListPage = () => {
 
   useEffect(() => {
     selectOrders();
-    console.log(orders);
   }, [flag]);
 
   // 주문 또는 기부 불러오기
