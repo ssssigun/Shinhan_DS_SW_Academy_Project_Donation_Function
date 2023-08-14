@@ -18,6 +18,7 @@ import StoreMainDonater from './store/page/storeMainDonater';
 import StoreMainFree from './store/page/storeMainFree';
 import MenuDetail from './store/page/menuDetail';
 import MenuDetailDonater from './store/page/menuDetailDonater';
+import MenuDetailFree from './store/page/menuDetailFree';
 import OrderFreeDelivery from './OrderFreeDelivery/page/OrderFreeDelivery';
 import OrderFreeTakeOut from './OrderFreeTakeOut/page/OrderFreeTakeOut';
 import ScrollTop from './common/component/scrollTop';
@@ -49,6 +50,7 @@ function App() {
         <Route path="/storeMainFree" element={<StoreMainFree />} />
         <Route path="/menuDetail" element={<MenuDetail />} />
         <Route path="/menuDetailDonater" element={<MenuDetailDonater />} />
+        <Route path="/menuDetailFree" element={<MenuDetailFree/>} />
         <Route path="/ready" element={<ReadyPage />} />
         <Route path="/donationReceipt" element={<DonationReceipt />} />
       </Routes>

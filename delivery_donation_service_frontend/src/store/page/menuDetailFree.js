@@ -7,32 +7,38 @@ import UpDownButton from '../../common/component/UpDownButton'
 
 
 import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
 
 //텍스트 라인 (가게 정보 및 메뉴)
 const MenuDetail = () => {
+
+  const move = ()=>{
+  }
   let location = useLocation();
-    return (
-      <div>
-        <StoreForm image={location.state.image}>
-          <p className="menuDetailTitle">
-            {location.state.title}
-          </p>
-          <p className="menuDetailDetail">
-            {location.state.explain}
-          </p>
-          <div className="menuDetailPrice">
-            <p>{location.state.title}</p>
-            <p> {location.state.price.toLocaleString()}원</p>
-          </div>
-          <hr className="menuDetailLine"/>
-          <div className="menuDetailAmount">
-            <p>수량</p>
-            <UpDownButton></UpDownButton>
-          </div>
-        </StoreForm>
-        {/* 주문하기 버튼 */}
-        <OrderBox text={"주문하기"} nav={"/donationCart"}/>
-      </div>
+  const [count, setCount] = useState(1);
+
+  const blank = () =>{
+
+  }
+  
+  return (
+    <div>
+      <StoreForm image={location.state.menu.menuPicture}>
+        <p className="menuDetailTitle">{location.state.menu.menuName}</p>
+        <p className="menuDetailDetail">{location.state.menu.detail}</p>
+        <div className="menuDetailPrice">
+          <p>{location.state.menu.menuName}</p>
+          <p> </p>
+        </div>
+        <hr className="menuDetailLine" />
+        <div className="menuDetailAmount">
+          <p>수량</p>
+          <UpDownButton count={count} setCount={blank}/>
+        </div>
+      </StoreForm>
+      {/* 주문하기 버튼 */}
+      <OrderBox text={'주문하기'} nav={'/orderFreeDelivery'} onClick={move}/>
+    </div>
     );
   };
   export default MenuDetail;

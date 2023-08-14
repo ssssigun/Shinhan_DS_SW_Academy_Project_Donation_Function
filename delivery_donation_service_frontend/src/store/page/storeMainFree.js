@@ -23,16 +23,14 @@ const StoreMain = () => {
   const navigate = useNavigate();
   // 메뉴 상세 페이지로 이동
   // 선택한 메뉴 정보 보내기
-    function move(e){
-      navigate("/menuDetail",{
-        state:{
-          title : e.menuName,
-          explain : e.detail,
-          price : e.menuPrice,
-          image : e.menuPicture
-        }
-      });
-    }
+  function move(menu,store){
+    navigate("/menuDetailFree",{
+      state:{
+        menu : menu,
+        store : store
+      }
+    });
+  }
     // 가게 정보 가져오기 위해서 사용
     let location = useLocation();
     
@@ -67,7 +65,7 @@ const StoreMain = () => {
       });
   }, []);
   return (
-    <StoreForm image={storeData.storeImage} backurl="/storeList" backState={{ name: location.state.category }}>
+    <StoreForm image={storeData.storeImage} backurl="/storeListFree" backState={{ name: location.state.category }}>
       {/* 제목라인 */}
       <div className="StoreMainTitleArea">
         <p className="StoreMainTitle">{storeData.storeName}</p>
@@ -126,7 +124,7 @@ const StoreMain = () => {
             <ul className="StoreMainMenuList">
               {
                 menuData.map(menu=>(
-                  <li className="StoreMainMenu"onClick={() => move(menu)}>
+                  <li className="StoreMainMenu" onClick={() => move(menu,storeData)}>
                       <div className="StoreMainMenuTextArea">
                         <div className="StoreMainMenuTextTitleArea">
                           <span className="StoreMainMenuTextTitle">{menu.menuName}</span>

@@ -56,7 +56,7 @@ const Login = () => {
     .then(function (response) { 
       //발급된 토큰을 sessionStage 저장
       sessionStorage.setItem('accessToken', response.data.accessToken);
-      sessionStorage.setItem('refreshToken', response.data.arefreshToken);
+      sessionStorage.setItem('refreshToken', response.data.freshToken);
 
       //SSo 회원 pk 임시 저장
       // sessionStorage.setItem('userPk', response.data.userPk);

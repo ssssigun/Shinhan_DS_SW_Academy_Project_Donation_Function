@@ -64,7 +64,7 @@ const StoreMain = () => {
       });
   }, []);
   return (
-    <StoreForm image={storeData.storeImage} backurl="/storeList" backState={{ name: location.state.category }}>
+    <StoreForm image={storeData.storeImage} backurl="/storeListDonater" backState={{ name: location.state.category }}>
       {/* 제목라인 */}
       <div className="StoreMainTitleArea">
         <p className="StoreMainTitle">{storeData.storeName}</p>
@@ -123,7 +123,7 @@ const StoreMain = () => {
             <ul className="StoreMainMenuList">
               {
                 menuData.map(menu=>(
-                  <li className="StoreMainMenu"onClick={() => move(menu,storeData)}>
+                  <li className="StoreMainMenu" onClick={() => move(menu,storeData)}>
                       <div className="StoreMainMenuTextArea">
                         <div className="StoreMainMenuTextTitleArea">
                           <span className="StoreMainMenuTextTitle">{menu.menuName}</span>

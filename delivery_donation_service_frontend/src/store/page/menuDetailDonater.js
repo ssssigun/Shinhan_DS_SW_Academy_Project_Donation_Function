@@ -14,19 +14,6 @@ const MenuDetail = () => {
   const [count, setCount] = useState(1);
 
   const move = ()=>{
-    // const config = {"Content-Type": 'application/json'};
-    // const data ={      
-    //     flag : 0,
-    //     userPk : sessionStorage.getItem('userPk'),
-    //     amount : count,
-    //     menu : location.state.menu,
-    //     store : location.state.store
-    // }
-    // axios.get('/db/cart/inputC', data,config).then(response => {
-    //   console.log(response.data);
-    // }).catch(error => {
-    //   console.log(error.response);
-    // });
     axios
     .get(`/db/cart/inputC?flag=${0}&userPk=${sessionStorage.getItem('userPk')}&amount=${count}&menuPk=${location.state.menu.menuPk}&storePk=${location.state.store.storePk}`)
     .then((response) => {
