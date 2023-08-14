@@ -1,21 +1,14 @@
 import RadioButton from '../../common/component/RadioButton';
 import React, { useEffect, useState } from 'react';
 import '../style/OrderDonator.scss';
-import { MdCheck } from 'react-icons/md';
-import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import OrderHeader from '../component/OrderHeader';
-import OrderBox from '../../common/component/orderBox';
+import OrderBox from '../../common/component/orderBoxOrder';
 import AllAgreeCheckBox from '../../common/component/AllAgreeCheckBox';
 import CheckBox from '../../common/component/CheckBox';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
 const OrderDonator = ({ type }) => {
-  // const [selectedOption, setSelectedOption] = useState('option1'); // 초기 선택 옵션 설정
-  // const handleOptionChange = (event) => {
-  //   setSelectedOption(event.target.value); // 라디오 버튼 선택 시, 상태 업데이트
-  // };
-
   const [selected, setSelected] = useState([1, 0]);
 
   const hanldeRadioChange = (index) => {
@@ -83,7 +76,6 @@ const OrderDonator = ({ type }) => {
   const handleAllAgreeChange = () => {
     const allChecked = !selectedOptions.option4;
     setSelectedOptions((prevSelectedOptions) => ({
-      // ...prevSelectedOptions,
       option4: allChecked,
       option1: allChecked,
       option2: allChecked,
@@ -96,12 +88,8 @@ const OrderDonator = ({ type }) => {
   useEffect(() => console.log(location.state));
 
   useEffect(() => {
-    // const allChecked = Object.values(selectedOptions).every((option, idx) => {
-    //   if (idx != 'option4') return option === true;
-    // });
     let allChecked = true;
     Object.keys(selectedOptions).forEach(function (k) {
-      //console.log(selectedOptions[k]);
       if (k != 'option4') {
         if (selectedOptions[k] !== true) {
           allChecked = false;
@@ -109,7 +97,6 @@ const OrderDonator = ({ type }) => {
       }
     });
 
-    // console.log(allChecked);
     if (selectedOptions.option4 !== allChecked) {
       setSelectedOptions((prevSelectedOptions) => ({
         ...prevSelectedOptions,
@@ -118,12 +105,36 @@ const OrderDonator = ({ type }) => {
     }
   }, [selectedOptions]);
 
-  //가격
-  // const [totalPrice, setTotalPrice] = useState(0);
-
-  //
   const location = useLocation();
   const stateData = location.state;
+
+  const onClickForOrder = () => {
+    const requestBody = {
+      store: stateData.store,
+      cart: stateData.cart,
+      userPk: window.sessionStorage.getItem('userPk'),
+      totalPrice: stateData.totalPrice,
+      pay: selected[0] === 1 ? 0 : 1,
+    };
+    axios
+      .post('/db/insertDonationOrder', requestBody, {
+        headers: { 'Content-Type': `application/json` },
+      })
+      .then((response) => {
+        console.log();
+        console.log('onClickForOrder 성공!');
+      })
+      .then(() => {
+        axios
+          .post('/db/insertDonationDetailOrder', requestBody, { headers: { 'Content-Type': `application/json` } })
+          .then(() => {
+            console.log('onClickForOrderDetail 성공!');
+          });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   return (
     <>
@@ -131,21 +142,17 @@ const OrderDonator = ({ type }) => {
       <div className="OrderDonatorWrapper">
         <div className="orderStore">
           <div className="Type">기부예요</div>
-          
+
           <div className="title">
-          
-          
             <div className="StoreName">{stateData.store.storeName}</div>
-           
-              <div className="MenuName" >
-                {stateData.cart[0].menu.menuName} 외 {stateData.cart.reduce((total, item) => total + item.amount, 0) - 1}개
-              </div>
-             
-            
+
+            <div className="MenuName">
+              {stateData.cart[0].menu.menuName} 외 {stateData.cart.reduce((total, item) => total + item.amount, 0) - 1}
+              개
+            </div>
           </div>
-          
         </div>
-        
+
         <div className="orderPrice">
           <div className="title">
             <div className="moneyTitle">결제금액</div>
@@ -236,7 +243,7 @@ const OrderDonator = ({ type }) => {
           </div>
         </div>
 
-        <OrderBox text="기부하기" nav={'/'} />
+        <OrderBox text="기부하기" nav={'/'} onClick={onClickForOrder} />
       </div>
     </>
   );
