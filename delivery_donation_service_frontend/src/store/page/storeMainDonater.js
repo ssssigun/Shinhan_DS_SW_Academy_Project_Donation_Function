@@ -1,4 +1,4 @@
-//가게 정보 페이지
+//가게 정보 페이지  (기부 하는 사람)
 //scss 불러오기
 import "../style/storeMain.scss"
 //컴포넌트 불러오기
@@ -23,13 +23,11 @@ const StoreMain = () => {
   const navigate = useNavigate();
   // 메뉴 상세 페이지로 이동
   // 선택한 메뉴 정보 보내기
-    function move(e){
-      navigate("/menuDetail",{
+    function move(menu,store){
+      navigate("/menuDetailDonater",{
         state:{
-          title : e.menuName,
-          explain : e.detail,
-          price : e.menuPrice,
-          image : e.menuPicture
+          menu : menu,
+          store : store
         }
       });
     }
@@ -109,7 +107,7 @@ const StoreMain = () => {
             <li className="StoreMainMenuCategory">
               <p>대표메뉴</p>
             </li>
-            <li className="StoreMainMenuCategory">
+            {/* <li className="StoreMainMenuCategory">
               <p>치킨</p>
             </li>
             <li className="StoreMainMenuCategory">
@@ -117,7 +115,7 @@ const StoreMain = () => {
             </li>
             <li className="StoreMainMenuCategory">
               <p>샐러드</p>
-            </li>
+            </li> */}
           </ul>
           {/* 메뉴 목록 라인 */}
           <div className="StoreMainMenuListArea">
@@ -125,7 +123,7 @@ const StoreMain = () => {
             <ul className="StoreMainMenuList">
               {
                 menuData.map(menu=>(
-                  <li className="StoreMainMenu"onClick={() => move(menu)}>
+                  <li className="StoreMainMenu"onClick={() => move(menu,storeData)}>
                       <div className="StoreMainMenuTextArea">
                         <div className="StoreMainMenuTextTitleArea">
                           <span className="StoreMainMenuTextTitle">{menu.menuName}</span>
@@ -134,7 +132,7 @@ const StoreMain = () => {
                         <p className="StoreMainMenuTextDetail">
                           {menu.detail}
                         </p>
-                        <p className="StoreMainMenuTextPrice">{menu.menuPrice}</p>
+                        <p className="StoreMainMenuTextPrice">{menu.menuPrice.toLocaleString()}원</p>
                       </div>
                     <img src={menu.menuPicture} alt="" className="StoreMainMenuImage"></img>
                   </li>

@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import kr.co.main.selectList.Menu;
 import kr.co.main.selectList.Store;
@@ -41,7 +42,14 @@ public class Cart {
 	@JoinColumn(name="menu_pk")
 	private Menu menu;
 	
+	@Transient
+	private int menuPk;
+	
 	@OneToOne
 	@JoinColumn(name="store_pk")
 	private Store store;
+	
+	@Transient
+	private int storePk;
+	
 }

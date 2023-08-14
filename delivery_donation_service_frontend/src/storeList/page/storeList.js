@@ -38,7 +38,6 @@ const StoreList = () => {
       axios.get(`/db/selectStore?category=${cate}`)
       .then(response => {
         // 성공 처리
-        // console.log(response.data);
         setStoreData(response.data);
       })
       .catch(error => {

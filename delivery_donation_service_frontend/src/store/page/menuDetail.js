@@ -20,7 +20,7 @@ const MenuDetail = () => {
         <p className="menuDetailDetail">{location.state.explain}</p>
         <div className="menuDetailPrice">
           <p>{location.state.title}</p>
-          <p> {location.state.price}원</p>
+          <p> {location.state.price.toLocaleString()}원</p>
         </div>
         <hr className="menuDetailLine" />
         <div className="menuDetailAmount">

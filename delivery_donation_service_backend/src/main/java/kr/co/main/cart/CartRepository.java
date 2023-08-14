@@ -12,6 +12,11 @@ import org.springframework.data.repository.query.Param;
 @Transactional
 public interface CartRepository extends JpaRepository<Cart,Integer>{
 	
+	//장바구니에 메뉴 넣기
+	@Query(value="INSERT INTO Cart(flag, user_pk, menu_pk, amount, store_pk) VALUE (?1, ?2, ?3, ?4, ?5)", nativeQuery=true)
+	@Modifying
+	int insertMenu(int flag, int user_pk, int menu_pk, int amount, int store_pk);
+	
 	//장바구니 조회
 	List<Cart> findAllByUserPkAndFlag(int user_pk, int flag);
 	

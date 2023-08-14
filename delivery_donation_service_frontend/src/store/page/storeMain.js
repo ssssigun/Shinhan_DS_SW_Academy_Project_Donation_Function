@@ -26,7 +26,8 @@ const StoreMain = () => {
         title: e.menuName,
         explain: e.detail,
         price: e.menuPrice,
-        image: e.menuPicture
+        image: e.menuPicture,
+        
       },
     });
   }
@@ -108,7 +109,7 @@ const StoreMain = () => {
         <li className="StoreMainMenuCategory">
           <p>대표메뉴</p>
         </li>
-        <li className="StoreMainMenuCategory">
+        {/* <li className="StoreMainMenuCategory">
           <p>치킨</p>
         </li>
         <li className="StoreMainMenuCategory">
@@ -116,7 +117,7 @@ const StoreMain = () => {
         </li>
         <li className="StoreMainMenuCategory">
           <p>샐러드</p>
-        </li>
+        </li> */}
       </ul>
       {/* 메뉴 목록 라인 */}
       <div className="StoreMainMenuListArea">
@@ -127,7 +128,7 @@ const StoreMain = () => {
               <div className="StoreMainMenuTextArea">
                 <span className="StoreMainMenuTextTitle">{menu.menuName}</span>
                 <p className="StoreMainMenuTextDetail">{menu.detail}</p>
-                <p className="StoreMainMenuTextPrice">{menu.menuPrice}원</p>
+                <p className="StoreMainMenuTextPrice">{menu.menuPrice.toLocaleString()} 원</p>
               </div>
               <img src={menu.menuPicture} alt="" className="StoreMainMenuImage"></img>
             </li>
