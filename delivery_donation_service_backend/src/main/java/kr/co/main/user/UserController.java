@@ -22,14 +22,15 @@ public class UserController {
 	@Autowired
 	UserRepository uRepo;
 	
-
-	@GetMapping("/selectOrderFreeDelivery")
+	
+	//회원 정보 가져오기 (sessionStorage에 있는 userPk사용)
+	@GetMapping("/selectUserInfo")
 	@ResponseBody
-	public User selectOrderFreeDelivery(@RequestParam int userPk) {
+	public User selectUserInfo(@RequestParam int userPk) {
 		return uRepo.findByUserPk(userPk);
 	}
 
-	//회원 권한 조회
+	//회원 권한 조회(sso 키 값으로)
 	@GetMapping("confirmRole")
 	@ResponseBody
 	public User confirmRole(@RequestParam int secretkey) {
