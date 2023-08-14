@@ -7,7 +7,7 @@ import ModalBottomSheet from '../../common/component/ModalBottomSheet';
 import WideButton from '../../common/component/WideButton';
 import Input from '../../common/component/Input';
 import OrderListHeader from '../component/OrderListHeader';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import OrderList from '../component/OrderList';
 import DonationList from '../component/DonationList';
 import axios from 'axios';
@@ -29,6 +29,8 @@ const OrderListPage = () => {
   const [flag, setFlag] = new useState(0);
   const [modalDisable, setModalDisable] = new useState(true);
   const [orders, setOrders] = new useState({});
+
+  const navigate = useNavigate();
 
   const showModal = (e) => {
     document.body.style.overflow = 'hidden';
@@ -81,6 +83,10 @@ const OrderListPage = () => {
     }
   };
 
+  const getDonationReceipt = () => {
+    navigate('/donationReceipt');
+  };
+
   return (
     <>
       <OrderListHeader backUrl="/">주문내역</OrderListHeader>
@@ -101,14 +107,14 @@ const OrderListPage = () => {
       ) : (
         <ModalBottomSheet hideModal={hideModal}>
           기부영수증
-          <form className="orderListPageDateWrapper">
+          <div className="orderListPageDateWrapper">
             <div className="orderListPageDateInputWrapper">
               <Input type="date" defaultValue={startDateValue} />
               ~
               <Input type="date" defaultValue={endDateValue} />
             </div>
-            <WideButton style={{ background: '#FB521B' }} text="출력하기" />
-          </form>
+            <WideButton style={{ background: '#FB521B' }} text="출력하기" propFunction={getDonationReceipt} />
+          </div>
         </ModalBottomSheet>
       )}
     </>

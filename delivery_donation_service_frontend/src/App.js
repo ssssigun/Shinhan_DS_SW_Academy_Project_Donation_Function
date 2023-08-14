@@ -23,6 +23,7 @@ import OrderFreeTakeOut from './OrderFreeTakeOut/page/OrderFreeTakeOut';
 import ScrollTop from './common/component/scrollTop';
 import ReadyPage from './common/page/ReadyPage';
 import DonationDetailPage from './orderList/page/DonationDetailPage';
+import DonationReceipt from './orderList/page/DonationReceipt';
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
         <Route path="/menuDetail" element={<MenuDetail />} />
         <Route path="/menuDetailDonater" element={<MenuDetailDonater />} />
         <Route path="/ready" element={<ReadyPage />} />
+        <Route path="/donationReceipt" element={<DonationReceipt />} />
       </Routes>
     </BrowserRouter>
   );

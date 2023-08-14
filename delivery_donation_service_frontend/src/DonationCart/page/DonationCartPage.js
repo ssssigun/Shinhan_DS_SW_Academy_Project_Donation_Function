@@ -8,6 +8,7 @@ import DonationCartHeader from '../component/DonationCartHeader';
 import OrderBox from '../../common/component/orderBox';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import None from '../../common/component/None';
 
 const DonationCartPage = () => {
   const userPk = 1;
@@ -23,6 +24,7 @@ const DonationCartPage = () => {
   const [cartData, setCartData] = useState({});
   const [priceForMenu, setPriceForMenu] = useState({});
   const [priceForStore, setPriceForStore] = useState({});
+  const [storeCount, setStoreCount] = useState(0);
 
   // cart 불러오기
   const makeCartSection = (cartList) => {
@@ -185,6 +187,16 @@ const DonationCartPage = () => {
     if (cartData[selected] === undefined) {
       findFirstMenu();
     }
+
+    // store 개수 세기
+    let count = Object.keys(cartData).length;
+    Object.values(cartData).map((cart) => {
+      if (cart === undefined || cart === null) {
+        count--;
+      }
+    });
+    setStoreCount(count);
+    console.log('count', count);
   }, [cartData]);
 
   // 기부보따리로 전달되는 state
@@ -206,6 +218,13 @@ const DonationCartPage = () => {
         기부보따리
       </DonationCartHeader>
       <div className="wrapper">
+        {storeCount === 0 ? (
+          <None title="띠로리!" image="image/PLI.png" height="800">
+            기부보따리를 채워보세요.
+          </None>
+        ) : (
+          <></>
+        )}
         {Object.entries(cartData).map((cartStore, idx) => {
           if (cartStore[1] !== undefined) {
             console.log('cartStore', cartStore);
