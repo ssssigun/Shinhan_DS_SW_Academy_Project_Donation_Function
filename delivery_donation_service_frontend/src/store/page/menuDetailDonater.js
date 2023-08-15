@@ -18,16 +18,39 @@ const MenuDetail = () => {
   const move = () => {
     axios
       .get(
-        `/db/cart/inputC?flag=${0}&userPk=${sessionStorage.getItem('userPk')}&amount=${count}&menuPk=${
-          location.state.menu.menuPk
-        }&storePk=${location.state.store.storePk}`,
+        `/db/cart/menuInCart?flag=${0}&userPk=${sessionStorage.getItem('userPk')}&menuPk=${ location.state.menu.menuPk }`,
       )
       .then((response) => {
         // 성공 처리
-        console.log('good');
-      })
-      .then(() => {
-        navigate('/donationCart');
+        if(!!response.data){
+          //같은 메뉴가 담겨있으면 UPDATE
+          axios
+          .get(
+            `/db/cart/updateAmount?cartPk=${response.data.cartPk}&amount=${response.data.amount + count}`,
+          )
+          .then(() => {
+            navigate('/donationCart');
+          })
+          .catch((error) => {
+            // 에러 처리
+            console.error(error);
+          });
+        }else{
+          //새로운 메뉴면 INSERT
+          axios
+            .get(
+              `/db/cart/inputC?flag=${0}&userPk=${sessionStorage.getItem('userPk')}&amount=${count}&menuPk=${
+                location.state.menu.menuPk
+              }&storePk=${location.state.store.storePk}`,
+            )
+            .then(() => {
+              navigate('/donationCart');
+            })
+            .catch((error) => {
+              // 에러 처리
+              console.error(error);
+            });
+        }
       })
       .catch((error) => {
         // 에러 처리

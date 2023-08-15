@@ -18,21 +18,22 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
   const location = useLocation();
 
   const [usereData, setUsereData] = useState({});
-
+  const [inputValue, setInputValue] =useState("");
+  const [isChecked, setIsChecked] = useState(false);
   useEffect(() => {
+    //유저 정보 가져오기 (주소, 전화번호)
     axios
       .get(`/db/selectUserInfo?userPk=${sessionStorage.getItem("userPk")}`)
       .then((response) => {
         // 성공 처리
         setUsereData(response.data);
+        setInputValue(response.data.detailAddress)
       })
       .catch((error) => {
         // 에러 처리
         console.error(error);
       });
   },[]);
-
-  const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxChange = (checked) => {
     setIsChecked(checked);
@@ -98,6 +99,9 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
     }
   }, [selectedOptions]);
 
+  const inputOnchange = (e)=>{
+    setInputValue(e.target.value);
+  }
   return (
     <>
       <OrderHeader>주문하기</OrderHeader>
@@ -114,7 +118,7 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
               <div className="addr">{usereData.address}</div>
             </div>
           </div>
-          <Input value={usereData.detailAddress}></Input>
+          <Input value={inputValue} type={"text"} onChange={inputOnchange}></Input>
           <hr className="OrderFreeDeliveryHr" />
           <div className="tel">
             <div className="text">{usereData.tel}</div>
