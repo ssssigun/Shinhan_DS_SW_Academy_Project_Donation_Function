@@ -179,7 +179,7 @@ const OrderDonator = ({ type }) => {
                 doGetPay
               </RadioButton>
               <div className="picture">
-                <img src="./image/payPicture.png"></img>
+                <img src="./image/doGetPayCard.png"></img>
               </div>
             </div>
             <div className="radioButtonWithLable">
