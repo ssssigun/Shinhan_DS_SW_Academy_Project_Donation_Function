@@ -6,11 +6,11 @@ import '../style/storeForm.scss';
 //컴포넌트 불러오기
 import StoreHeader from '../component/StoreHeader';
 
-const StoreForm = ({ image, children, backurl, backState }) => {
+const StoreForm = ({ image, children, backurl, backState, cartLink }) => {
   return (
     <div className="storeFormWrapper">
       <div className="storeFormTopArea">
-        <StoreHeader backurl={backurl} backState={backState} />
+        <StoreHeader backurl={backurl} backState={backState} cartLink={cartLink} />
         <img src={image} alt=""></img>
       </div>
       <div className="storeFormBottomArea">{children}</div>

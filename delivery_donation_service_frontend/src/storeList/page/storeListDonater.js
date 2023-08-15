@@ -47,7 +47,6 @@ const StoreList = () => {
         // 에러 처리
         console.error(error);
       });
-
   }
 
   //처음 렌더링 시 실행
@@ -65,7 +64,9 @@ const StoreList = () => {
     <div id="storeListWrapper">
       <div className="storeListTopArea">
         {/* 헤더 */}
-        <StoreListHeaderDonate backUrl="/">{checkedMenuBar}</StoreListHeaderDonate>
+        <StoreListHeaderDonate backUrl="/" cartLink="/donationCart">
+          {checkedMenuBar}
+        </StoreListHeaderDonate>
         {/* 메뉴 카테고리 */}
         <div id="categoryMenuBar">
           <ul id="menu">

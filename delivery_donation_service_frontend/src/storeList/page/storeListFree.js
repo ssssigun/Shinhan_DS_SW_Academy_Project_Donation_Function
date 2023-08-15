@@ -63,7 +63,9 @@ const StoreList = () => {
     <div id="storeListWrapper">
       <div className="storeListTopArea">
         {/* 헤더 */}
-        <StoreListHeaderDonate backUrl="/">{checkedMenuBar}</StoreListHeaderDonate>
+        <StoreListHeaderDonate backUrl="/" cartLink="/cart">
+          {checkedMenuBar}
+        </StoreListHeaderDonate>
         {/* 메뉴 카테고리 */}
         <div id="categoryMenuBar">
           <ul id="menu">
