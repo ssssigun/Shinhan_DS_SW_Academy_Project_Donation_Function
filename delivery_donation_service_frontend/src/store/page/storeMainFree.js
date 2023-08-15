@@ -9,9 +9,6 @@ import { AiFillStar } from 'react-icons/ai';
 import { FaHeart } from 'react-icons/fa';
 import { TbShare2 } from 'react-icons/tb';
 
-// json 파일 불러오기
-import MenuData from '../../common/json/menuTest.json';
-
 // 모듈 불러오기
 import { useNavigate, useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
