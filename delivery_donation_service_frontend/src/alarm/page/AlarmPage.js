@@ -10,7 +10,7 @@ import 'dayjs/locale/ko';
 dayjs.locale('ko');
 
 const AlarmPage = () => {
-  const userPk = 1;
+  const userPk = sessionStorage.getItem('userPk');
 
   const [alarms, setAlarms] = useState({});
 
