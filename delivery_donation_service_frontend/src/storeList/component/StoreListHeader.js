@@ -3,7 +3,7 @@ import BackIcon from '../../common/component/Icons/BackIcon';
 import HomeIcon from '../../common/component/Icons/HomeIcon';
 import CartIcon from '../../common/component/Icons/CartIcon';
 
-const StoreListHeader = ({ children, backUrl }) => {
+const StoreListHeader = ({ children, backUrl, cartLink }) => {
   return (
     <HeaderWrapper>
       <div className="headerLeftSide">
@@ -12,7 +12,7 @@ const StoreListHeader = ({ children, backUrl }) => {
       {children}
       <div className="headerRightSide">
         <HomeIcon size="20px" color="#000" />
-        <CartIcon size="24px" color="#000" />
+        <CartIcon size="24px" color="#000" link={cartLink} />
       </div>
     </HeaderWrapper>
   );

@@ -37,7 +37,7 @@ const MenuDetail = () => {
   let location = useLocation();
   return (
     <div>
-      <StoreForm image={location.state.menu.menuPicture}>
+      <StoreForm image={location.state.menu.menuPicture} cartLink="/donationCart">
         <p className="menuDetailTitle">{location.state.menu.menuName}</p>
         <p className="menuDetailDetail">{location.state.menu.detail}</p>
         <div className="menuDetailPrice">
