@@ -10,8 +10,28 @@ import OrderHeader from '../component/OrderHeader';
 import OrderBox from '../../common/component/orderBox';
 import CheckBox from '../../common/component/CheckBox';
 import AllAgreeCheckBox from '../../common/component/AllAgreeCheckBox';
+import { useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 const OrderFreeDelivery = ({ children, checked, onChange }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [usereData, setUsereData] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(`/db/selectUserInfo?userPk=${sessionStorage.getItem("userPk")}`)
+      .then((response) => {
+        // 성공 처리
+        setUsereData(response.data);
+      })
+      .catch((error) => {
+        // 에러 처리
+        console.error(error);
+      });
+  },[]);
+
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxChange = (checked) => {
@@ -22,8 +42,7 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
     option1: false,
     option2: false,
     option3: false,
-
-    option4: false,
+    option4: false
   });
 
   const handleOptionChange = (option) => {
@@ -64,7 +83,6 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
     // });
     let allChecked = true;
     Object.keys(selectedOptions).forEach(function (k) {
-      //console.log(selectedOptions[k]);
       if (k != 'option4') {
         if (selectedOptions[k] !== true) {
           allChecked = false;
@@ -72,7 +90,6 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
       }
     });
 
-    console.log(allChecked);
     if (selectedOptions.option4 !== allChecked) {
       setSelectedOptions((prevSelectedOptions) => ({
         ...prevSelectedOptions,
@@ -88,19 +105,19 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
         <div className="orderStore">
           <div className="Type">배달주문이에요</div>
           <div className="title">
-            <div className="StoreName">대한냉면 마포점</div>
-            <div className="MenuName">물냉면 1개</div>
+            <div className="StoreName">{location.state.storeName}</div>
+            <div className="MenuName">{location.state.menuName} 1개</div>
           </div>
           <div className="addressWrapper">
             <div className="text">배달주소</div>
             <div className="addrWrap">
-              <div className="addr">서울특별시 마포구 동교로 225 (연남동)</div>
+              <div className="addr">{usereData.address}</div>
             </div>
           </div>
-          <Input placeholder="상세주소를 입력하세요"></Input>
+          <Input value={usereData.detailAddress}></Input>
           <hr className="OrderFreeDeliveryHr" />
           <div className="tel">
-            <div className="text">010-1234-5678</div>
+            <div className="text">{usereData.tel}</div>
             <div className="checkButtonWithLabel">
               <AllAgreeCheckBox
                 checked={SselectedOptions.option5}
@@ -176,8 +193,6 @@ const OrderFreeDelivery = ({ children, checked, onChange }) => {
             <div className="agreeText">위 내용을 확인하였으며 동의합니다.</div>
           </div>
         </div>
-
-        {/* <Terms></Terms> */}
         <OrderBox text="배달 주문하기" nav={'/'} />
       </div>
     </>

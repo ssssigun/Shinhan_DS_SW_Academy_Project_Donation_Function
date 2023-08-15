@@ -69,21 +69,28 @@ const StoreList = () => {
         {/* 메뉴 카테고리 */}
         <div id="categoryMenuBar">
           <ul id="menu">
-            {categoryData.category.map((category) =>
+            {categoryData.category.map((category, idx) =>
               checkedMenuBar === category.name ? (
-                <li className="checked" ref={(el) => (ref.current[category.name] = el)}>
-                  <p>{category.name}</p>
-                </li>
-              ) : (
+                category.canDonate ? (
+                  <li className="checked" ref={(el) => (ref.current[category.name] = el)} key={idx}>
+                    <p>{category.name}</p>
+                  </li>
+                ) : (
+                  ''
+                )
+              ) : category.canDonate ? (
                 <li
                   onClick={() => {
                     setCheckedMenuBar(category.name);
                     selectList(category.name);
                   }}
                   ref={(el) => (ref.current[category.name] = el)}
+                  key={idx}
                 >
                   <p>{category.name}</p>
                 </li>
+              ) : (
+                ''
               ),
             )}
           </ul>

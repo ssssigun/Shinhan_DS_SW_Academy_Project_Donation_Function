@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
 @Transactional
 public interface CartRepository extends JpaRepository<Cart,Integer>{
 	
@@ -19,6 +18,11 @@ public interface CartRepository extends JpaRepository<Cart,Integer>{
 	
 	//장바구니 조회
 	List<Cart> findAllByUserPkAndFlag(int user_pk, int flag);
+	
+	//장바구니 조회 (같은 메뉴 확인)
+	@Query(value ="SELECT * FROM Cart WHERE menu_pk =:menuPk AND user_pk =:userPk AND flag =:flag", nativeQuery = true)
+	Cart menuInCart(@Param("menuPk") int menuPk, @Param("userPk") int userPk, @Param("flag") int flag);
+
 	
 	//메뉴 갯수 업데이트
 	@Query(value ="UPDATE Cart SET amount= :amount WHERE cart_pk = :cartPk", nativeQuery = true)
