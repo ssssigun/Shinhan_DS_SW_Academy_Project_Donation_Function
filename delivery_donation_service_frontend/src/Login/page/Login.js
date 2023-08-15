@@ -60,7 +60,7 @@ const Login = () => {
 
       //SSo 회원 pk 임시 저장
       // sessionStorage.setItem('userPk', response.data.userPk);
-      sessionStorage.setItem('userPk', 1);
+      sessionStorage.setItem('userPk', 30);
 
       axios.get(`/db/confirmRole?secretkey=${sessionStorage.getItem('userPk')}`)
       .then(response => {
