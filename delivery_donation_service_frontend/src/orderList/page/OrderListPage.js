@@ -13,7 +13,7 @@ import DonationList from '../component/DonationList';
 import axios from 'axios';
 
 const OrderListPage = () => {
-  const userPk = 1;
+  const userPk = sessionStorage.getItem('userPk');
 
   const buttons = [
     {

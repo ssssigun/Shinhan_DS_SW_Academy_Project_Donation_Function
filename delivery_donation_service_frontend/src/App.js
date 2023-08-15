@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './common/style/common.scss';
 
 import Login from './Login/page/Login';
@@ -25,34 +25,185 @@ import ScrollTop from './common/component/scrollTop';
 import ReadyPage from './common/page/ReadyPage';
 import DonationDetailPage from './orderList/page/DonationDetailPage';
 import DonationReceipt from './orderList/page/DonationReceipt';
+import ErrorPage from './common/page/ErrorPage';
+import PrivateRoute from './common/utils/PrivateRoute';
+import isLogin from './common/utils/isLogin';
 
 function App() {
   return (
     <BrowserRouter>
       <ScrollTop /> {/*페이지 넘어갈 때 맨위로*/}
       <Routes>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/donationCart" element={<DonationCartPage />}></Route>
-        <Route path="/cart" element={<MainCartPage />}></Route>
-        <Route path="/orderDonator" element={<OrderDonator type="기부" />}></Route>
-        <Route path="/orderFreeDelivery" element={<OrderFreeDelivery />}></Route>
-        <Route path="/orderFreeTakeOut" element={<OrderFreeTakeOut />}></Route>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/alarm" element={<AlarmPage />} />
-        <Route path="/orderList" element={<OrderListPage />} />
-        <Route path="/donationDetail" element={<DonationDetailPage />} />
-        <Route path="/testOrderRadioButtons" element={<OrderRadioButtonsTest />} />
-        <Route path="/storeList" element={<StoreList />} />
-        <Route path="/storeListDonater" element={<StoreListDonater />} />
-        <Route path="/storeListFree" element={<StoreListFree />} />
-        <Route path="/storeMain" element={<StoreMain />} />
-        <Route path="/storeMainDonater" element={<StoreMainDonater />} />
-        <Route path="/storeMainFree" element={<StoreMainFree />} />
-        <Route path="/menuDetail" element={<MenuDetail />} />
-        <Route path="/menuDetailDonater" element={<MenuDetailDonater />} />
-        <Route path="/menuDetailFree" element={<MenuDetailFree/>} />
-        <Route path="/ready" element={<ReadyPage />} />
-        <Route path="/donationReceipt" element={<DonationReceipt />} />
+        <Route path="/login" element={isLogin() ? <Navigate to="/" /> : <Login />}></Route>
+        <Route
+          path="/donationCart"
+          element={
+            <PrivateRoute>
+              <DonationCartPage />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
+              <MainCartPage />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/orderDonator"
+          element={
+            <PrivateRoute>
+              <OrderDonator type="기부" />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/orderFreeDelivery"
+          element={
+            <PrivateRoute>
+              <OrderFreeDelivery />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/orderFreeTakeOut"
+          element={
+            <PrivateRoute>
+              <OrderFreeTakeOut />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <MainPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/alarm"
+          element={
+            <PrivateRoute>
+              <AlarmPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/orderList"
+          element={
+            <PrivateRoute>
+              <OrderListPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/donationDetail"
+          element={
+            <PrivateRoute>
+              <DonationDetailPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/testOrderRadioButtons"
+          element={
+            <PrivateRoute>
+              <OrderRadioButtonsTest />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/storeList"
+          element={
+            <PrivateRoute>
+              <StoreList />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/storeListDonater"
+          element={
+            <PrivateRoute>
+              <StoreListDonater />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/storeListFree"
+          element={
+            <PrivateRoute>
+              <StoreListFree />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/storeMain"
+          element={
+            <PrivateRoute>
+              <StoreMain />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/storeMainDonater"
+          element={
+            <PrivateRoute>
+              <StoreMainDonater />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/storeMainFree"
+          element={
+            <PrivateRoute>
+              <StoreMainFree />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/menuDetail"
+          element={
+            <PrivateRoute>
+              <MenuDetail />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/menuDetailDonater"
+          element={
+            <PrivateRoute>
+              <MenuDetailDonater />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/menuDetailFree"
+          element={
+            <PrivateRoute>
+              <MenuDetailFree />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/ready"
+          element={
+            <PrivateRoute>
+              <ReadyPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/donationReceipt"
+          element={
+            <PrivateRoute>
+              <DonationReceipt />
+            </PrivateRoute>
+          }
+        />
+        <Route element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -19,6 +19,7 @@ const MenuDetail = () => {
     menu : location.state.menu,
     store : location.state.store
   }
+
   return (
     <div>
       <StoreForm image={location.state.menu.menuPicture} cartLink="/cart">
@@ -46,6 +47,7 @@ const MenuDetail = () => {
           :
           <OrderBox text={'주문하기'} nav={'/orderFreeDelivery'} state ={state}/>
       }
+
     </div>
   );
 };
