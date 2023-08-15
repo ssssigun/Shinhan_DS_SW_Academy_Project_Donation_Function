@@ -1,6 +1,7 @@
 package kr.co.main.order;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Map;
 
 import javax.transaction.Transactional;
@@ -50,4 +51,9 @@ public class DonationHistoryController {
     	// 알림 저장 (인서트)
     	aRepo.save(a);
 	}
+    
+    @GetMapping("/selectOrdersFree")
+    public List<DonationHistory> selectOrdersFree(@RequestParam int userPk) {
+    	return dRepo.findAllByUserPkOrderByDateDesc(userPk);
+    }
 }

@@ -11,8 +11,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import OrderList from '../component/OrderList';
 import DonationList from '../component/DonationList';
 import axios from 'axios';
+import OrderFreeList from '../component/OrderFreeList';
 
-const OrderListPage = () => {
+const OrderListPageFree = () => {
   const userPk = sessionStorage.getItem('userPk');
 
   const buttons = [
@@ -22,31 +23,12 @@ const OrderListPage = () => {
     },
     {
       flag: 1,
-      name: '기부',
+      name: '무료 식사',
     },
   ];
 
   const [flag, setFlag] = new useState(0);
-  const [modalDisable, setModalDisable] = new useState(true);
   const [orders, setOrders] = new useState({});
-
-  const navigate = useNavigate();
-
-  const showModal = (e) => {
-    document.body.style.overflow = 'hidden';
-    setModalDisable(false);
-  };
-
-  const hideModal = (e) => {
-    document.body.style.overflow = 'unset';
-    setModalDisable(true);
-  };
-
-  const today = new Date();
-  const numberOfDaysToMinus = 30;
-  const startDate = today.setDate(today.getDate() - numberOfDaysToMinus);
-  const startDateValue = new Date(startDate).toISOString().split('T')[0];
-  const endDateValue = new Date().toISOString().split('T')[0];
 
   const location = useLocation();
   useEffect(() => {
@@ -62,10 +44,26 @@ const OrderListPage = () => {
   // 주문 또는 기부 불러오기
   const selectOrders = () => {
     if (flag === 1) {
+      let ordersFree = [];
       axios
-        .get(`/db/selectDonations?userPk=${userPk}`)
+        .get(`/db/selectOrdersFree?userPk=${userPk}`)
         .then((response) => {
-          setOrders(response.data);
+          ordersFree = response.data;
+        })
+        .then(() => {
+          ordersFree.map((orderFree) => {
+            axios
+              .get(`/db/selectStoreForPk?storePk=${orderFree.storePk}`)
+              .then((response) => {
+                orderFree['store'] = response.data;
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          });
+        })
+        .then(() => {
+          setOrders(ordersFree);
         })
         .catch((error) => {
           console.log(error);
@@ -83,10 +81,6 @@ const OrderListPage = () => {
     }
   };
 
-  const getDonationReceipt = () => {
-    navigate('/donationReceipt');
-  };
-
   return (
     <>
       <OrderListHeader backUrl="/">주문내역</OrderListHeader>
@@ -94,31 +88,11 @@ const OrderListPage = () => {
         <OrderRadioButtons flag={flag} buttons={buttons} setFlag={setFlag} />
         <div className="orderListWrapper">
           {flag === 0 && <OrderList orders={orders} />}
-          {flag === 1 && <DonationList donations={orders} />}
+          {flag === 1 && <OrderFreeList donations={orders} />}
         </div>
       </div>
-      {flag === 1 && orderList.donations.length > 0 && (
-        <div className="donationReceiptButton" onClick={(e) => showModal(e)}>
-          <MdReceipt size="35px" color="#FFF" />
-        </div>
-      )}
-      {modalDisable ? (
-        ''
-      ) : (
-        <ModalBottomSheet hideModal={hideModal}>
-          기부영수증
-          <div className="orderListPageDateWrapper">
-            <div className="orderListPageDateInputWrapper">
-              <Input type="date" defaultValue={startDateValue} />
-              ~
-              <Input type="date" defaultValue={endDateValue} />
-            </div>
-            <WideButton style={{ background: '#FB521B' }} text="출력하기" propFunction={getDonationReceipt} />
-          </div>
-        </ModalBottomSheet>
-      )}
     </>
   );
 };
 
-export default OrderListPage;
+export default OrderListPageFree;
