@@ -23,19 +23,19 @@ const StoreMain = () => {
   const navigate = useNavigate();
   // 메뉴 상세 페이지로 이동
   // 선택한 메뉴 정보 보내기
-    function move(menu,store){
-      navigate("/menuDetailDonater",{
-        state:{
-          menu : menu,
-          store : store
-        }
-      });
-    }
-    // 가게 정보 가져오기 위해서 사용
-    let location = useLocation();
-    
-    const [menuData,setMenuData] = useState([]);
-    const [storeData, setStoreData] =useState({});
+  function move(menu, store) {
+    navigate('/menuDetailDonater', {
+      state: {
+        menu: menu,
+        store: store,
+      },
+    });
+  }
+  // 가게 정보 가져오기 위해서 사용
+  let location = useLocation();
+
+  const [menuData, setMenuData] = useState([]);
+  const [storeData, setStoreData] = useState({});
 
   //처음 렌더링할 때
   useEffect(() => {
@@ -64,7 +64,12 @@ const StoreMain = () => {
       });
   }, []);
   return (
-    <StoreForm image={storeData.storeImage} backurl="/storeListDonater" backState={{ name: location.state.category }}>
+    <StoreForm
+      image={storeData.storeImage}
+      backurl="/storeListDonater"
+      backState={{ name: location.state.category }}
+      cartLink="/donationCart"
+    >
       {/* 제목라인 */}
       <div className="StoreMainTitleArea">
         <p className="StoreMainTitle">{storeData.storeName}</p>
@@ -80,34 +85,34 @@ const StoreMain = () => {
             <AiFillStar className="StoreMainStarStyle" />
             <span>25</span>
           </div>
-              <p>맛있어요</p>
-            </li>
-            <li>
-              <div className="StoreMainButton">
-                <FaHeart className="StoreMainHeartStyle"/>
-                <span>25</span>
-              </div>
-              <p>찜하기</p>
-            </li>
-            <li>
-              <div className="StoreMainButton">
-                <TbShare2 className="StoreMainShareStyle"/>
-              </div>
-              <p>공유하기</p>
-            </li>
-            <li>
-              <div className="StoreMainButton">
-                <span>{storeData.review}</span>
-              </div>
-              <p>최근 리뷰</p>
-            </li>
+          <p>맛있어요</p>
+        </li>
+        <li>
+          <div className="StoreMainButton">
+            <FaHeart className="StoreMainHeartStyle" />
+            <span>25</span>
+          </div>
+          <p>찜하기</p>
+        </li>
+        <li>
+          <div className="StoreMainButton">
+            <TbShare2 className="StoreMainShareStyle" />
+          </div>
+          <p>공유하기</p>
+        </li>
+        <li>
+          <div className="StoreMainButton">
+            <span>{storeData.review}</span>
+          </div>
+          <p>최근 리뷰</p>
+        </li>
       </ul>
-          {/* 메뉴 카테고리 라인 */}
-          <ul className="StoreMainMenuCategoryArea">
-            <li className="StoreMainMenuCategory">
-              <p>대표메뉴</p>
-            </li>
-            {/* <li className="StoreMainMenuCategory">
+      {/* 메뉴 카테고리 라인 */}
+      <ul className="StoreMainMenuCategoryArea">
+        <li className="StoreMainMenuCategory">
+          <p>대표메뉴</p>
+        </li>
+        {/* <li className="StoreMainMenuCategory">
               <p>치킨</p>
             </li>
             <li className="StoreMainMenuCategory">
@@ -116,30 +121,28 @@ const StoreMain = () => {
             <li className="StoreMainMenuCategory">
               <p>샐러드</p>
             </li> */}
-          </ul>
-          {/* 메뉴 목록 라인 */}
-          <div className="StoreMainMenuListArea">
-            <p className="StoreMainMenuListAreaTitle">대표메뉴</p>
-            <ul className="StoreMainMenuList">
-              {
-                menuData.map(menu=>(
-                  <li className="StoreMainMenu" onClick={() => move(menu,storeData)}>
-                      <div className="StoreMainMenuTextArea">
-                        <div className="StoreMainMenuTextTitleArea">
-                          <span className="StoreMainMenuTextTitle">{menu.menuName}</span>
-                          <div className="StoreMainMenuTextTitleNumber"><span>{menu.donationAmount}</span></div>
-                        </div>
-                        <p className="StoreMainMenuTextDetail">
-                          {menu.detail}
-                        </p>
-                        <p className="StoreMainMenuTextPrice">{menu.menuPrice.toLocaleString()}원</p>
-                      </div>
-                    <img src={menu.menuPicture} alt="" className="StoreMainMenuImage"></img>
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
+      </ul>
+      {/* 메뉴 목록 라인 */}
+      <div className="StoreMainMenuListArea">
+        <p className="StoreMainMenuListAreaTitle">대표메뉴</p>
+        <ul className="StoreMainMenuList">
+          {menuData.map((menu) => (
+            <li className="StoreMainMenu" onClick={() => move(menu, storeData)}>
+              <div className="StoreMainMenuTextArea">
+                <div className="StoreMainMenuTextTitleArea">
+                  <span className="StoreMainMenuTextTitle">{menu.menuName}</span>
+                  <div className="StoreMainMenuTextTitleNumber">
+                    <span>{menu.donationAmount}</span>
+                  </div>
+                </div>
+                <p className="StoreMainMenuTextDetail">{menu.detail}</p>
+                <p className="StoreMainMenuTextPrice">{menu.menuPrice.toLocaleString()}원</p>
+              </div>
+              <img src={menu.menuPicture} alt="" className="StoreMainMenuImage"></img>
+            </li>
+          ))}
+        </ul>
+      </div>
       {/* 유의사항 */}
       <div className="StoreMainNoticeWrapper">
         <p className="StoreMainNoticeTitle">유의 사항</p>

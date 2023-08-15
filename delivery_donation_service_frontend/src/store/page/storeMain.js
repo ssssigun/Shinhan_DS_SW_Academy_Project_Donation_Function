@@ -29,7 +29,7 @@ const StoreMain = () => {
         title: e.menuName,
         explain: e.detail,
         price: e.menuPrice,
-        image: e.menuPicture
+        image: e.menuPicture,
       },
     });
   }
@@ -64,7 +64,12 @@ const StoreMain = () => {
       });
   }, []);
   return (
-    <StoreForm image={storeData.storeImage} backurl="/storeList" backState={{ name: location.state.category }}>
+    <StoreForm
+      image={storeData.storeImage}
+      backurl="/storeList"
+      backState={{ name: location.state.category }}
+      cartLink="/cart"
+    >
       {/* 제목라인 */}
       <div className="StoreMainTitleArea">
         <p className="StoreMainTitle">{storeData.storeName}</p>

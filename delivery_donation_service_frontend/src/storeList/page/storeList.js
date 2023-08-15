@@ -65,7 +65,9 @@ const StoreList = () => {
     <div id="storeListWrapper">
       <div className="storeListTopArea">
         {/* 헤더 */}
-        <StoreListHeader backUrl="/">{checkedMenuBar}</StoreListHeader>
+        <StoreListHeader backUrl="/" cartLink="/cart">
+          {checkedMenuBar}
+        </StoreListHeader>
         {/* 메뉴 카테고리 */}
         <div id="categoryMenuBar">
           <ul id="menu">
