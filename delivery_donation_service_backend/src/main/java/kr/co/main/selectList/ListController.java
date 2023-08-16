@@ -72,8 +72,4 @@ public class ListController {
 		return lservice.storeInfo(store_pk);
 	}
     
-    @GetMapping("/selectStoreForPk")
-    public Store selectStoreForPk(@RequestParam int storePk) {
-    	return sRepo.findByStorePk(storePk);
-    }
 }

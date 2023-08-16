@@ -40,7 +40,7 @@ public class ListService {
 		return storeList;
 	}
 	
-	// 기부 메뉴 개수 구하기
+	// 기부 메뉴 개수 구하기v
 	public List<Menu> selectMenuAndCount(int store_pk){
     	List<Menu> menuList = mRepo.findByStorePk(store_pk);
     	for(int i=0; i<menuList.size(); i++) {
