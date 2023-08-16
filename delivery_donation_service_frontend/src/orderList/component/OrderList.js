@@ -3,6 +3,9 @@ import None from '../../common/component/None';
 import Order from './Order';
 
 const OrderList = ({ orders }) => {
+  console.log('OrderList안');
+  console.log(orders);
+  console.log(typeof orders);
   const dateformat = (date) => {
     return dayjs(date).format('YYYY.MM.DD');
   };
@@ -19,7 +22,12 @@ const OrderList = ({ orders }) => {
     }
   };
 
-  if (Object.keys(orders).length === 0) {
+  if (
+    orders == null ||
+    orders === undefined ||
+    Object.keys(orders).length === 0 ||
+    Object.keys(orders).includes('orderFreeList')
+  ) {
     return (
       <None title="떵그러니..." image="image/PLI.png" height={`${window.innerHeight}`}>
         주문내역이 없어요.

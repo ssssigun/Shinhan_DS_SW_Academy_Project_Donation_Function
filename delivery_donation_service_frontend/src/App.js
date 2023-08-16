@@ -28,6 +28,7 @@ import DonationReceipt from './orderList/page/DonationReceipt';
 import ErrorPage from './common/page/ErrorPage';
 import PrivateRoute from './common/utils/PrivateRoute';
 import isLogin from './common/utils/isLogin';
+import OrderListPageFree from './orderList/page/OrderListPageFree';
 
 function App() {
   return (
@@ -95,7 +96,7 @@ function App() {
           path="/orderList"
           element={
             <PrivateRoute>
-              <OrderListPage />
+              {sessionStorage.getItem('certi') === '0' ? <OrderListPage /> : <OrderListPageFree />}
             </PrivateRoute>
           }
         />

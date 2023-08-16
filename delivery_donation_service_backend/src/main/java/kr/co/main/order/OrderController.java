@@ -31,13 +31,13 @@ public class OrderController {
 	@GetMapping("/selectOrders")
 	@ResponseBody
 	public List<Order> selectOrders(@RequestParam int userPk) {
-		return oRepo.findAllByUserPkAndOrderFlagOrderByOrderDateDesc(userPk, 0);
+		return oRepo.findAllByUserPkAndOrderFlagOrderByOrderDateDesc(userPk, 1);
 	}
 
 	@GetMapping("/selectDonations")
 	@ResponseBody
 	public List<Order> selectDonations(@RequestParam int userPk) {
-		return oRepo.findAllByUserPkAndOrderFlagNotOrderByOrderDateDesc(userPk, 0);
+		return oRepo.findAllByUserPkAndOrderFlagOrderByOrderDateDesc(userPk, 0);
 	}
 	
 	
