@@ -31,11 +31,6 @@ public class AlarmController {
 		return aRepo.findAllByUserPkOrderByDateDesc(userPk);
 	}
 	
-	
-	
-	
-	
-	
 	//orderFreeDelivery, orderFreeTakeOut (기부받는사람)
 	//알림에 따듯해진 마음 전하기 메세지 넣기, 기부히스토리
     @ApiOperation(value = "알림에 따듯해진 마음 전하기 메세지 넣기")
@@ -48,6 +43,5 @@ public class AlarmController {
     	a.setContent("따뜻해진 마음이 도착했어요: " + a.content);
         aRepo.save(a);
         dRepo.save(d);
-        
 	}
 }
