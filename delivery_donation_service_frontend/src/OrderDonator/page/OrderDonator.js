@@ -6,9 +6,12 @@ import OrderBox from '../../common/component/orderBoxOrder';
 import AllAgreeCheckBox from '../../common/component/AllAgreeCheckBox';
 import CheckBox from '../../common/component/CheckBox';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 const OrderDonator = ({ type }) => {
+  const navigate = useNavigate();
+  const [params, setParams] = useSearchParams();
+
   const [selected, setSelected] = useState([1, 0]);
 
   const hanldeRadioChange = (index) => {
@@ -85,7 +88,40 @@ const OrderDonator = ({ type }) => {
     }));
   };
 
-  useEffect(() => console.log(location.state));
+  useEffect(() => {
+    console.log(stateData)
+    if (params.get("flag") === 'true') {
+      const requestBody = {
+        store: stateData.store,
+        cart: stateData.cart,
+        userPk: window.sessionStorage.getItem('userPk'),
+        totalPrice: stateData.totalPrice,
+        pay: selected[0] === 1 ? 0 : 1,
+      };
+      axios
+        .post('/db/insertDonationOrder', requestBody, {
+          headers: { 'Content-Type': `application/json` },
+        })
+        .then((response) => {
+          console.log();
+          console.log('onClickForOrder 성공!');
+        })
+        .then(() => {
+          axios
+            .post('/db/insertDonationDetailOrder', requestBody, { headers: { 'Content-Type': `application/json` } })
+            .then(() => {
+              console.log('onClickForOrderDetail 성공!');
+              navigate('/')
+            });
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    } else if (params.get("flag") === 'fail') {
+      navigate('/')
+    }
+
+  },[]);
 
   useEffect(() => {
     let allChecked = true;
@@ -106,34 +142,20 @@ const OrderDonator = ({ type }) => {
   }, [selectedOptions]);
 
   const location = useLocation();
-  const stateData = location.state;
+  const stateData = JSON.parse(window.localStorage.getItem("items"));
 
   const onClickForOrder = () => {
-    const requestBody = {
-      store: stateData.store,
-      cart: stateData.cart,
-      userPk: window.sessionStorage.getItem('userPk'),
-      totalPrice: stateData.totalPrice,
-      pay: selected[0] === 1 ? 0 : 1,
-    };
-    axios
-      .post('/db/insertDonationOrder', requestBody, {
-        headers: { 'Content-Type': `application/json` },
-      })
-      .then((response) => {
-        console.log();
-        console.log('onClickForOrder 성공!');
-      })
-      .then(() => {
-        axios
-          .post('/db/insertDonationDetailOrder', requestBody, { headers: { 'Content-Type': `application/json` } })
-          .then(() => {
-            console.log('onClickForOrderDetail 성공!');
-          });
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    if (params.get("flag") === 'false') {
+      const dataJSON = encodeURIComponent(JSON.stringify(stateData));
+      console.log(JSON.parse(decodeURIComponent(dataJSON)))
+      window.location.href = `http://codeboxs3.s3-website.ap-northeast-2.amazonaws.com/pay/pay?storeId=${stateData.store.storePk}&data=${dataJSON}`;
+      
+      
+      // console.log(stateData.store.storePk)
+      // window.location.href = `http://codeboxs3.s3-website.ap-northeast-2.amazonaws.com/pay/pay?storeId=${stateData.store.storePk}`;
+      // navigate(`http://codeboxs3.s3-website.ap-northeast-2.amazonaws.com/pay/pay?storeId=${stateData.store.storePk}`)
+
+    }
   };
 
   return (
@@ -243,7 +265,12 @@ const OrderDonator = ({ type }) => {
           </div>
         </div>
 
-        <OrderBox text="기부하기" nav={'/'} onClick={onClickForOrder} />
+        {/* {stateData.flag ? 
+          <OrderBox text="기부하기" nav={'/'} onClick={onClickForOrder} /> */}
+          {/* : */}
+          <OrderBox text="기부하기" onClick={onClickForOrder} />
+        {/* } */}
+        
       </div>
     </>
   );

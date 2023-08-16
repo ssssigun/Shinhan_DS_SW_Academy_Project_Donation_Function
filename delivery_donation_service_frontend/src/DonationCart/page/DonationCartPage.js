@@ -206,6 +206,11 @@ const DonationCartPage = () => {
     });
     returnObject['totalPrice'] = priceForStore[selected];
 
+    // 배포 후 url 변경
+    returnObject['returnUrl'] = 'http://localhost:3000/orderDonator';
+
+    window.localStorage.removeItem("items");
+    window.localStorage.setItem("items", JSON.stringify(returnObject));
     return returnObject;
   };
 
@@ -222,7 +227,7 @@ const DonationCartPage = () => {
         )}
         {Object.entries(cartData).map((cartStore, idx) => {
           if (cartStore[1] !== undefined) {
-            console.log('cartStore', cartStore);
+            // console.log('cartStore', cartStore);
             return (
               <div className="cart" key={idx}>
                 <div className="storeTitle">
@@ -242,7 +247,7 @@ const DonationCartPage = () => {
                   />
                 </div>
                 {Object.entries(cartStore[1]['cart']).map((cart, idx) => {
-                  console.log('cart', cart);
+                  // console.log('cart', cart);
                   return (
                     <div className="cartDetail" key={idx}>
                       <div className="detailTitle">
@@ -302,7 +307,7 @@ const DonationCartPage = () => {
           }
         })}
       </div>
-      <OrderBox text="기부하기" nav="/orderDonator" onClick={makeState} />
+      <OrderBox text="기부하기" nav="/orderDonator?flag=false" onClick={makeState} />
     </>
   );
 };

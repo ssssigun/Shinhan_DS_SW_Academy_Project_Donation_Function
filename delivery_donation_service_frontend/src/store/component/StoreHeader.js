@@ -8,7 +8,7 @@ const StoreHeader = ({ backurl, backState, cartLink }) => {
   return (
     <HeaderWrapper className="storeHeaderWrapper">
       <div className="headerLeftSide">
-        <BackIcon size="30px" color="#FFF" state={backState} />
+        <BackIcon size="30px" color="#FFF" state={backState} url={backurl}/>
       </div>
       <div className="headerRightSide">
         <HomeIcon size="24px" color="#FFF" />
