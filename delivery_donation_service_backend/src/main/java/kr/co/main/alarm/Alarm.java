@@ -37,7 +37,7 @@ public class Alarm {
 	}
 	
 	public Alarm (String content,int userPk) {
-		this.title = "기부받은분이 감사인사를 남겼습니다.";
+		this.title = "따듯해진 마음 전달";
 		this.content = content;
 		this.userPk = userPk;
 	}

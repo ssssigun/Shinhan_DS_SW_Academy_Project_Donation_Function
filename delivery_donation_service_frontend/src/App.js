@@ -96,7 +96,7 @@ function App() {
           path="/orderList"
           element={
             <PrivateRoute>
-              {sessionStorage.getItem('certi') === '0' ? <OrderListPage /> : <OrderListPageFree />}
+              {sessionStorage.getItem('certi') == "0" ? <OrderListPage /> : <OrderListPageFree />}
             </PrivateRoute>
           }
         />
