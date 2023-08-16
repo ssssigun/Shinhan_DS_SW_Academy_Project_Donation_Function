@@ -16,4 +16,12 @@ module.exports = function(app){
       changeOrigin: true
     })
   )
+
+    //인증 서버
+    app.use(
+      createProxyMiddleware('/api', {
+        target: 'http://localhost:8080',
+        changeOrigin: true
+      })
+    )
 };
