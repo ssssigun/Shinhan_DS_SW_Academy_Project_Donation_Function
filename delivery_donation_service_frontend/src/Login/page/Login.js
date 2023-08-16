@@ -73,7 +73,6 @@ const Login = () => {
                 }
         })
       .then(function (response) { 
-        console.log(response.data);
         sessionStorage.setItem('userPk', response.data);
 
         axios.get(`/db/confirmRole?secretkey=${sessionStorage.getItem('userPk')}`)
