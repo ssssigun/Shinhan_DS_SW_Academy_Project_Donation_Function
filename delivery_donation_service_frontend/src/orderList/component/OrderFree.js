@@ -4,30 +4,29 @@ import { MdKeyboardArrowRight } from 'react-icons/md';
 import dayjs from 'dayjs';
 import { useEffect } from 'react';
 
-const OrderFree = ({ donation }) => {
+const OrderFree = ({ donation, store }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
     console.log('donation', donation);
+    console.log('store', store);
   });
 
   return (
     <>
       <div className="orderContainer">
         <div className="dateAndMenu">{dayjs(donation.orderDate).format('YYYY.MM.DD')}</div>
-        <div className="stateWrapper">기부가 완료되었습니다.</div>
+        <div className="stateWrapper">주문이 완료되었습니다.</div>
         <div className="detailContainer">
-          <img src={donation.store.storeImage} alt="매장사진" />
+          <img src={store.storeImage} alt="매장사진" />
           <div className="detailContent">
             <div className="detailTitleContainer">
-              <div className="detailTitle">{donation.store.storeName}</div>
+              <div className="detailTitle">{store.storeName}</div>
               <MdKeyboardArrowRight size="24px" />
             </div>
             <div className="detailMenuContainer">
-              <div className="detailMenu">{donation.orderDetails[0].menu.menuName}</div>
-              <div className="detailMenuLength">&nbsp;&nbsp;&nbsp;외 {donation.orderDetails.length - 1}</div>
+              {/* <div className="detailMenu">{donation.orderDetails[0].menu.menuName}</div> */}
             </div>
-            <div className="detailPrice">{donation.orderPrice.toLocaleString()}</div>
           </div>
         </div>
 

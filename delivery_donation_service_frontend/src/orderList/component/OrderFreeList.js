@@ -4,7 +4,8 @@ import Donation from './Donation';
 import OrderFree from './OrderFree';
 
 const OrderFreeList = ({ donations }) => {
-  if (Object.keys(donations).length === 0) {
+  console.log(donations);
+  if (donations == null || donations === undefined || !Object.keys(donations).includes('orderFreeList')) {
     return (
       <None title="떵그러니..." image="image/PLI.png" height={`${window.innerHeight}`}>
         주문내역이 없어요.
@@ -13,8 +14,8 @@ const OrderFreeList = ({ donations }) => {
       </None>
     );
   } else {
-    return donations.map((donation, idx) => {
-      return donation && <OrderFree donation={donation} key={idx} />;
+    return donations.orderFreeList.map((donation, idx) => {
+      return donation && <OrderFree donation={donation} key={idx} store={donations.stores[donation.storePk]} />;
     });
   }
 };
