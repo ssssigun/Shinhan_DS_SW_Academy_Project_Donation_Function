@@ -60,19 +60,34 @@ const Login = () => {
 
       //SSo 회원 pk 임시 저장
       // sessionStorage.setItem('userPk', response.data.userPk);
-      sessionStorage.setItem('userPk', 1);
+      // sessionStorage.setItem('userPk', 30);
+      
+      axios({
+        url: "/api/confirm.do",
+        method: 'get',
+        data: {
+          mock: "mockdata"
+        },
+        headers: {
+                  Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+                }
+        })
+      .then(function (response) { 
+        console.log(response.data);
+        sessionStorage.setItem('userPk', response.data);
 
-      axios.get(`/db/confirmRole?secretkey=${sessionStorage.getItem('userPk')}`)
-      .then(response => {
-        // 성공 처리
-        sessionStorage.setItem('userPk', response.data.userPk);
-        sessionStorage.setItem('certi',  response.data.certi);
+        axios.get(`/db/confirmRole?secretkey=${sessionStorage.getItem('userPk')}`)
+        .then(response => {
+          // 성공 처리
+          sessionStorage.setItem('userPk', response.data.userPk);
+          sessionStorage.setItem('certi',  response.data.certi);
+        })
+        .catch(error => {
+          // 에러 처리
+          console.error(error);
+        });
       })
-      .catch(error => {
-        // 에러 처리
-        console.error(error);
-      });
-
+      
       //메인으로 이동
       navigate("/");
     })
