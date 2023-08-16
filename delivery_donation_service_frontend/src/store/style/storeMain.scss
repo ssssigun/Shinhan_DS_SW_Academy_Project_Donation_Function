@@ -1,234 +1,234 @@
 //가게 정보 페이지 scss
 //제목
-.StoreMainTitleArea{
+.StoreMainTitleArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  align-self: stretch;
+}
+.StoreMainTitle {
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.StoreMainInfoArea {
+  display: flex;
+}
+.StoreMainInfo {
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+//버튼
+.StoreMainButtonArea {
+  display: flex;
+  padding: 0px 20px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  li {
+    white-space: nowrap;
     display: flex;
+    width: 58px;
+    padding: 0px 15px;
     flex-direction: column;
     align-items: center;
     gap: 5px;
-    align-self: stretch;
-}
-.StoreMainTitle{
-    color: #000;
-    text-align: center;
-    font-family: Inter;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-.StoreMainInfoArea{
-    display: flex;
-}
-.StoreMainInfo{
-    color: #000;
-    text-align: center;
-    font-family: Inter;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-//버튼
-.StoreMainButtonArea{
-    display: flex;
-    padding: 0px 20px;
-    justify-content: space-between;
-    align-items: center;
-    align-self: stretch;
-    li{
-        white-space : nowrap;
-        display: flex;
-        width: 58px;
-        padding: 0px 15px;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
 
-        p{
-            color: #818181;
-            text-align: center;
+    p {
+      color: #818181;
+      text-align: center;
+      font-family: Inter;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+}
+.StoreMainButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+//버튼(react-icon) 스타일
+.StoreMainArrowStyle {
+  color: #a1a1a1;
+  font-family: Inter;
+  width: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.StoreMainStarStyle {
+  width: 17px;
+  color: #fef2e9;
+}
+.StoreMainHeartStyle {
+  width: 15px;
+  color: #dddddd;
+}
+.StoreMainShareStyle {
+  width: 20px;
+  height: 20px;
+  color: #000000;
+}
+// 메뉴 카테고리
+.StoreMainMenuCategoryArea {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  align-self: stretch;
+}
+.StoreMainMenuCategory {
+  display: flex;
+  padding: 7px;
+  align-items: flex-start;
+
+  border-radius: 20px;
+  border: 1px solid #f4f3f8;
+  background: #fff;
+}
+//메뉴 목록
+.StoreMainMenuListArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+  .StoreMainMenuListAreaTitle {
+    display: flex;
+    height: 18px;
+    flex-direction: column;
+    justify-content: center;
+    align-self: stretch;
+
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .StoreMainMenuList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+
+    .StoreMainMenu {
+      display: flex;
+      padding: 15px 0px;
+      align-items: center;
+      gap: 5px;
+      align-self: stretch;
+
+      border-top: 1px solid #f3f2f7;
+      border-bottom: 1px solid #f3f2f7;
+
+      .StoreMainMenuTextArea {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 5px;
+        flex: 1 0 0;
+        .StoreMainMenuTextTitleArea {
+          display: flex;
+        }
+        .StoreMainMenuTextDetail {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3;
+          align-self: stretch;
+
+          overflow: hidden;
+          color: #686868;
+          text-overflow: ellipsis;
+          font-family: Inter;
+          font-size: 10px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+
+        .StoreMainMenuTextPrice {
+          color: #000;
+          font-family: Inter;
+          font-size: 10px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          margin-left: 5px;
+          display: flex;
+        }
+        .StoreMainMenuTextTitleNumber {
+          display: flex;
+          padding: 0px 5px;
+          justify-content: center;
+          align-items: center;
+          border-radius: 7px;
+          background: #fb521b;
+          width: 10px;
+          margin-left: 10px;
+          span {
+            color: #fff;
             font-family: Inter;
-            font-size: 12px;
+            font-size: 10px;
             font-style: normal;
             font-weight: 400;
             line-height: normal;
+          }
+
+          height: 16px;
         }
+      }
+      .StoreMainMenuImage {
+        border-radius: 20px;
+        width: 75px;
+        height: 75px;
+      }
     }
-}
-.StoreMainButton{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2px;
-}
-//버튼(react-icon) 스타일
-.StoreMainArrowStyle{
-    color: #A1A1A1;
-    font-family: Inter;
-    width: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height : normal;
-}
-.StoreMainStarStyle{
-    width: 17px;
-    color : #FEF2E9;
-
   }
-.StoreMainHeartStyle{
-    width: 15px;
-    color : #dddddd;
 }
-.StoreMainShareStyle{
-width: 20px;
-height: 20px;
-color : #000000;
-}
-// 메뉴 카테고리
-.StoreMainMenuCategoryArea{
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    align-self: stretch;
-}
-.StoreMainMenuCategory{
-    display: flex;
-    padding: 7px;
-    align-items: flex-start;
+// 유의사항
+.StoreMainNoticeWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+  .StoreMainNoticeTitle {
+    font-size: 12px;
+  }
 
-    border-radius: 20px;
-    border: 1px solid #F4F3F8;
-    background: #FFF;
-}
-//메뉴 목록
-.StoreMainMenuListArea{
+  .StoreMainNoticeText {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 10px;
     align-self: stretch;
-    .StoreMainMenuListAreaTitle{
-        display: flex;
-        height: 18px;
-        flex-direction: column;
-        justify-content: center;
-        align-self: stretch;
 
-        color: #000;
+    .StoreMainNotice {
+      p {
+        overflow: hidden;
+        color: #686868;
+        text-overflow: ellipsis;
         font-family: Inter;
-        font-size: 16px;
+        font-size: 10px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+      }
     }
-
-    .StoreMainMenuList{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        align-self: stretch;
-        
-        .StoreMainMenu{
-            display: flex;
-            padding: 15px 0px;
-            align-items: center;
-            gap: 5px;
-            align-self: stretch;
-
-            border-top: 1px solid #F3F2F7;
-            border-bottom: 1px solid #F3F2F7;
-
-            .StoreMainMenuTextArea{
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: flex-start;
-                gap: 5px;
-                flex: 1 0 0;
-                .StoreMainMenuTextTitleArea{
-                    display: flex;
-                }
-                .StoreMainMenuTextDetail{
-                    display: -webkit-box;
-                    -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 3;
-                    align-self: stretch;
-
-                    overflow: hidden;
-                    color: #686868;
-                    text-overflow: ellipsis;
-                    font-family: Inter;
-                    font-size: 10px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: normal;
-                }
-                
-                .StoreMainMenuTextPrice{
-                    color: #000;
-                    font-family: Inter;
-                    font-size: 10px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: normal;
-                    margin-left: 5px;
-                }
-                .StoreMainMenuTextTitleNumber{
-                    display: flex;
-                    padding: 0px 5px;
-                    justify-content: center;
-                    align-items: center;
-                    border-radius: 7px;
-                    background: #FB521B;
-                    width: 10px;
-                    margin-left: 10px;
-                    span{
-                        color: #FFF;
-                        font-family: Inter;
-                        font-size: 10px;
-                        font-style: normal;
-                        font-weight: 400;
-                        line-height: normal;
-                    }
-                }
-            }
-            .StoreMainMenuImage{
-                border-radius : 20px;
-                width: 75px;
-                height: 75px;
-            }
-        }
-    }
-}
-// 유의사항
-.StoreMainNoticeWrapper{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin :20px 0;
-    .StoreMainNoticeTitle{
-        font-size: 12px;
-    }
-
-    .StoreMainNoticeText{
-        display: flex;
-        flex-direction: column;
-        align-self: stretch;
-        
-        .StoreMainNotice{
-            
-            p{
-                overflow: hidden;
-                color: #686868;
-                text-overflow: ellipsis;
-                font-family: Inter;
-                font-size: 10px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: normal;
-            }
-
-        }
-    }
+  }
 }

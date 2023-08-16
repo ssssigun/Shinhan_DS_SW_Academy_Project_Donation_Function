@@ -1,6 +1,8 @@
 package kr.co.main.order;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.transaction.Transactional;
@@ -15,6 +17,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import kr.co.main.alarm.Alarm;
 import kr.co.main.alarm.AlarmRepository;
+import kr.co.main.selectList.StoreRepository;
 
 @Api(tags = {"기부받는사람들 주문내역 컨트롤러"})
 @RestController
@@ -25,6 +28,8 @@ public class DonationHistoryController {
 	DonationHistoryRepository dRepo;
 	@Autowired
 	AlarmRepository aRepo;
+	@Autowired
+	StoreRepository sRepo;
 	
 	//주문내역에 가게사장님에게 요청사항 메세지 저장
     @ApiOperation(value = "주문내역에 가게사장님에게 요청사항 메세지 저장")
@@ -50,4 +55,22 @@ public class DonationHistoryController {
     	// 알림 저장 (인서트)
     	aRepo.save(a);
 	}
+    
+    @GetMapping("/selectOrdersFree")
+    public Map<String, Object> selectOrdersFree(@RequestParam int userPk) {
+    	Map<String, Object> returnMap = new HashMap<String, Object>();
+    	
+    	List<DonationHistory> donationHistory = dRepo.findAllByUserPkOrderByDateDesc(userPk);
+    	returnMap.put("orderFreeList", donationHistory);
+    	
+    	Map<String, Object> stores = new HashMap<String, Object>();
+    	for (int i = 0; i < donationHistory.size(); i++) {
+    		int storePk = donationHistory.get(i).getStorePk();
+    		stores.put(storePk+"", sRepo.findByStorePk(storePk));
+    	}
+    	
+    	returnMap.put("stores", stores);
+    	
+    	return returnMap;
+    }
 }

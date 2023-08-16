@@ -1,5 +1,6 @@
 package kr.co.main.order;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.transaction.Transactional;
@@ -28,4 +29,6 @@ public interface DonationHistoryRepository extends JpaRepository<DonationHistory
 	@Query(value="UPDATE Order_detail SET donated_amount =:amount WHERE order_detail_pk = :orderDetailPk", nativeQuery=true)
 	@Modifying
 	int updateDonationAmount(@Param("orderDetailPk") int orderDetailPk,@Param("amount") int amount);
+	
+	List<DonationHistory> findAllByUserPkOrderByDateDesc(int user_pk);
 }
