@@ -131,12 +131,14 @@ const StoreMain = () => {
               <div className="StoreMainMenuTextArea">
                 <div className="StoreMainMenuTextTitleArea">
                   <span className="StoreMainMenuTextTitle">{menu.menuName}</span>
+                </div>
+                <p className="StoreMainMenuTextDetail">{menu.detail}</p>
+                <p className="StoreMainMenuTextPrice">
+                  {menu.menuPrice.toLocaleString()}원
                   <div className="StoreMainMenuTextTitleNumber">
                     <span>{menu.donationAmount}</span>
                   </div>
-                </div>
-                <p className="StoreMainMenuTextDetail">{menu.detail}</p>
-                <p className="StoreMainMenuTextPrice">{menu.menuPrice.toLocaleString()}원</p>
+                </p>
               </div>
               <img src={menu.menuPicture} alt="" className="StoreMainMenuImage"></img>
             </li>
