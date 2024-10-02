@@ -59,24 +59,24 @@
 
 | 메인 페이지 |
 | :---: |
-| <br><img src=./delivery_donation_service_frontend/public/image/readme/main.png height="800px" /> <img src=./delivery_donation_service_frontend/public/image/readme/main2.png height="800px" /> |
+| <br><img src=./delivery_donation_service_frontend/public/image/readme/main.png height="590px" /> <img src=./delivery_donation_service_frontend/public/image/readme/main2.png height="590px" /> |
 | 식사와 기부 선택과 음식 카테고리를 선택하는 화면입니다. 기부 카테고리의 음식 카테고리는 제한되어 있습니다.|
 
 
 | 가게 목록 |
 | :---: |
-| <br><img src=./delivery_donation_service_frontend/public/image/readme/storeList2.png height="800px" /> <img src=./delivery_donation_service_frontend/public/image/readme/storeList.png height="800px" />  |
+| <br><img src=./delivery_donation_service_frontend/public/image/readme/storeList2.png height="590px" /> <img src=./delivery_donation_service_frontend/public/image/readme/storeList.png height="590px" />  |
 | 기부할 가게를 고르는 페이지입니다. 기부된 음식 수량이 가게 오른쪽 하단 숫자에 표시되어있습니다. |
 
 
 | 가게 상세 |
 | :---: |
-| <br><img src=./delivery_donation_service_frontend/public/image/readme/storeDetail.png height="800px" /> <img src=./delivery_donation_service_frontend/public/image/readme/storeDetail2.png height="800px" /> |
+| <br><img src=./delivery_donation_service_frontend/public/image/readme/storeDetail.png height="590px" /> <img src=./delivery_donation_service_frontend/public/image/readme/storeDetail2.png height="590px" /> |
 | 음식의 가격과 기부된 음식 수량이 표시되어 있습니다. |
 
 | 메뉴 상세 |
 | :---: |
-| <br><img src=./delivery_donation_service_frontend/public/image/readme/menuDetail2.png height="800px" /> <img src=./delivery_donation_service_frontend/public/image/readme/menuDetail3.png height="800px" /> |
+| <br><img src=./delivery_donation_service_frontend/public/image/readme/menuDetail2.png height="590px" /> <img src=./delivery_donation_service_frontend/public/image/readme/menuDetail3.png height="590px" /> |
 | 기부자는 가격을 확인하고 수량을 선택하여 기부할 수 있습니다. <br/>피기부자는 기부된 음식 수량이 부족하다면 주문이 불가능합니다. |
 
 | 장바구니 |
@@ -86,12 +86,12 @@
 
 | 결제 페이지 |
 | :---: |
-| <br><img src=./delivery_donation_service_frontend/public/image/readme/order.png height="800px" /> <img src=./delivery_donation_service_frontend/public/image/readme/order2.png height="800px" /> |
+| <br><img src=./delivery_donation_service_frontend/public/image/readme/order.png height="590px" /> <img src=./delivery_donation_service_frontend/public/image/readme/order2.png height="590px" /> |
 | 기부자는 결제 정보만 화면에 나타납니다. <br/>피기부자의 경우엔 주소 및 요청사항이 화면에 나타납니다. |
 
 | 결제 내역 |
 | :---: |
-| <br><img src=./delivery_donation_service_frontend/public/image/readme/orderHistory.png height="800px" /> <img src=./delivery_donation_service_frontend/public/image/readme/orderHistoryDetail.png height="800px" /> |
+| <br><img src=./delivery_donation_service_frontend/public/image/readme/orderHistory.png height="590px" /> <img src=./delivery_donation_service_frontend/public/image/readme/orderHistoryDetail.png height="590px" /> |
 | 결제 정보를 확인할 수 있습니다. |
 
 | 알림함 |
