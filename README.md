@@ -54,7 +54,7 @@
 | 로그인 |
 | :---: |
 | <br><img src=./delivery_donation_service_frontend/public/image/readme/login.png height="800px" /><br><br> |
-| 회원 정보를 받아 로그인하는 화면입니다. |
+| 회원 정보를 받아 로그인하는 화면입니다. <br> 로그인의 관련 정보는 [SSO Repository](https://github.com/ssssigun/SSO_final)를 확인해주세요! |
 
 
 | 메인 페이지 |
